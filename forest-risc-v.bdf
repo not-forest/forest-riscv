@@ -1,0 +1,140 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+*/
+(header "graphic" (version "1.4"))
+(symbol
+	(rect 480 328 696 456)
+	(text "p_rom" (rect 88 2 136 19)(font "Arial" (font_size 10)))
+	(text "inst2" (rect 8 113 32 125)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "address[15..0]" (rect 0 0 94 14)(font "Arial" (font_size 8)))
+		(text "address[15..0]" (rect 4 19 98 33)(font "Arial" (font_size 8)))
+		(line (pt 0 32)(pt 88 32)(line_width 3))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "clock" (rect 0 0 35 14)(font "Arial" (font_size 8)))
+		(text "clock" (rect 4 99 39 113)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 144 112))
+	)
+	(port
+		(pt 216 32)
+		(output)
+		(text "q[31..0]" (rect 0 0 51 14)(font "Arial" (font_size 8)))
+		(text "q[31..0]" (rect 170 19 221 33)(font "Arial" (font_size 8)))
+		(line (pt 216 32)(pt 160 32)(line_width 3))
+	)
+	(drawing
+		(text "32 bits" (rect 109 26 121 62)(font "Arial" )(vertical))
+		(text "65536 words" (rect 120 18 132 87)(font "Arial" )(vertical))
+		(text "Block type: AUTO" (rect 48 115 141 127)(font "Arial" ))
+		(line (pt 104 24)(pt 136 24))
+		(line (pt 136 24)(pt 136 96))
+		(line (pt 136 96)(pt 104 96))
+		(line (pt 104 96)(pt 104 24))
+		(line (pt 118 58)(pt 123 63))
+		(line (pt 118 62)(pt 123 57))
+		(line (pt 152 27)(pt 160 27))
+		(line (pt 160 27)(pt 160 39))
+		(line (pt 160 39)(pt 152 39))
+		(line (pt 152 39)(pt 152 27))
+		(line (pt 152 34)(pt 154 36))
+		(line (pt 154 36)(pt 152 38))
+		(line (pt 144 36)(pt 152 36))
+		(line (pt 136 32)(pt 152 32)(line_width 3))
+		(line (pt 88 27)(pt 96 27))
+		(line (pt 96 27)(pt 96 39))
+		(line (pt 96 39)(pt 88 39))
+		(line (pt 88 39)(pt 88 27))
+		(line (pt 88 34)(pt 90 36))
+		(line (pt 90 36)(pt 88 38))
+		(line (pt 80 36)(pt 88 36))
+		(line (pt 96 32)(pt 104 32)(line_width 3))
+		(line (pt 80 112)(pt 80 36))
+		(line (pt 144 112)(pt 144 36))
+		(line (pt 0 0)(pt 217 0))
+		(line (pt 217 0)(pt 217 130))
+		(line (pt 0 130)(pt 217 130))
+		(line (pt 0 0)(pt 0 130))
+		(line (pt 0 0)(pt 0 0))
+		(line (pt 0 0)(pt 0 0))
+		(line (pt 0 0)(pt 0 0))
+		(line (pt 0 0)(pt 0 0))
+	)
+)
+(symbol
+	(rect 272 296 416 408)
+	(text "p_counter" (rect 41 2 118 19)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 97 28 109)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "sload" (rect 0 0 35 14)(font "Arial" (font_size 8)))
+		(text "sload" (rect 20 26 55 40)(font "Arial" (font_size 8)))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "data[15..0]" (rect 0 0 73 14)(font "Arial" (font_size 8)))
+		(text "data[15..0]" (rect 20 42 93 56)(font "Arial" (font_size 8)))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "clock" (rect 0 0 35 14)(font "Arial" (font_size 8)))
+		(text "clock" (rect 26 74 61 88)(font "Arial" (font_size 8)))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 144 64)
+		(output)
+		(text "q[15..0]" (rect 0 0 51 14)(font "Arial" (font_size 8)))
+		(text "q[15..0]" (rect 82 58 133 72)(font "Arial" (font_size 8)))
+		(line (pt 144 64)(pt 128 64)(line_width 3))
+	)
+	(drawing
+		(text "up counter" (rect 79 23 136 35)(font "Arial" ))
+		(line (pt 16 16)(pt 16 96))
+		(line (pt 16 16)(pt 128 16))
+		(line (pt 16 96)(pt 128 96))
+		(line (pt 128 16)(pt 128 96))
+		(line (pt 0 0)(pt 146 0))
+		(line (pt 146 0)(pt 146 114))
+		(line (pt 0 114)(pt 146 114))
+		(line (pt 0 0)(pt 0 114))
+		(line (pt 16 74)(pt 22 80))
+		(line (pt 22 80)(pt 16 86))
+		(line (pt 0 0)(pt 0 0))
+		(line (pt 0 0)(pt 0 0))
+		(line (pt 0 0)(pt 0 0))
+		(line (pt 0 0)(pt 0 0))
+	)
+)
+(connector
+	(pt 416 360)
+	(pt 480 360)
+	(bus)
+)
