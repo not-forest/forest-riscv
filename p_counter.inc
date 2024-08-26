@@ -17,10 +17,11 @@
 FUNCTION p_counter 
 (
 	clock,
-	data[15..0],
+	data[31..0],
+	sclr,
 	sload
 )
 
 RETURNS (
-	q[15..0]
+	q[31..0]
 );
