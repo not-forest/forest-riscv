@@ -60,3 +60,34 @@ set_global_assignment -name BDF_FILE "forest-risc-v.bdf"
 set_global_assignment -name QIP_FILE p_rom.qip
 set_global_assignment -name CDF_FILE ProgrammerChain.cdf
 set_global_assignment -name QIP_FILE c_decoder.qip
+set_global_assignment -name VHDL_FILE rv32i_decoder.vhd
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name QIP_FILE op_decoder.qip
+set_global_assignment -name QIP_FILE reg_decoder.qip
+set_global_assignment -name QIP_FILE pp_counter.qip
+set_global_assignment -name QIP_FILE cnt_decoder.qip
+set_global_assignment -name QIP_FILE zero32bit.qip
+set_global_assignment -name QIP_FILE bus_mux.qip
+set_global_assignment -name QIP_FILE im_mux.qip
+set_global_assignment -name QIP_FILE b_decoder.qip
+set_global_assignment -name QIP_FILE alu_add.qip
+set_global_assignment -name QIP_FILE alu_sub.qip
+set_global_assignment -name VHDL_FILE alu_and.vhd
+set_global_assignment -name VHDL_FILE alu_or.vhd
+set_global_assignment -name VHDL_FILE alu_xor.vhd
+set_global_assignment -name QIP_FILE alu_sll.qip
+set_global_assignment -name QIP_FILE alu_srl.qip
+set_global_assignment -name QIP_FILE alu_sra.qip
+set_global_assignment -name QIP_FILE alu_mux.qip
+set_global_assignment -name QIP_FILE src_mux.qip
+set_global_assignment -name VHDL_FILE pri_encoder.vhd
+set_global_assignment -name QIP_FILE alu_cmp.qip
+set_global_assignment -name QIP_FILE alu_cmp_unsigned.qip
+set_global_assignment -name VHDL_FILE pri_encoder_8bit.vhd
+set_global_assignment -name QIP_FILE one32bit.qip
+set_global_assignment -name QIP_FILE const_mux.qip
+set_global_assignment -name QIP_FILE pc_mux.qip
+set_global_assignment -name QIP_FILE four32bit.qip
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
