@@ -1,0 +1,64 @@
+-- ============================================================
+-- File Name: pri_encoder_8bit.vhd
+-- Desc: 8-bit priority encoder for choosing the source input.
+-- ============================================================
+-- MIT License
+-- 
+-- Copyright (c) 2024, notforest
+--
+-- Permission is hereby granted, free of charge, to any person obtaining a copy
+-- of this software and associated documentation files (the "Software"), to deal in the Software without restriction, 
+-- including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
+-- copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following 
+-- conditions:
+--
+-- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the 
+-- Software.
+--
+-- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE 
+-- WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS 
+-- OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+-- OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity pri_encoder_8bit is
+    port(
+        din0   : in std_logic;  -- Input line 0
+        din1   : in std_logic;  -- Input line 1
+        din2   : in std_logic;  -- Input line 2
+        din3   : in std_logic;  -- Input line 3
+        din4   : in std_logic;  -- Input line 4
+        din5   : in std_logic;  -- Input line 5
+        din6   : in std_logic;  -- Input line 6
+        din7   : in std_logic;  -- Input line 7
+        dout   : out std_logic_vector(2 downto 0)  -- 3-bit output representing the highest priority input
+    );
+end pri_encoder_8bit;
+
+architecture Behavioral of pri_encoder_8bit is
+begin
+    encoder : process(din0, din1, din2, din3, din4, din5, din6, din7) is
+    begin
+        if (din7 = '1') then
+            dout <= "111";
+        elsif (din6 = '1') then
+            dout <= "110";
+        elsif (din5 = '1') then
+            dout <= "101";
+        elsif (din4 = '1') then
+            dout <= "100";
+        elsif (din3 = '1') then
+            dout <= "011";
+        elsif (din2 = '1') then
+            dout <= "010";
+        elsif (din1 = '1') then
+            dout <= "001";
+        elsif (din0 = '1') then
+            dout <= "000";
+        else
+            dout <= "000"; -- Default output when no inputs are '1'
+        end if;
+    end process encoder;
+end Behavioral;
