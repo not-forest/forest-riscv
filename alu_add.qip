@@ -1,0 +1,8 @@
+set_global_assignment -name IP_TOOL_NAME "LPM_ADD_SUB"
+set_global_assignment -name IP_TOOL_VERSION "23.1"
+set_global_assignment -name IP_GENERATED_DEVICE_FAMILY "{Cyclone IV E}"
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "alu_add.vhd"]
+set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "alu_add.bsf"]
+set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "alu_add_inst.vhd"]
+set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "alu_add.inc"]
+set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "alu_add.cmp"]
