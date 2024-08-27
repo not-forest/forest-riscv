@@ -16,11 +16,11 @@
 
 FUNCTION im_mux 
 (
-	data0x[30..0],
-	data1x[30..0],
+	data0x[31..0],
+	data1x[31..0],
 	sel
 )
 
 RETURNS (
-	result[30..0]
+	result[31..0]
 );

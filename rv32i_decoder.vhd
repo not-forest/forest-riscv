@@ -179,7 +179,7 @@ begin
                     when "000" =>  -- ADDI
                         alu_op <= x"0";
                         alu_src <= '1';
-                        imm_out <= instruction(31 downto 20);
+                        imm_out <= (instruction(31 downto 20), others => '0');
                     when "111" =>  -- ANDI
                         alu_op <= x"2";
                         alu_src <= '1';
