@@ -39872,17 +39872,6 @@ sel[0] => result_node[0].IN0
 sel[0] => _.IN0
 
 
-|forest-risc-v|pri_encoder:inst62
-din0 => ~NO_FANOUT~
-din1 => encoder.IN0
-din1 => encoder.IN0
-din2 => dout[1].IN1
-din2 => encoder.IN1
-din2 => encoder.IN1
-dout[0] <= dout[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
-dout[1] <= dout[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
-
-
 |forest-risc-v|pc_mux:inst80
 data0x[0] => LPM_MUX:LPM_MUX_component.DATA[0][0]
 data0x[1] => LPM_MUX:LPM_MUX_component.DATA[0][1]
@@ -40925,5 +40914,86 @@ result[28] <= op_1.DB_MAX_OUTPUT_PORT_TYPE
 result[29] <= op_1.DB_MAX_OUTPUT_PORT_TYPE
 result[30] <= op_1.DB_MAX_OUTPUT_PORT_TYPE
 result[31] <= op_1.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|forest-risc-v|pri_encoder:inst62
+din0 => ~NO_FANOUT~
+din1 => encoder.IN0
+din1 => encoder.IN0
+din2 => dout[1].IN1
+din2 => encoder.IN1
+din2 => encoder.IN1
+dout[0] <= dout[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+dout[1] <= dout[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|forest-risc-v|zero32bit:inst44
+result[0] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[0]
+result[1] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[1]
+result[2] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[2]
+result[3] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[3]
+result[4] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[4]
+result[5] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[5]
+result[6] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[6]
+result[7] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[7]
+result[8] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[8]
+result[9] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[9]
+result[10] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[10]
+result[11] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[11]
+result[12] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[12]
+result[13] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[13]
+result[14] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[14]
+result[15] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[15]
+result[16] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[16]
+result[17] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[17]
+result[18] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[18]
+result[19] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[19]
+result[20] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[20]
+result[21] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[21]
+result[22] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[22]
+result[23] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[23]
+result[24] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[24]
+result[25] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[25]
+result[26] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[26]
+result[27] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[27]
+result[28] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[28]
+result[29] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[29]
+result[30] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[30]
+result[31] <= zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component.result[31]
+
+
+|forest-risc-v|zero32bit:inst44|zero32bit_lpm_constant_r09:zero32bit_lpm_constant_r09_component
+result[0] <= <GND>
+result[1] <= <GND>
+result[2] <= <GND>
+result[3] <= <GND>
+result[4] <= <GND>
+result[5] <= <GND>
+result[6] <= <GND>
+result[7] <= <GND>
+result[8] <= <GND>
+result[9] <= <GND>
+result[10] <= <GND>
+result[11] <= <GND>
+result[12] <= <GND>
+result[13] <= <GND>
+result[14] <= <GND>
+result[15] <= <GND>
+result[16] <= <GND>
+result[17] <= <GND>
+result[18] <= <GND>
+result[19] <= <GND>
+result[20] <= <GND>
+result[21] <= <GND>
+result[22] <= <GND>
+result[23] <= <GND>
+result[24] <= <GND>
+result[25] <= <GND>
+result[26] <= <GND>
+result[27] <= <GND>
+result[28] <= <GND>
+result[29] <= <GND>
+result[30] <= <GND>
+result[31] <= <GND>
 
 
