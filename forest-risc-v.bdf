@@ -6367,6 +6367,34 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 0 0)(pt 0 0))
 	)
 )
+(symbol
+	(rect -816 1464 -704 1512)
+	(text "zero32bit" (rect 27 2 100 19)(font "Arial" (font_size 10)))
+	(text "inst44" (rect 8 33 38 45)(font "Intel Clear" ))
+	(port
+		(pt 112 24)
+		(output)
+		(text "result[31..0]" (rect 0 0 80 14)(font "Arial" (font_size 8)))
+		(text "0" (rect 86 18 94 32)(font "Arial" (font_size 8)))
+		(line (pt 112 24)(pt 96 24)(line_width 3))
+	)
+	(drawing
+		(text "32" (rect 93 27 107 39)(font "Arial" ))
+		(line (pt 106 20)(pt 98 28))
+		(line (pt 16 16)(pt 16 32))
+		(line (pt 16 16)(pt 96 16))
+		(line (pt 16 32)(pt 96 32))
+		(line (pt 96 16)(pt 96 32))
+		(line (pt 0 0)(pt 114 0))
+		(line (pt 114 0)(pt 114 50))
+		(line (pt 0 50)(pt 114 50))
+		(line (pt 0 0)(pt 0 50))
+		(line (pt 0 0)(pt 0 0))
+		(line (pt 0 0)(pt 0 0))
+		(line (pt 0 0)(pt 0 0))
+		(line (pt 0 0)(pt 0 0))
+	)
+)
 (connector
 	(pt 456 1744)
 	(pt 552 1744)
@@ -6777,11 +6805,6 @@ https://fpgasoftware.intel.com/eula.
 (connector
 	(pt 896 2088)
 	(pt 720 2088)
-)
-(connector
-	(text "CLK4" (rect 66 2760 91 2772)(font "Intel Clear" ))
-	(pt 56 2776)
-	(pt 200 2776)
 )
 (connector
 	(pt 896 1944)
@@ -8298,12 +8321,6 @@ https://fpgasoftware.intel.com/eula.
 	(pt -328 3080)
 )
 (connector
-	(text "PCOUT[31..0]" (rect -294 2872 -228 2884)(font "Intel Clear" ))
-	(pt -296 2888)
-	(pt -224 2888)
-	(bus)
-)
-(connector
 	(text "RESULT[31..0]" (rect -294 2856 -225 2868)(font "Intel Clear" ))
 	(pt -296 2872)
 	(pt -224 2872)
@@ -9182,6 +9199,23 @@ https://fpgasoftware.intel.com/eula.
 	(pt -1432 2976)
 	(pt -1496 2976)
 	(bus)
+)
+(connector
+	(text "PC_OUT[31..0]" (rect -294 2872 -223 2884)(font "Intel Clear" ))
+	(pt -296 2888)
+	(pt -224 2888)
+	(bus)
+)
+(connector
+	(text "PC_IN[31..0]" (rect -704 1472 -644 1484)(font "Intel Clear" ))
+	(pt -704 1488)
+	(pt -664 1488)
+	(bus)
+)
+(connector
+	(text "CLK3" (rect 66 2760 91 2772)(font "Intel Clear" ))
+	(pt 56 2776)
+	(pt 200 2776)
 )
 (junction (pt 472 1024))
 (junction (pt 488 1008))
