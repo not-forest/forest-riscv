@@ -99,7 +99,7 @@ begin
         branch     <= "000";  -- Default branch code
         mem_read   <= '0';  -- Default memory read
         mem_write  <= '0';  -- Default memory write
-        pc_write  <= '0';  -- Default register write
+        pc_write   <= '0';  -- Default register write
         alu_src    <= '0';  -- Default ALU source
         imm_out    <= (others => '0');  -- Default immediate output
         
@@ -179,41 +179,41 @@ begin
                     when "000" =>  -- ADDI
                         alu_op <= x"0";
                         alu_src <= '1';
-                        imm_out <= (instruction(31 downto 20), others => '0');
+                        imm_out(31 downto 20) <= instruction(31 downto 20);
                     when "111" =>  -- ANDI
                         alu_op <= x"2";
                         alu_src <= '1';
-                        imm_out <= instruction(31 downto 20);
+                        imm_out(31 downto 20) <= instruction(31 downto 20);
                     when "110" =>  -- ORI
                         alu_op <= x"3";
                         alu_src <= '1';
-                        imm_out <= instruction(31 downto 20);
+                        imm_out(31 downto 20) <= instruction(31 downto 20);
                     when "100" =>  -- XORI
                         alu_op <= x"4";
                         alu_src <= '1';
-                        imm_out <= instruction(31 downto 20);
+                        imm_out(31 downto 20) <= instruction(31 downto 20);
                     when "001" =>  -- SLLI
                         alu_op <= x"5";
                         alu_src <= '1';
-                        imm_out <= instruction(24 downto 20);  -- 5-bit immediate
+                        imm_out(24 downto 20) <= instruction(24 downto 20);  -- 5-bit immediate
                     when "010" =>  -- SLTI
                         alu_op <= x"8";
                         alu_src <= '1';
-                        imm_out <= instruction(31 downto 20);
+                        imm_out(31 downto 20) <= instruction(31 downto 20);
                     when "011" =>  -- SLTIU
                         alu_op <= x"9";
                         alu_src <= '1';
-                        imm_out <= instruction(31 downto 20);
+                        imm_out(31 downto 20) <= instruction(31 downto 20);
                     when "101" =>  -- SRLI/SRAI
                         case funct7 is
                             when "0000000" =>  -- SRLI
                                 alu_op <= x"6";
                                 alu_src <= '1';
-                                imm_out <= instruction(24 downto 20);  -- 5-bit immediate
+                                imm_out(24 downto 20) <= instruction(24 downto 20);  -- 5-bit immediate
                             when "0100000" =>  -- SRAI
                                 alu_op <= x"7";
                                 alu_src <= '1';
-                                imm_out <= instruction(24 downto 20);  -- 5-bit immediate
+                                imm_out(24 downto 20) <= instruction(24 downto 20);  -- 5-bit immediate
                             when others =>
                                 null;
                         end case;
@@ -225,7 +225,7 @@ begin
                     when "000" | "001" | "010" | "100" | "101" =>  -- LB, LH, LW, LBU, LHU
                         mem_read <= '1';
                         alu_src <= '1';
-                        imm_out <= instruction(31 downto 20);
+                        imm_out(31 downto 20) <= instruction(31 downto 20);
                     when others =>
                         null;
                 end case;
@@ -234,7 +234,8 @@ begin
                     when "000" | "001" | "010" =>  -- SB, SH, SW
                         mem_write <= '1';
                         alu_src <= '1';
-                        imm_out <= instruction(31 downto 25) & instruction(11 downto 7);  -- 12-bit immediate
+                        imm_out(31 downto 25) <= instruction(31 downto 25);
+                        imm_out(11 downto 7) <= instruction(11 downto 7);
                     when others =>
                         null;
                 end case;
@@ -242,26 +243,26 @@ begin
                 case funct3 is
                     when "000" | "001" | "100" | "101" | "110" | "111" =>  -- BEQ, BNE, BLT, BGE, BLTU, BGEU
                         branch <= funct3;
-                        imm_out <= instruction(31 downto 20);  -- 13-bit immediate
+                        imm_out(31 downto 20) <= instruction(31 downto 20);  -- 13-bit immediate
                         pc_write <= '1';
                     when others =>
                         null;
                 end case;
             when "1101111" =>  -- JAL (J-Type)
                 alu_op <= x"A";
-                imm_out <= instruction(31 downto 12) & (others => '0');  -- 20-bit immediate
+                imm_out(31 downto 12) <= instruction(31 downto 12);  -- 20-bit immediate
                 pc_write <= '1';
             when "1100111" =>  -- JALR (I-Type)
                 alu_op <= x"B";
-                imm_out <= instruction(31 downto 20);  -- 12-bit immediate
+                imm_out(31 downto 20) <= instruction(31 downto 20);  -- 12-bit immediate
                 pc_write <= '1';
                 alu_src <= '1';
             when "0110111" =>  -- LUI (U-Type)
                 alu_op <= x"C";
-                imm_out <= instruction(31 downto 12) & (others => '0');  -- 20-bit immediate
+                imm_out(31 downto 12) <= instruction(31 downto 12);  -- 20-bit immediate
             when "0010111" =>  -- AUIPC (U-Type)
                 alu_op <= x"D";
-                imm_out <= instruction(31 downto 12) & (others => '0');  -- 20-bit immediate
+                imm_out(31 downto 12) <= instruction(31 downto 12);  -- 20-bit immediate
                 pc_write <= '1';
             when "1110011" =>  -- System (ECALL/EBREAK)
                 case funct3 is
