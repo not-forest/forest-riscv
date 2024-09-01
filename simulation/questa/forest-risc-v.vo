@@ -1,0 +1,369 @@
+// Copyright (C) 2023  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and any partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel FPGA IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Intel and sold by Intel or its authorized distributors.  Please
+// refer to the applicable agreement for further details, at
+// https://fpgasoftware.intel.com/eula.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus Prime"
+// VERSION "Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition"
+
+// DATE "09/01/2024 13:57:54"
+
+// 
+// Device: Altera EP4CE6E22C8 Package TQFP144
+// 
+
+// 
+// This Verilog file should be used for Questa Intel FPGA (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module \forest-risc-v  (
+	LED,
+	RESET,
+	FPGA_CLK);
+output 	[3:0] LED;
+input 	RESET;
+input 	FPGA_CLK;
+
+// Design Ports Information
+// LED[3]	=>  Location: PIN_84,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// LED[2]	=>  Location: PIN_85,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// LED[1]	=>  Location: PIN_86,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// LED[0]	=>  Location: PIN_87,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// FPGA_CLK	=>  Location: PIN_23,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// RESET	=>  Location: PIN_25,	 I/O Standard: 2.5 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \LED[3]~output_o ;
+wire \LED[2]~output_o ;
+wire \LED[1]~output_o ;
+wire \LED[0]~output_o ;
+wire \FPGA_CLK~input_o ;
+wire \FPGA_CLK~inputclkctrl_outclk ;
+wire \inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita0~combout ;
+wire \~GND~combout ;
+wire \RESET~input_o ;
+wire \inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita0~COUT ;
+wire \inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita1~combout ;
+wire \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~0_combout ;
+wire \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~1_combout ;
+wire \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~2_combout ;
+wire [2:0] \inst8|LPM_DECODE_component|auto_generated|w_anode1w ;
+wire [1:0] \inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit ;
+
+
+hard_block auto_generated_inst(
+	.devpor(devpor),
+	.devclrn(devclrn),
+	.devoe(devoe));
+
+// Location: IOOBUF_X34_Y9_N16
+cycloneive_io_obuf \LED[3]~output (
+	.i(!\inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~0_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\LED[3]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \LED[3]~output .bus_hold = "false";
+defparam \LED[3]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X34_Y9_N9
+cycloneive_io_obuf \LED[2]~output (
+	.i(!\inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~1_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\LED[2]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \LED[2]~output .bus_hold = "false";
+defparam \LED[2]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X34_Y9_N2
+cycloneive_io_obuf \LED[1]~output (
+	.i(!\inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~2_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\LED[1]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \LED[1]~output .bus_hold = "false";
+defparam \LED[1]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X34_Y10_N9
+cycloneive_io_obuf \LED[0]~output (
+	.i(\inst8|LPM_DECODE_component|auto_generated|w_anode1w [2]),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\LED[0]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \LED[0]~output .bus_hold = "false";
+defparam \LED[0]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y11_N8
+cycloneive_io_ibuf \FPGA_CLK~input (
+	.i(FPGA_CLK),
+	.ibar(gnd),
+	.o(\FPGA_CLK~input_o ));
+// synopsys translate_off
+defparam \FPGA_CLK~input .bus_hold = "false";
+defparam \FPGA_CLK~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: CLKCTRL_G2
+cycloneive_clkctrl \FPGA_CLK~inputclkctrl (
+	.ena(vcc),
+	.inclk({vcc,vcc,vcc,\FPGA_CLK~input_o }),
+	.clkselect(2'b00),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.outclk(\FPGA_CLK~inputclkctrl_outclk ));
+// synopsys translate_off
+defparam \FPGA_CLK~inputclkctrl .clock_type = "global clock";
+defparam \FPGA_CLK~inputclkctrl .ena_register_mode = "none";
+// synopsys translate_on
+
+// Location: LCCOMB_X32_Y9_N16
+cycloneive_lcell_comb \inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita0 (
+// Equation(s):
+// \inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita0~combout  = \inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [0] $ (VCC)
+// \inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita0~COUT  = CARRY(\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [0])
+
+	.dataa(gnd),
+	.datab(\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [0]),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(\inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita0~combout ),
+	.cout(\inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita0~COUT ));
+// synopsys translate_off
+defparam \inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita0 .lut_mask = 16'h33CC;
+defparam \inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita0 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X32_Y9_N8
+cycloneive_lcell_comb \~GND (
+// Equation(s):
+// \~GND~combout  = GND
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.cin(gnd),
+	.combout(\~GND~combout ),
+	.cout());
+// synopsys translate_off
+defparam \~GND .lut_mask = 16'h0000;
+defparam \~GND .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y11_N22
+cycloneive_io_ibuf \RESET~input (
+	.i(RESET),
+	.ibar(gnd),
+	.o(\RESET~input_o ));
+// synopsys translate_off
+defparam \RESET~input .bus_hold = "false";
+defparam \RESET~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: FF_X32_Y9_N17
+dffeas \inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit[0] (
+	.clk(\FPGA_CLK~inputclkctrl_outclk ),
+	.d(\inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita0~combout ),
+	.asdata(\~GND~combout ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(!\RESET~input_o ),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [0]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit[0] .is_wysiwyg = "true";
+defparam \inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit[0] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X32_Y9_N18
+cycloneive_lcell_comb \inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita1 (
+// Equation(s):
+// \inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita1~combout  = \inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita0~COUT  $ (\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [1])
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [1]),
+	.cin(\inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita0~COUT ),
+	.combout(\inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita1~combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita1 .lut_mask = 16'h0FF0;
+defparam \inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita1 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: FF_X32_Y9_N19
+dffeas \inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit[1] (
+	.clk(\FPGA_CLK~inputclkctrl_outclk ),
+	.d(\inst7|LPM_COUNTER_component|auto_generated|counter_comb_bita1~combout ),
+	.asdata(\~GND~combout ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(!\RESET~input_o ),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [1]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit[1] .is_wysiwyg = "true";
+defparam \inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit[1] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X33_Y9_N4
+cycloneive_lcell_comb \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~0 (
+// Equation(s):
+// \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~0_combout  = (\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [0] & \inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [1])
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [0]),
+	.datad(\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [1]),
+	.cin(gnd),
+	.combout(\inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~0 .lut_mask = 16'hF000;
+defparam \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X33_Y9_N2
+cycloneive_lcell_comb \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~1 (
+// Equation(s):
+// \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~1_combout  = (!\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [0] & \inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [1])
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [0]),
+	.datad(\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [1]),
+	.cin(gnd),
+	.combout(\inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~1 .lut_mask = 16'h0F00;
+defparam \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X33_Y9_N12
+cycloneive_lcell_comb \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~2 (
+// Equation(s):
+// \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~2_combout  = (\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [0] & !\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [1])
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [0]),
+	.datad(\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [1]),
+	.cin(gnd),
+	.combout(\inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~2 .lut_mask = 16'h00F0;
+defparam \inst8|LPM_DECODE_component|auto_generated|w_anode15w[2]~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X33_Y9_N22
+cycloneive_lcell_comb \inst8|LPM_DECODE_component|auto_generated|w_anode1w[2] (
+// Equation(s):
+// \inst8|LPM_DECODE_component|auto_generated|w_anode1w [2] = (\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [0]) # (\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [1])
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [0]),
+	.datad(\inst7|LPM_COUNTER_component|auto_generated|counter_reg_bit [1]),
+	.cin(gnd),
+	.combout(\inst8|LPM_DECODE_component|auto_generated|w_anode1w [2]),
+	.cout());
+// synopsys translate_off
+defparam \inst8|LPM_DECODE_component|auto_generated|w_anode1w[2] .lut_mask = 16'hFFF0;
+defparam \inst8|LPM_DECODE_component|auto_generated|w_anode1w[2] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+assign LED[3] = \LED[3]~output_o ;
+
+assign LED[2] = \LED[2]~output_o ;
+
+assign LED[1] = \LED[1]~output_o ;
+
+assign LED[0] = \LED[0]~output_o ;
+
+endmodule
+
+module hard_block (
+
+	devpor,
+	devclrn,
+	devoe);
+
+// Design Ports Information
+// ~ALTERA_ASDO_DATA1~	=>  Location: PIN_6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// ~ALTERA_FLASH_nCE_nCSO~	=>  Location: PIN_8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// ~ALTERA_DCLK~	=>  Location: PIN_12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// ~ALTERA_DATA0~	=>  Location: PIN_13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// ~ALTERA_nCEO~	=>  Location: PIN_101,	 I/O Standard: 2.5 V,	 Current Strength: 8mA
+
+input 	devpor;
+input 	devclrn;
+input 	devoe;
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+wire \~ALTERA_ASDO_DATA1~~padout ;
+wire \~ALTERA_FLASH_nCE_nCSO~~padout ;
+wire \~ALTERA_DATA0~~padout ;
+wire \~ALTERA_ASDO_DATA1~~ibuf_o ;
+wire \~ALTERA_FLASH_nCE_nCSO~~ibuf_o ;
+wire \~ALTERA_DATA0~~ibuf_o ;
+
+
+endmodule
