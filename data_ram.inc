@@ -16,7 +16,7 @@
 
 FUNCTION data_ram 
 (
-	address[15..0],
+	address[8..0],
 	clock,
 	data[31..0],
 	wren
