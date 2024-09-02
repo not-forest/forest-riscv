@@ -1,0 +1,529 @@
+Info: Starting: Create simulation model
+Info: qsys-generate /home/notforest/Documents/forest-riscv/jtag_debug_sys.qsys --simulation=VHDL --allow-mixed-language-simulation --output-directory=/home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation --family="Cyclone IV E" --part=EP4CE6E22C8
+Progress: Loading forest-riscv/jtag_debug_sys.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 23.1]
+Progress: Parameterizing module clk_0
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 23.1]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding master_0 [altera_jtag_avalon_master 23.1]
+Progress: Parameterizing module master_0
+Progress: Adding pio_clock [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_clock
+Progress: Adding pio_pc [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_pc
+Progress: Adding pio_x0 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x0
+Progress: Adding pio_x1 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x1
+Progress: Adding pio_x10 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x10
+Progress: Adding pio_x11 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x11
+Progress: Adding pio_x12 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x12
+Progress: Adding pio_x13 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x13
+Progress: Adding pio_x14 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x14
+Progress: Adding pio_x15 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x15
+Progress: Adding pio_x16 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x16
+Progress: Adding pio_x17 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x17
+Progress: Adding pio_x18 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x18
+Progress: Adding pio_x19 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x19
+Progress: Adding pio_x2 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x2
+Progress: Adding pio_x20 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x20
+Progress: Adding pio_x21 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x21
+Progress: Adding pio_x22 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x22
+Progress: Adding pio_x23 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x23
+Progress: Adding pio_x24 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x24
+Progress: Adding pio_x25 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x25
+Progress: Adding pio_x26 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x26
+Progress: Adding pio_x27 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x27
+Progress: Adding pio_x28 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x28
+Progress: Adding pio_x29 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x29
+Progress: Adding pio_x3 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x3
+Progress: Adding pio_x30 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x30
+Progress: Adding pio_x31 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x31
+Progress: Adding pio_x4 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x4
+Progress: Adding pio_x5 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x5
+Progress: Adding pio_x6 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x6
+Progress: Adding pio_x7 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x7
+Progress: Adding pio_x8 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x8
+Progress: Adding pio_x9 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x9
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: jtag_debug_sys.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: jtag_debug_sys.pio_pc: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x0: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x1: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x10: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x11: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x12: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x13: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x14: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x15: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x16: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x17: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x18: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x19: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x2: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x20: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x21: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x22: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x23: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x24: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x25: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x26: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x27: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x28: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x29: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x3: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x30: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x31: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x4: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x5: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x6: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x7: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x8: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x9: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Warning: jtag_debug_sys.jtag_uart_0: Interrupt sender jtag_uart_0.irq is not connected to an interrupt receiver
+Info: jtag_debug_sys: Generating jtag_debug_sys "jtag_debug_sys" for SIM_VHDL
+Info: jtag_uart_0: Starting RTL generation for module 'jtag_debug_sys_jtag_uart_0'
+Info: jtag_uart_0:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=jtag_debug_sys_jtag_uart_0 --dir=/tmp/alt9968_3404490370700879325.dir/0002_jtag_uart_0_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --vhdl --config=/tmp/alt9968_3404490370700879325.dir/0002_jtag_uart_0_gen//jtag_debug_sys_jtag_uart_0_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt9968_3404490370700879325.dir/0002_jtag_uart_0_gen/  ]
+Info: jtag_uart_0: Done RTL generation for module 'jtag_debug_sys_jtag_uart_0'
+Info: jtag_uart_0: "jtag_debug_sys" instantiated altera_avalon_jtag_uart "jtag_uart_0"
+Info: master_0: "jtag_debug_sys" instantiated altera_jtag_avalon_master "master_0"
+Info: pio_clock: Starting RTL generation for module 'jtag_debug_sys_pio_clock'
+Info: pio_clock:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_clock --dir=/tmp/alt9968_3404490370700879325.dir/0003_pio_clock_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --vhdl --config=/tmp/alt9968_3404490370700879325.dir/0003_pio_clock_gen//jtag_debug_sys_pio_clock_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt9968_3404490370700879325.dir/0003_pio_clock_gen/  ]
+Info: pio_clock: Done RTL generation for module 'jtag_debug_sys_pio_clock'
+Info: pio_clock: "jtag_debug_sys" instantiated altera_avalon_pio "pio_clock"
+Info: pio_pc: Starting RTL generation for module 'jtag_debug_sys_pio_pc'
+Info: pio_pc:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_pc --dir=/tmp/alt9968_3404490370700879325.dir/0004_pio_pc_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --vhdl --config=/tmp/alt9968_3404490370700879325.dir/0004_pio_pc_gen//jtag_debug_sys_pio_pc_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt9968_3404490370700879325.dir/0004_pio_pc_gen/  ]
+Info: pio_pc: Done RTL generation for module 'jtag_debug_sys_pio_pc'
+Info: pio_pc: "jtag_debug_sys" instantiated altera_avalon_pio "pio_pc"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_009: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_010: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_011: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_012: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_013: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_014: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_015: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_016: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_017: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_018: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_019: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_020: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_021: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_022: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_023: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_024: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_025: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_026: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_027: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_028: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_029: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_030: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_031: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_032: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_033: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_034: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "jtag_debug_sys" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: rst_controller: "jtag_debug_sys" instantiated altera_reset_controller "rst_controller"
+Info: jtag_phy_embedded_in_jtag_master: "master_0" instantiated altera_jtag_dc_streaming "jtag_phy_embedded_in_jtag_master"
+Info: timing_adt: "master_0" instantiated timing_adapter "timing_adt"
+Info: fifo: "master_0" instantiated altera_avalon_sc_fifo "fifo"
+Info: b2p: "master_0" instantiated altera_avalon_st_bytes_to_packets "b2p"
+Info: p2b: "master_0" instantiated altera_avalon_st_packets_to_bytes "p2b"
+Info: transacto: "master_0" instantiated altera_avalon_packets_to_master "transacto"
+Info: b2p_adapter: "master_0" instantiated channel_adapter "b2p_adapter"
+Info: p2b_adapter: "master_0" instantiated channel_adapter "p2b_adapter"
+Info: master_0_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "master_0_master_translator"
+Info: jtag_uart_0_avalon_jtag_slave_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "jtag_uart_0_avalon_jtag_slave_translator"
+Info: master_0_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "master_0_master_agent"
+Info: jtag_uart_0_avalon_jtag_slave_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "jtag_uart_0_avalon_jtag_slave_agent"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info: master_0_master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "master_0_master_limiter"
+Info: Reusing file /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/submodules/altera_avalon_sc_fifo.v
+Info: Reusing file /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/submodules/altera_avalon_st_pipeline_base.v
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/submodules/altera_merlin_arbitrator.sv
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: jtag_debug_sys: Done "jtag_debug_sys" with 28 modules, 43 files
+Info: qsys-generate succeeded.
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd=/home/notforest/Documents/forest-riscv/jtag_debug_sys/jtag_debug_sys.spd --output-directory=/home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/ --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=/home/notforest/Documents/forest-riscv/jtag_debug_sys/jtag_debug_sys.spd --output-directory=/home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/ --use-relative-paths=true
+Info: Generating the following file(s) for XCELIUM simulator in /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/ directory:
+Info: 	xcelium/cds.lib
+Info: 	xcelium/hdl.var
+Info: 	xcelium/xcelium_setup.sh
+Info: 	27 .cds.lib files in xcelium/cds_libs/ directory
+Info: Generating the following file(s) for VCSMX simulator in /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for RIVIERA simulator in /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: Generating the following file(s) for MODELSIM simulator in /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Skipping VCS script generation since VHDL file $QUARTUS_INSTALL_DIR/eda/sim_lib/altera_syn_attributes.vhd is required for simulation
+Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/.
+Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info: Finished: Create Modelsim Project.
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate /home/notforest/Documents/forest-riscv/jtag_debug_sys.qsys --block-symbol-file --output-directory=/home/notforest/Documents/forest-riscv/jtag_debug_sys --family="Cyclone IV E" --part=EP4CE6E22C8
+Progress: Loading forest-riscv/jtag_debug_sys.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 23.1]
+Progress: Parameterizing module clk_0
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 23.1]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding master_0 [altera_jtag_avalon_master 23.1]
+Progress: Parameterizing module master_0
+Progress: Adding pio_clock [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_clock
+Progress: Adding pio_pc [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_pc
+Progress: Adding pio_x0 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x0
+Progress: Adding pio_x1 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x1
+Progress: Adding pio_x10 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x10
+Progress: Adding pio_x11 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x11
+Progress: Adding pio_x12 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x12
+Progress: Adding pio_x13 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x13
+Progress: Adding pio_x14 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x14
+Progress: Adding pio_x15 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x15
+Progress: Adding pio_x16 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x16
+Progress: Adding pio_x17 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x17
+Progress: Adding pio_x18 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x18
+Progress: Adding pio_x19 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x19
+Progress: Adding pio_x2 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x2
+Progress: Adding pio_x20 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x20
+Progress: Adding pio_x21 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x21
+Progress: Adding pio_x22 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x22
+Progress: Adding pio_x23 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x23
+Progress: Adding pio_x24 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x24
+Progress: Adding pio_x25 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x25
+Progress: Adding pio_x26 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x26
+Progress: Adding pio_x27 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x27
+Progress: Adding pio_x28 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x28
+Progress: Adding pio_x29 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x29
+Progress: Adding pio_x3 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x3
+Progress: Adding pio_x30 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x30
+Progress: Adding pio_x31 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x31
+Progress: Adding pio_x4 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x4
+Progress: Adding pio_x5 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x5
+Progress: Adding pio_x6 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x6
+Progress: Adding pio_x7 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x7
+Progress: Adding pio_x8 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x8
+Progress: Adding pio_x9 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x9
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: jtag_debug_sys.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: jtag_debug_sys.pio_pc: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x0: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x1: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x10: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x11: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x12: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x13: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x14: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x15: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x16: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x17: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x18: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x19: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x2: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x20: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x21: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x22: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x23: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x24: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x25: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x26: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x27: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x28: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x29: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x3: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x30: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x31: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x4: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x5: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x6: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x7: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x8: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x9: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Warning: jtag_debug_sys.jtag_uart_0: Interrupt sender jtag_uart_0.irq is not connected to an interrupt receiver
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate /home/notforest/Documents/forest-riscv/jtag_debug_sys.qsys --synthesis=VHDL --output-directory=/home/notforest/Documents/forest-riscv/jtag_debug_sys/synthesis --family="Cyclone IV E" --part=EP4CE6E22C8
+Progress: Loading forest-riscv/jtag_debug_sys.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 23.1]
+Progress: Parameterizing module clk_0
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 23.1]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding master_0 [altera_jtag_avalon_master 23.1]
+Progress: Parameterizing module master_0
+Progress: Adding pio_clock [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_clock
+Progress: Adding pio_pc [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_pc
+Progress: Adding pio_x0 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x0
+Progress: Adding pio_x1 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x1
+Progress: Adding pio_x10 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x10
+Progress: Adding pio_x11 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x11
+Progress: Adding pio_x12 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x12
+Progress: Adding pio_x13 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x13
+Progress: Adding pio_x14 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x14
+Progress: Adding pio_x15 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x15
+Progress: Adding pio_x16 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x16
+Progress: Adding pio_x17 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x17
+Progress: Adding pio_x18 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x18
+Progress: Adding pio_x19 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x19
+Progress: Adding pio_x2 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x2
+Progress: Adding pio_x20 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x20
+Progress: Adding pio_x21 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x21
+Progress: Adding pio_x22 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x22
+Progress: Adding pio_x23 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x23
+Progress: Adding pio_x24 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x24
+Progress: Adding pio_x25 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x25
+Progress: Adding pio_x26 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x26
+Progress: Adding pio_x27 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x27
+Progress: Adding pio_x28 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x28
+Progress: Adding pio_x29 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x29
+Progress: Adding pio_x3 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x3
+Progress: Adding pio_x30 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x30
+Progress: Adding pio_x31 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x31
+Progress: Adding pio_x4 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x4
+Progress: Adding pio_x5 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x5
+Progress: Adding pio_x6 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x6
+Progress: Adding pio_x7 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x7
+Progress: Adding pio_x8 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x8
+Progress: Adding pio_x9 [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_x9
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: jtag_debug_sys.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: jtag_debug_sys.pio_pc: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x0: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x1: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x10: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x11: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x12: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x13: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x14: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x15: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x16: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x17: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x18: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x19: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x2: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x20: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x21: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x22: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x23: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x24: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x25: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x26: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x27: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x28: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x29: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x3: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x30: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x31: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x4: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x5: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x6: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x7: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x8: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_x9: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Warning: jtag_debug_sys.jtag_uart_0: Interrupt sender jtag_uart_0.irq is not connected to an interrupt receiver
+Info: jtag_debug_sys: Generating jtag_debug_sys "jtag_debug_sys" for QUARTUS_SYNTH
+Info: jtag_uart_0: Starting RTL generation for module 'jtag_debug_sys_jtag_uart_0'
+Info: jtag_uart_0:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=jtag_debug_sys_jtag_uart_0 --dir=/tmp/alt9968_3404490370700879325.dir/0027_jtag_uart_0_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --verilog --config=/tmp/alt9968_3404490370700879325.dir/0027_jtag_uart_0_gen//jtag_debug_sys_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart_0: Done RTL generation for module 'jtag_debug_sys_jtag_uart_0'
+Info: jtag_uart_0: "jtag_debug_sys" instantiated altera_avalon_jtag_uart "jtag_uart_0"
+Info: master_0: "jtag_debug_sys" instantiated altera_jtag_avalon_master "master_0"
+Info: pio_clock: Starting RTL generation for module 'jtag_debug_sys_pio_clock'
+Info: pio_clock:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_clock --dir=/tmp/alt9968_3404490370700879325.dir/0028_pio_clock_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --verilog --config=/tmp/alt9968_3404490370700879325.dir/0028_pio_clock_gen//jtag_debug_sys_pio_clock_component_configuration.pl  --do_build_sim=0  ]
+Info: pio_clock: Done RTL generation for module 'jtag_debug_sys_pio_clock'
+Info: pio_clock: "jtag_debug_sys" instantiated altera_avalon_pio "pio_clock"
+Info: pio_pc: Starting RTL generation for module 'jtag_debug_sys_pio_pc'
+Info: pio_pc:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_pc --dir=/tmp/alt9968_3404490370700879325.dir/0029_pio_pc_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --verilog --config=/tmp/alt9968_3404490370700879325.dir/0029_pio_pc_gen//jtag_debug_sys_pio_pc_component_configuration.pl  --do_build_sim=0  ]
+Info: pio_pc: Done RTL generation for module 'jtag_debug_sys_pio_pc'
+Info: pio_pc: "jtag_debug_sys" instantiated altera_avalon_pio "pio_pc"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_009: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_010: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_011: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_012: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_013: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_014: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_015: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_016: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_017: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_018: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_019: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_020: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_021: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_022: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_023: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_024: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_025: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_026: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_027: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_028: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_029: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_030: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_031: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_032: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_033: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_034: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "jtag_debug_sys" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: rst_controller: "jtag_debug_sys" instantiated altera_reset_controller "rst_controller"
+Info: jtag_phy_embedded_in_jtag_master: "master_0" instantiated altera_jtag_dc_streaming "jtag_phy_embedded_in_jtag_master"
+Info: timing_adt: "master_0" instantiated timing_adapter "timing_adt"
+Info: fifo: "master_0" instantiated altera_avalon_sc_fifo "fifo"
+Info: b2p: "master_0" instantiated altera_avalon_st_bytes_to_packets "b2p"
+Info: p2b: "master_0" instantiated altera_avalon_st_packets_to_bytes "p2b"
+Info: transacto: "master_0" instantiated altera_avalon_packets_to_master "transacto"
+Info: b2p_adapter: "master_0" instantiated channel_adapter "b2p_adapter"
+Info: p2b_adapter: "master_0" instantiated channel_adapter "p2b_adapter"
+Info: master_0_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "master_0_master_translator"
+Info: jtag_uart_0_avalon_jtag_slave_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "jtag_uart_0_avalon_jtag_slave_translator"
+Info: master_0_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "master_0_master_agent"
+Info: jtag_uart_0_avalon_jtag_slave_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "jtag_uart_0_avalon_jtag_slave_agent"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info: master_0_master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "master_0_master_limiter"
+Info: Reusing file /home/notforest/Documents/forest-riscv/jtag_debug_sys/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: Reusing file /home/notforest/Documents/forest-riscv/jtag_debug_sys/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file /home/notforest/Documents/forest-riscv/jtag_debug_sys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: jtag_debug_sys: Done "jtag_debug_sys" with 28 modules, 43 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

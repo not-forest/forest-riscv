@@ -1,0 +1,39 @@
+	jtag_debug_sys u0 (
+		.dbg_clk_clk       (<connected-to-dbg_clk_clk>),       //   dbg_clk.clk
+		.dbg_pc_export     (<connected-to-dbg_pc_export>),     //    dbg_pc.export
+		.dbg_reset_reset_n (<connected-to-dbg_reset_reset_n>), // dbg_reset.reset_n
+		.dbg_x0_export     (<connected-to-dbg_x0_export>),     //    dbg_x0.export
+		.dbg_x1_export     (<connected-to-dbg_x1_export>),     //    dbg_x1.export
+		.dbg_x10_export    (<connected-to-dbg_x10_export>),    //   dbg_x10.export
+		.dbg_x11_export    (<connected-to-dbg_x11_export>),    //   dbg_x11.export
+		.dbg_x12_export    (<connected-to-dbg_x12_export>),    //   dbg_x12.export
+		.dbg_x13_export    (<connected-to-dbg_x13_export>),    //   dbg_x13.export
+		.dbg_x14_export    (<connected-to-dbg_x14_export>),    //   dbg_x14.export
+		.dbg_x15_export    (<connected-to-dbg_x15_export>),    //   dbg_x15.export
+		.dbg_x16_export    (<connected-to-dbg_x16_export>),    //   dbg_x16.export
+		.dbg_x17_export    (<connected-to-dbg_x17_export>),    //   dbg_x17.export
+		.dbg_x18_export    (<connected-to-dbg_x18_export>),    //   dbg_x18.export
+		.dbg_x19_export    (<connected-to-dbg_x19_export>),    //   dbg_x19.export
+		.dbg_x2_export     (<connected-to-dbg_x2_export>),     //    dbg_x2.export
+		.dbg_x20_export    (<connected-to-dbg_x20_export>),    //   dbg_x20.export
+		.dbg_x21_export    (<connected-to-dbg_x21_export>),    //   dbg_x21.export
+		.dbg_x22_export    (<connected-to-dbg_x22_export>),    //   dbg_x22.export
+		.dbg_x23_export    (<connected-to-dbg_x23_export>),    //   dbg_x23.export
+		.dbg_x24_export    (<connected-to-dbg_x24_export>),    //   dbg_x24.export
+		.dbg_x25_export    (<connected-to-dbg_x25_export>),    //   dbg_x25.export
+		.dbg_x26_export    (<connected-to-dbg_x26_export>),    //   dbg_x26.export
+		.dbg_x27_export    (<connected-to-dbg_x27_export>),    //   dbg_x27.export
+		.dbg_x28_export    (<connected-to-dbg_x28_export>),    //   dbg_x28.export
+		.dbg_x29_export    (<connected-to-dbg_x29_export>),    //   dbg_x29.export
+		.dbg_x3_export     (<connected-to-dbg_x3_export>),     //    dbg_x3.export
+		.dbg_x30_export    (<connected-to-dbg_x30_export>),    //   dbg_x30.export
+		.dbg_x31_export    (<connected-to-dbg_x31_export>),    //   dbg_x31.export
+		.dbg_x4_export     (<connected-to-dbg_x4_export>),     //    dbg_x4.export
+		.dbg_x5_export     (<connected-to-dbg_x5_export>),     //    dbg_x5.export
+		.dbg_x6_export     (<connected-to-dbg_x6_export>),     //    dbg_x6.export
+		.dbg_x7_export     (<connected-to-dbg_x7_export>),     //    dbg_x7.export
+		.dbg_x8_export     (<connected-to-dbg_x8_export>),     //    dbg_x8.export
+		.dbg_x9_export     (<connected-to-dbg_x9_export>),     //    dbg_x9.export
+		.dbg_clock_export  (<connected-to-dbg_clock_export>)   // dbg_clock.export
+	);
+
