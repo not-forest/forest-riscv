@@ -55,15 +55,26 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name SYNTH_MESSAGE_LEVEL HIGH
+set_location_assignment PIN_25 -to RESET
+set_location_assignment PIN_23 -to FPGA_CLK
+set_location_assignment PIN_86 -to LED[1]
+set_location_assignment PIN_85 -to LED[2]
+set_location_assignment PIN_84 -to LED[3]
+set_location_assignment PIN_87 -to LED[0]
+set_global_assignment -name PROJECT_IP_REGENERATION_POLICY ALWAYS_REGENERATE_IP
+set_global_assignment -name QIP_FILE jtag_debug_sys/synthesis/jtag_debug_sys.qip
 set_global_assignment -name QIP_FILE p_counter.qip
 set_global_assignment -name BDF_FILE "forest-risc-v.bdf"
 set_global_assignment -name QIP_FILE p_rom.qip
 set_global_assignment -name CDF_FILE ProgrammerChain.cdf
 set_global_assignment -name QIP_FILE c_decoder.qip
 set_global_assignment -name VHDL_FILE rv32i_decoder.vhd
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name QIP_FILE op_decoder.qip
 set_global_assignment -name QIP_FILE reg_decoder.qip
 set_global_assignment -name QIP_FILE pp_counter.qip
@@ -90,13 +101,5 @@ set_global_assignment -name QIP_FILE one32bit.qip
 set_global_assignment -name QIP_FILE const_mux.qip
 set_global_assignment -name QIP_FILE pc_mux.qip
 set_global_assignment -name QIP_FILE four32bit.qip
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name SYNTH_MESSAGE_LEVEL HIGH
-set_location_assignment PIN_25 -to RESET
-set_location_assignment PIN_23 -to FPGA_CLK
-set_location_assignment PIN_86 -to LED[1]
-set_location_assignment PIN_85 -to LED[2]
-set_location_assignment PIN_84 -to LED[3]
-set_location_assignment PIN_87 -to LED[0]
+set_global_assignment -name QIP_FILE clk_pll.qip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
