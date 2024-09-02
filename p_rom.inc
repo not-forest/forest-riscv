@@ -16,7 +16,7 @@
 
 FUNCTION p_rom 
 (
-	address[15..0],
+	address[8..0],
 	clock
 )
 
