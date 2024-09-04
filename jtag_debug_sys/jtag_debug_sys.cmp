@@ -1,41 +1,11 @@
 	component jtag_debug_sys is
 		port (
-			dbg_clk_clk       : in  std_logic                     := 'X';             -- clk
-			dbg_clock_export  : out std_logic;                                        -- export
-			dbg_pc_export     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_reset_reset_n : in  std_logic                     := 'X';             -- reset_n
-			dbg_x0_export     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x1_export     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x10_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x11_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x12_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x13_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x14_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x15_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x16_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x17_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x18_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x19_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x2_export     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x20_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x21_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x22_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x23_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x24_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x25_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x26_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x27_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x28_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x29_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x3_export     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x30_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x31_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x4_export     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x5_export     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x6_export     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x7_export     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x8_export     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			dbg_x9_export     : in  std_logic_vector(31 downto 0) := (others => 'X')  -- export
+			dbg_clk_clk           : in  std_logic                     := 'X';             -- clk
+			dbg_clock_export      : out std_logic;                                        -- export
+			dbg_pc_export         : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
+			dbg_reg_bus_export    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
+			dbg_reg_select_export : out std_logic_vector(4 downto 0);                     -- export
+			dbg_reset_reset_n     : in  std_logic                     := 'X'              -- reset_n
 		);
 	end component jtag_debug_sys;
 

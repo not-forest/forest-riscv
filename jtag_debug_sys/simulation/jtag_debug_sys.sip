@@ -27,6 +27,7 @@ set_global_assignment -library "lib_jtag_debug_sys" -name MISC_FILE [file join $
 set_global_assignment -library "lib_jtag_debug_sys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/altera_merlin_master_agent.sv"]
 set_global_assignment -library "lib_jtag_debug_sys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/altera_merlin_slave_translator.sv"]
 set_global_assignment -library "lib_jtag_debug_sys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/altera_merlin_master_translator.sv"]
+set_global_assignment -library "lib_jtag_debug_sys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/jtag_debug_sys_pio_reg_select.vhd"]
 set_global_assignment -library "lib_jtag_debug_sys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/jtag_debug_sys_pio_pc.vhd"]
 set_global_assignment -library "lib_jtag_debug_sys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/jtag_debug_sys_pio_clock.vhd"]
 set_global_assignment -library "lib_jtag_debug_sys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/jtag_debug_sys_master_0.vhd"]
@@ -46,4 +47,3 @@ set_global_assignment -library "lib_jtag_debug_sys" -name MISC_FILE [file join $
 set_global_assignment -library "lib_jtag_debug_sys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/altera_avalon_st_idle_inserter.v"]
 set_global_assignment -library "lib_jtag_debug_sys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/altera_avalon_st_pipeline_stage.sv"]
 set_global_assignment -library "lib_jtag_debug_sys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/altera_avalon_st_jtag_interface.sdc"]
-set_global_assignment -library "lib_jtag_debug_sys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/jtag_debug_sys_jtag_uart_0.vhd"]

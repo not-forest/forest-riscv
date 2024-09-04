@@ -59,11 +59,11 @@
  <file
    path="simulation/submodules/altera_merlin_slave_agent.sv"
    type="SYSTEM_VERILOG"
-   library="jtag_uart_0_avalon_jtag_slave_agent" />
+   library="pio_clock_s1_agent" />
  <file
    path="simulation/submodules/altera_merlin_burst_uncompressor.sv"
    type="SYSTEM_VERILOG"
-   library="jtag_uart_0_avalon_jtag_slave_agent" />
+   library="pio_clock_s1_agent" />
  <file
    path="simulation/submodules/altera_merlin_master_agent.sv"
    type="SYSTEM_VERILOG"
@@ -71,7 +71,7 @@
  <file
    path="simulation/submodules/altera_merlin_slave_translator.sv"
    type="SYSTEM_VERILOG"
-   library="jtag_uart_0_avalon_jtag_slave_translator" />
+   library="pio_clock_s1_translator" />
  <file
    path="simulation/submodules/altera_merlin_master_translator.sv"
    type="SYSTEM_VERILOG"
@@ -165,6 +165,10 @@
    type="VERILOG"
    library="mm_interconnect_0" />
  <file
+   path="simulation/submodules/jtag_debug_sys_pio_reg_select.vhd"
+   type="VHDL"
+   library="pio_reg_select" />
+ <file
    path="simulation/submodules/jtag_debug_sys_pio_pc.vhd"
    type="VHDL"
    library="pio_pc" />
@@ -176,10 +180,6 @@
    path="simulation/submodules/jtag_debug_sys_master_0.vhd"
    type="VHDL"
    library="master_0" />
- <file
-   path="simulation/submodules/jtag_debug_sys_jtag_uart_0.vhd"
-   type="VHDL"
-   library="jtag_uart_0" />
  <file path="simulation/jtag_debug_sys.vhd" type="VHDL" />
  <topLevel name="jtag_debug_sys" />
  <deviceFamily name="cycloneive" />
