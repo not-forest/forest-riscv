@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 23.1 991 linux 2024.09.04.17:08:58
+# ACDS 23.1 991 linux 2024.09.05.15:23:39
 
 # ----------------------------------------
 # xcelium - auto-generated simulation script
@@ -107,7 +107,7 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 23.1 991 linux 2024.09.04.17:08:58
+# ACDS 23.1 991 linux 2024.09.05.15:23:39
 # ----------------------------------------
 # initialize variables
 TOP_LEVEL_NAME="jtag_debug_sys"
@@ -171,7 +171,8 @@ mkdir -p ./libraries/jtag_phy_embedded_in_jtag_master/
 mkdir -p ./libraries/rst_controller/
 mkdir -p ./libraries/mm_interconnect_0/
 mkdir -p ./libraries/pio_reg_select/
-mkdir -p ./libraries/pio_pc/
+mkdir -p ./libraries/pio_instruction/
+mkdir -p ./libraries/pio_code/
 mkdir -p ./libraries/pio_clock/
 mkdir -p ./libraries/master_0/
 mkdir -p ./libraries/altera_ver/
@@ -258,7 +259,8 @@ if [ $SKIP_COM -eq 0 ]; then
   xmvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/altera_reset_synchronizer.v"                                           -work rst_controller                   -cdslib ./cds_libs/rst_controller.cds.lib                  
   xmvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/jtag_debug_sys_mm_interconnect_0.v"                                    -work mm_interconnect_0                -cdslib ./cds_libs/mm_interconnect_0.cds.lib               
   xmvhdl -v93 $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS   "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_reg_select.vhd"                                     -work pio_reg_select                   -cdslib ./cds_libs/pio_reg_select.cds.lib                  
-  xmvhdl -v93 $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS   "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_pc.vhd"                                             -work pio_pc                           -cdslib ./cds_libs/pio_pc.cds.lib                          
+  xmvhdl -v93 $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS   "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_instruction.vhd"                                    -work pio_instruction                  -cdslib ./cds_libs/pio_instruction.cds.lib                 
+  xmvhdl -v93 $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS   "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_code.vhd"                                           -work pio_code                         -cdslib ./cds_libs/pio_code.cds.lib                        
   xmvhdl -v93 $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS   "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_clock.vhd"                                          -work pio_clock                        -cdslib ./cds_libs/pio_clock.cds.lib                       
   xmvhdl -v93 $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS   "$QSYS_SIMDIR/submodules/jtag_debug_sys_master_0.vhd"                                           -work master_0                         -cdslib ./cds_libs/master_0.cds.lib                        
   xmvhdl -v93 $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS   "$QSYS_SIMDIR/jtag_debug_sys.vhd"                                                                                                                                                                 

@@ -26,7 +26,8 @@ jtag_phy_embedded_in_jtag_master: ./libraries/jtag_phy_embedded_in_jtag_master/
 rst_controller:                   ./libraries/rst_controller/                  
 mm_interconnect_0:                ./libraries/mm_interconnect_0/               
 pio_reg_select:                   ./libraries/pio_reg_select/                  
-pio_pc:                           ./libraries/pio_pc/                          
+pio_instruction:                  ./libraries/pio_instruction/                 
+pio_code:                         ./libraries/pio_code/                        
 pio_clock:                        ./libraries/pio_clock/                       
 master_0:                         ./libraries/master_0/                        
 altera_ver:                       ./libraries/altera_ver/                      

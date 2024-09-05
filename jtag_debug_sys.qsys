@@ -41,6 +41,38 @@
          type = "String";
       }
    }
+   element pio_code
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element pio_code.s1
+   {
+      datum baseAddress
+      {
+         value = "80";
+         type = "String";
+      }
+   }
+   element pio_instruction
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element pio_instruction.s1
+   {
+      datum baseAddress
+      {
+         value = "64";
+         type = "String";
+      }
+   }
    element pio_pc
    {
       datum _sortIndex
@@ -117,6 +149,16 @@
    type="conduit"
    dir="end" />
  <interface
+   name="dbg_code"
+   internal="pio_code.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="dbg_instr"
+   internal="pio_instruction.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
    name="dbg_pc"
    internal="pio_pc.external_connection"
    type="conduit"
@@ -165,6 +207,38 @@
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
+ </module>
+ <module name="pio_code" kind="altera_avalon_pio" version="23.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module
+   name="pio_instruction"
+   kind="altera_avalon_pio"
+   version="23.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="11" />
  </module>
  <module name="pio_pc" kind="altera_avalon_pio" version="23.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
@@ -248,6 +322,24 @@
   <parameter name="baseAddress" value="0x0030" />
   <parameter name="defaultConnection" value="false" />
  </connection>
+ <connection
+   kind="avalon"
+   version="23.1"
+   start="master_0.master"
+   end="pio_instruction.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0040" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="23.1"
+   start="master_0.master"
+   end="pio_code.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0050" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
  <connection kind="clock" version="23.1" start="clk_0.clk" end="pio_reg_bus.clk" />
  <connection kind="clock" version="23.1" start="clk_0.clk" end="pio_clock.clk" />
  <connection
@@ -258,6 +350,12 @@
  <connection kind="clock" version="23.1" start="clk_0.clk" end="pio_pc.clk" />
  <connection kind="clock" version="23.1" start="clk_0.clk" end="master_0.clk" />
  <connection
+   kind="clock"
+   version="23.1"
+   start="clk_0.clk"
+   end="pio_instruction.clk" />
+ <connection kind="clock" version="23.1" start="clk_0.clk" end="pio_code.clk" />
+ <connection
    kind="reset"
    version="23.1"
    start="clk_0.clk_reset"
@@ -285,6 +383,16 @@
  <connection
    kind="reset"
    version="23.1"
+   start="clk_0.clk_reset"
+   end="pio_instruction.reset" />
+ <connection
+   kind="reset"
+   version="23.1"
+   start="clk_0.clk_reset"
+   end="pio_code.reset" />
+ <connection
+   kind="reset"
+   version="23.1"
    start="master_0.master_reset"
    end="master_0.clk_reset" />
  <connection
@@ -307,6 +415,16 @@
    version="23.1"
    start="master_0.master_reset"
    end="pio_pc.reset" />
+ <connection
+   kind="reset"
+   version="23.1"
+   start="master_0.master_reset"
+   end="pio_instruction.reset" />
+ <connection
+   kind="reset"
+   version="23.1"
+   start="master_0.master_reset"
+   end="pio_code.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

@@ -169,9 +169,13 @@
    type="VHDL"
    library="pio_reg_select" />
  <file
-   path="simulation/submodules/jtag_debug_sys_pio_pc.vhd"
+   path="simulation/submodules/jtag_debug_sys_pio_instruction.vhd"
    type="VHDL"
-   library="pio_pc" />
+   library="pio_instruction" />
+ <file
+   path="simulation/submodules/jtag_debug_sys_pio_code.vhd"
+   type="VHDL"
+   library="pio_code" />
  <file
    path="simulation/submodules/jtag_debug_sys_pio_clock.vhd"
    type="VHDL"
