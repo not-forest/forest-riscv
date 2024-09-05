@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="4002619da97e9dd7b71c"/>
+    <hash md5_digest_80b="0369935c006fc28e6163"/>
   </project>
   <file_info>
     <file device="EP4CE6E22C8" path="forest-risc-v.sof" usercode="0xFFFFFFFF"/>
@@ -89,7 +89,7 @@
   <sld_infos>
     <sld_info hpath="jtag_debug_sys:inst72" name="inst72">
       <assignment_values>
-        <assignment_value text="QSYS_NAME jtag_debug_sys HAS_SOPCINFO 1 GENERATION_ID 1725462539"/>
+        <assignment_value text="QSYS_NAME jtag_debug_sys HAS_SOPCINFO 1 GENERATION_ID 1725542620"/>
       </assignment_values>
       <parameters/>
     </sld_info>
