@@ -33,45 +33,45 @@ use ieee.std_logic_unsigned.all;
 --
 -- | Instruction    | Opcode   | Funct3 | Funct7   | ALU_OP | BRANCH | MEM_READ | MEM_WRITE | PC_WRITE  | ALU_SRC | IMM_OUT        |
 -- |----------------|----------|--------|----------|--------|--------|----------|-----------|-----------|---------|----------------|
--- | ADD (R-Type)   | 0110011  | 000    | 0000000  | 0x0    | 000    | 0        | 0         | 0         | 0       | N/A            |
--- | ADDI (I-Type)  | 0010011  | 000    | N/A      | 0x0    | 000    | 0        | 0         | 0         | 1       | 12-bit Imm     |
--- | SUB (R-Type)   | 0110011  | 000    | 0100000  | 0x1    | 000    | 0        | 0         | 0         | 0       | N/A            |
--- | AND (R-Type)   | 0110011  | 111    | 0000000  | 0x2    | 000    | 0        | 0         | 0         | 0       | N/A            |
--- | ANDI (I-Type)  | 0010011  | 111    | N/A      | 0x2    | 000    | 0        | 0         | 0         | 1       | 12-bit Imm     |
--- | OR (R-Type)    | 0110011  | 110    | 0000000  | 0x3    | 000    | 0        | 0         | 0         | 0       | N/A            |
--- | ORI (I-Type)   | 0010011  | 110    | N/A      | 0x3    | 000    | 0        | 0         | 0         | 1       | 12-bit Imm     |
--- | XOR (R-Type)   | 0110011  | 100    | 0000000  | 0x4    | 000    | 0        | 0         | 0         | 0       | N/A            |
--- | XORI (I-Type)  | 0010011  | 100    | N/A      | 0x4    | 000    | 0        | 0         | 0         | 1       | 12-bit Imm     |
--- | SLL (R-Type)   | 0110011  | 001    | 0000000  | 0x5    | 000    | 0        | 0         | 0         | 0       | N/A            |
--- | SLLI (I-Type)  | 0010011  | 001    | 0000000  | 0x5    | 000    | 0        | 0         | 0         | 1       | 5-bit Imm      |
--- | SRL (R-Type)   | 0110011  | 101    | 0000000  | 0x6    | 000    | 0        | 0         | 0         | 0       | N/A            |
--- | SRLI (I-Type)  | 0010011  | 101    | 0000000  | 0x6    | 000    | 0        | 0         | 0         | 1       | 5-bit Imm      |
--- | SRA (R-Type)   | 0110011  | 101    | 0100000  | 0x7    | 000    | 0        | 0         | 0         | 0       | N/A            |
--- | SRAI (I-Type)  | 0010011  | 101    | 0100000  | 0x7    | 000    | 0        | 0         | 0         | 1       | 5-bit Imm      |
--- | SLT (R-Type)   | 0110011  | 010    | 0000000  | 0x8    | 000    | 0        | 0         | 0         | 0       | N/A            |
--- | SLTI (I-Type)  | 0010011  | 010    | N/A      | 0x8    | 000    | 0        | 0         | 0         | 1       | 12-bit Imm     |
--- | SLTU (R-Type)  | 0110011  | 011    | 0000000  | 0x9    | 000    | 0        | 0         | 0         | 0       | N/A            |
--- | SLTIU (I-Type) | 0010011  | 011    | N/A      | 0x9    | 000    | 0        | 0         | 0         | 1       | 12-bit Imm     |
--- | LB (I-Type)    | 0000011  | 000    | N/A      | 0x0    | 000    | 1        | 0         | 0         | 1       | 12-bit Imm     |
--- | LH (I-Type)    | 0000011  | 001    | N/A      | 0x0    | 000    | 1        | 0         | 0         | 1       | 12-bit Imm     |
--- | LW (I-Type)    | 0000011  | 010    | N/A      | 0x0    | 000    | 1        | 0         | 0         | 1       | 12-bit Imm     |
--- | LBU (I-Type)   | 0000011  | 100    | N/A      | 0x0    | 000    | 1        | 0         | 0         | 1       | 12-bit Imm     |
--- | LHU (I-Type)   | 0000011  | 101    | N/A      | 0x0    | 000    | 1        | 0         | 0         | 1       | 12-bit Imm     |
--- | SB (S-Type)    | 0100011  | 000    | N/A      | 0x0    | 000    | 0        | 1         | 0         | 1       | 12-bit Imm     |
--- | SH (S-Type)    | 0100011  | 001    | N/A      | 0x0    | 000    | 0        | 1         | 0         | 1       | 12-bit Imm     |
--- | SW (S-Type)    | 0100011  | 010    | N/A      | 0x0    | 000    | 0        | 1         | 0         | 1       | 12-bit Imm     |
+-- | ADD (R-Type)   | 0110011  | 000    | 0000000  | 0x0    | 010    | 0        | 0         | 0         | 0       | N/A            |
+-- | ADDI (I-Type)  | 0010011  | 000    | N/A      | 0x0    | 010    | 0        | 0         | 0         | 1       | 12-bit Imm     |
+-- | SUB (R-Type)   | 0110011  | 000    | 0100000  | 0x1    | 010    | 0        | 0         | 0         | 0       | N/A            |
+-- | AND (R-Type)   | 0110011  | 111    | 0000000  | 0x2    | 010    | 0        | 0         | 0         | 0       | N/A            |
+-- | ANDI (I-Type)  | 0010011  | 111    | N/A      | 0x2    | 010    | 0        | 0         | 0         | 1       | 12-bit Imm     |
+-- | OR (R-Type)    | 0110011  | 110    | 0000000  | 0x3    | 010    | 0        | 0         | 0         | 0       | N/A            |
+-- | ORI (I-Type)   | 0010011  | 110    | N/A      | 0x3    | 010    | 0        | 0         | 0         | 1       | 12-bit Imm     |
+-- | XOR (R-Type)   | 0110011  | 100    | 0000000  | 0x4    | 010    | 0        | 0         | 0         | 0       | N/A            |
+-- | XORI (I-Type)  | 0010011  | 100    | N/A      | 0x4    | 010    | 0        | 0         | 0         | 1       | 12-bit Imm     |
+-- | SLL (R-Type)   | 0110011  | 001    | 0000000  | 0x5    | 010    | 0        | 0         | 0         | 0       | N/A            |
+-- | SLLI (I-Type)  | 0010011  | 001    | 0000000  | 0x5    | 010    | 0        | 0         | 0         | 1       | 5-bit Imm      |
+-- | SRL (R-Type)   | 0110011  | 101    | 0000000  | 0x6    | 010    | 0        | 0         | 0         | 0       | N/A            |
+-- | SRLI (I-Type)  | 0010011  | 101    | 0000000  | 0x6    | 010    | 0        | 0         | 0         | 1       | 5-bit Imm      |
+-- | SRA (R-Type)   | 0110011  | 101    | 0100000  | 0x7    | 010    | 0        | 0         | 0         | 0       | N/A            |
+-- | SRAI (I-Type)  | 0010011  | 101    | 0100000  | 0x7    | 010    | 0        | 0         | 0         | 1       | 5-bit Imm      |
+-- | SLT (R-Type)   | 0110011  | 010    | 0000000  | 0x8    | 010    | 0        | 0         | 0         | 0       | N/A            |
+-- | SLTI (I-Type)  | 0010011  | 010    | N/A      | 0x8    | 010    | 0        | 0         | 0         | 1       | 12-bit Imm     |
+-- | SLTU (R-Type)  | 0110011  | 011    | 0000000  | 0x9    | 010    | 0        | 0         | 0         | 0       | N/A            |
+-- | SLTIU (I-Type) | 0010011  | 011    | N/A      | 0x9    | 010    | 0        | 0         | 0         | 1       | 12-bit Imm     |
+-- | LB (I-Type)    | 0000011  | 000    | N/A      | 0x0    | 010    | 1        | 0         | 0         | 1       | 12-bit Imm     |
+-- | LH (I-Type)    | 0000011  | 001    | N/A      | 0x0    | 010    | 1        | 0         | 0         | 1       | 12-bit Imm     |
+-- | LW (I-Type)    | 0000011  | 010    | N/A      | 0x0    | 010    | 1        | 0         | 0         | 1       | 12-bit Imm     |
+-- | LBU (I-Type)   | 0000011  | 100    | N/A      | 0x0    | 010    | 1        | 0         | 0         | 1       | 12-bit Imm     |
+-- | LHU (I-Type)   | 0000011  | 101    | N/A      | 0x0    | 010    | 1        | 0         | 0         | 1       | 12-bit Imm     |
+-- | SB (S-Type)    | 0100011  | 000    | N/A      | 0x0    | 010    | 0        | 1         | 0         | 1       | 12-bit Imm     |
+-- | SH (S-Type)    | 0100011  | 001    | N/A      | 0x0    | 010    | 0        | 1         | 0         | 1       | 12-bit Imm     |
+-- | SW (S-Type)    | 0100011  | 010    | N/A      | 0x0    | 010    | 0        | 1         | 0         | 1       | 12-bit Imm     |
 -- | BEQ (B-Type)   | 1100011  | 000    | N/A      | 0x0    | 000    | 0        | 0         | 1         | 0       | 13-bit Imm     |
 -- | BNE (B-Type)   | 1100011  | 001    | N/A      | 0x0    | 001    | 0        | 0         | 1         | 0       | 13-bit Imm     |
 -- | BLT (B-Type)   | 1100011  | 100    | N/A      | 0x0    | 100    | 0        | 0         | 1         | 0       | 13-bit Imm     |
 -- | BGE (B-Type)   | 1100011  | 101    | N/A      | 0x0    | 101    | 0        | 0         | 1         | 0       | 13-bit Imm     |
 -- | BLTU (B-Type)  | 1100011  | 110    | N/A      | 0x0    | 110    | 0        | 0         | 1         | 0       | 13-bit Imm     |
 -- | BGEU (B-Type)  | 1100011  | 111    | N/A      | 0x0    | 111    | 0        | 0         | 1         | 0       | 13-bit Imm     |
--- | JAL (J-Type)   | 1101111  | N/A    | N/A      | 0xA    | 000    | 0        | 0         | 1         | 1       | 20-bit Imm     |
--- | JALR (I-Type)  | 1100111  | 000    | N/A      | 0xB    | 000    | 0        | 0         | 1         | 1       | 12-bit Imm     |
--- | LUI (U-Type)   | 0110111  | N/A    | N/A      | 0xC    | 000    | 0        | 0         | 0         | 1       | 20-bit Imm     |
--- | AUIPC (U-Type) | 0010111  | N/A    | N/A      | 0xD    | 000    | 0        | 0         | 1         | 1       | 20-bit Imm     |
--- | ECALL          | 1110011  | 000    | N/A      | 0xE    | 000    | 0        | 0         | 0         | 0       | N/A            |
--- | EBREAK         | 1110011  | 001    | N/A      | 0xF    | 000    | 0        | 0         | 0         | 0       | N/A            |
+-- | JAL (J-Type)   | 1101111  | N/A    | N/A      | 0xA    | 010    | 0        | 0         | 1         | 1       | 20-bit Imm     |
+-- | JALR (I-Type)  | 1100111  | 000    | N/A      | 0xB    | 010    | 0        | 0         | 1         | 1       | 12-bit Imm     |
+-- | LUI (U-Type)   | 0110111  | N/A    | N/A      | 0xC    | 010    | 0        | 0         | 0         | 1       | 20-bit Imm     |
+-- | AUIPC (U-Type) | 0010111  | N/A    | N/A      | 0xD    | 010    | 0        | 0         | 0         | 1       | 20-bit Imm     |
+-- | ECALL          | 1110011  | 000    | N/A      | 0xE    | 010    | 0        | 0         | 0         | 0       | N/A            |
+-- | EBREAK         | 1110011  | 001    | N/A      | 0xF    | 010    | 0        | 0         | 0         | 0       | N/A            |
 
 entity rv32i_decoder is
     port (
@@ -95,12 +95,12 @@ begin
         variable imm       : std_logic_vector(31 downto 0);
     begin
         -- Default values
-        alu_op     <= x"0";  -- Default ALU operation code
-        branch     <= "000";  -- Default branch code
-        mem_read   <= '0';  -- Default memory read
-        mem_write  <= '0';  -- Default memory write
-        pc_write   <= '0';  -- Default register write
-        alu_src    <= '0';  -- Default ALU source
+        alu_op     <= x"0";     -- Default ALU operation code
+        branch     <= "010";    -- Default branch code
+        mem_read   <= '0';      -- Default memory read
+        mem_write  <= '0';      -- Default memory write
+        pc_write   <= '0';      -- Default register write
+        alu_src    <= '0';      -- Default ALU source
         imm_out    <= (others => '0');  -- Default immediate output
         
         -- Extract fields
@@ -179,41 +179,41 @@ begin
                     when "000" =>  -- ADDI
                         alu_op <= x"0";
                         alu_src <= '1';
-                        imm_out(31 downto 20) <= instruction(31 downto 20);
+                        imm_out(11 downto 0) <= instruction(31 downto 20);
                     when "111" =>  -- ANDI
                         alu_op <= x"2";
                         alu_src <= '1';
-                        imm_out(31 downto 20) <= instruction(31 downto 20);
+                        imm_out(11 downto 0) <= instruction(31 downto 20);
                     when "110" =>  -- ORI
                         alu_op <= x"3";
                         alu_src <= '1';
-                        imm_out(31 downto 20) <= instruction(31 downto 20);
+                        imm_out(11 downto 0) <= instruction(31 downto 20);
                     when "100" =>  -- XORI
                         alu_op <= x"4";
                         alu_src <= '1';
-                        imm_out(31 downto 20) <= instruction(31 downto 20);
+                        imm_out(11 downto 0) <= instruction(31 downto 20);
                     when "001" =>  -- SLLI
                         alu_op <= x"5";
                         alu_src <= '1';
-                        imm_out(24 downto 20) <= instruction(24 downto 20);  -- 5-bit immediate
+                        imm_out(4 downto 0) <= instruction(24 downto 20);  -- 5-bit immediate
                     when "010" =>  -- SLTI
                         alu_op <= x"8";
                         alu_src <= '1';
-                        imm_out(31 downto 20) <= instruction(31 downto 20);
+                        imm_out(11 downto 0) <= instruction(31 downto 20);
                     when "011" =>  -- SLTIU
                         alu_op <= x"9";
                         alu_src <= '1';
-                        imm_out(31 downto 20) <= instruction(31 downto 20);
+                        imm_out(11 downto 0) <= instruction(31 downto 20);
                     when "101" =>  -- SRLI/SRAI
                         case funct7 is
                             when "0000000" =>  -- SRLI
                                 alu_op <= x"6";
                                 alu_src <= '1';
-                                imm_out(24 downto 20) <= instruction(24 downto 20);  -- 5-bit immediate
+                                imm_out(4 downto 0) <= instruction(24 downto 20);  -- 5-bit immediate
                             when "0100000" =>  -- SRAI
                                 alu_op <= x"7";
                                 alu_src <= '1';
-                                imm_out(24 downto 20) <= instruction(24 downto 20);  -- 5-bit immediate
+                                imm_out(4 downto 0) <= instruction(24 downto 20);  -- 5-bit immediate
                             when others =>
                                 null;
                         end case;
@@ -225,7 +225,7 @@ begin
                     when "000" | "001" | "010" | "100" | "101" =>  -- LB, LH, LW, LBU, LHU
                         mem_read <= '1';
                         alu_src <= '1';
-                        imm_out(31 downto 20) <= instruction(31 downto 20);
+                        imm_out(11 downto 0) <= instruction(31 downto 20);
                     when others =>
                         null;
                 end case;
@@ -234,8 +234,8 @@ begin
                     when "000" | "001" | "010" =>  -- SB, SH, SW
                         mem_write <= '1';
                         alu_src <= '1';
-                        imm_out(31 downto 25) <= instruction(31 downto 25);
-                        imm_out(11 downto 7) <= instruction(11 downto 7);
+                        imm_out(11 downto 5) <= instruction(31 downto 25);
+                        imm_out(4 downto 0) <= instruction(11 downto 7);
                     when others =>
                         null;
                 end case;
@@ -243,18 +243,19 @@ begin
                 case funct3 is
                     when "000" | "001" | "100" | "101" | "110" | "111" =>  -- BEQ, BNE, BLT, BGE, BLTU, BGEU
                         branch <= funct3;
-                        imm_out(31 downto 20) <= instruction(31 downto 20);  -- 13-bit immediate
+                        imm_out(11 downto 5) <= instruction(31 downto 25);
+                        imm_out(4 downto 0) <= instruction(11 downto 7);
                         pc_write <= '1';
                     when others =>
                         null;
                 end case;
             when "1101111" =>  -- JAL (J-Type)
                 alu_op <= x"A";
-                imm_out(31 downto 12) <= instruction(31 downto 12);  -- 20-bit immediate
+                imm_out(19 downto 0) <= instruction(31 downto 12);  -- 20-bit immediate
                 pc_write <= '1';
             when "1100111" =>  -- JALR (I-Type)
                 alu_op <= x"B";
-                imm_out(31 downto 20) <= instruction(31 downto 20);  -- 12-bit immediate
+                imm_out(11 downto 0) <= instruction(31 downto 20);  -- 12-bit immediate
                 pc_write <= '1';
                 alu_src <= '1';
             when "0110111" =>  -- LUI (U-Type)
@@ -263,7 +264,6 @@ begin
             when "0010111" =>  -- AUIPC (U-Type)
                 alu_op <= x"D";
                 imm_out(31 downto 12) <= instruction(31 downto 12);  -- 20-bit immediate
-                pc_write <= '1';
             when "1110011" =>  -- System (ECALL/EBREAK)
                 case funct3 is
                     when "000" =>  -- ECALL
