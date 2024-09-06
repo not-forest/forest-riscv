@@ -3,10 +3,12 @@
 RISC-V CPU implementation on an FPGA using Quartus. The design, tested on a Cyclone IV FPGA development board, features a 32-bit CPU based on the RV32I integer instruction set. The current implementation includes primitive CPU operations and is designed with future extensibility in mind. Planned enhancements include the integration of additional RISC-V extensions and advanced features to expand the CPU's capabilities.
 ### CPU Schematic
 
-![CPU schematic](./output_files/forest-risc-v.pdf)
+[CPU schematic](./output_files/forest-risc-v.pdf)
+![CPU schematic](./output_files/forest-risc-v.png)
 ### CPU diagram
 
-![CPU diagram](./output_files/forest-risc-v-diagram.pdf)
+[CPU diagram](./output_files/forest-risc-v-diagram.pdf)
+![CPU diagram](./output_files/forest-risc-v-diagram.png)
 ### Base Implementation
 
 - [x] **Basic 32-bit CPU Core**
@@ -80,7 +82,7 @@ RISC-V CPU implementation on an FPGA using Quartus. The design, tested on a Cycl
 
 1. **Clone the Repository**
 ```bash
-	git clone https://github.com/yourusername/riscv-fpga-cpu.git
+	git clone https://github.com/not-forest/forest-riscv.git
     cd riscv-fpga-cpu
 ```
 2. **Compile the design (Cyclone IV)**
