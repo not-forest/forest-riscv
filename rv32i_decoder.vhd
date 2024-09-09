@@ -1,6 +1,6 @@
 -- ============================================================
 -- File Name: rv32i_decoder.vhd
--- Desc: Instruction decoder block for RV32I ISA with updated ALU_OP and BRANCH formats.
+-- Desc: Instruction decoder block for RV32I ISA with updated alu_op_reg and branch_reg formats.
 -- ============================================================
 -- MIT License
 --
@@ -26,12 +26,12 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
 -- ################### RV32I DECODER #####################
--- Parses the obtained 32-bit instruction code into a 4-bit alu and 3-bit branch signals with
+-- Parses the obtained 32-bit instruction code into a 4-bit alu and 3-bit branch_reg signals with
 -- 1-bit signals. Immediate values are forwarded through into the ALU substituting a second 
 -- operand register.
 -- ################### OUTPUT STATES ###################
 --
--- | Instruction    | Opcode   | Funct3 | Funct7   | ALU_OP | BRANCH | MEM_READ | MEM_WRITE | PC_WRITE  | ALU_SRC | IMM_OUT        |
+-- | Instruction    | Opcode   | Funct3 | Funct7   | alu_op_reg | branch_reg | mem_read_flip | mem_write_flip | pc_write_flip  | alu_src_flip | imm_out_reg        |
 -- |----------------|----------|--------|----------|--------|--------|----------|-----------|-----------|---------|----------------|
 -- | ADD (R-Type)   | 0110011  | 000    | 0000000  | 0x0    | 010    | 0        | 0         | 0         | 0       | N/A            |
 -- | ADDI (I-Type)  | 0010011  | 000    | N/A      | 0x0    | 010    | 0        | 0         | 0         | 1       | 12-bit Imm     |
@@ -76,6 +76,8 @@ use ieee.std_logic_unsigned.all;
 entity rv32i_decoder is
     port (
         instruction : in std_logic_vector(31 downto 0);
+        clk         : in std_logic;
+        aclr        : in std_logic;
         alu_op      : out std_logic_vector(3 downto 0);
         branch      : out std_logic_vector(2 downto 0);
         mem_read    : out std_logic;
@@ -86,197 +88,222 @@ entity rv32i_decoder is
     );
 end entity;
 
-architecture Behavioral of rv32i_decoder is
+architecture a0 of rv32i_decoder is   
+    signal alu_op_reg    : std_logic_vector(3 downto 0) := (others => '0');
+    signal branch_reg    : std_logic_vector(2 downto 0) := "010";
+    signal mem_read_flip  : std_logic := '0';
+    signal mem_write_flip : std_logic := '0';
+    signal pc_write_flip : std_logic := '0';
+    signal alu_src_flip   : std_logic := '0';
+    signal imm_out_reg   : std_logic_vector(31 downto 0) := (others => '0');
 begin
-    process (instruction)
+    process (clk, aclr)
         variable op_code   : std_logic_vector(6 downto 0);
         variable funct3    : std_logic_vector(2 downto 0);
         variable funct7    : std_logic_vector(6 downto 0);
         variable imm       : std_logic_vector(31 downto 0);
     begin
+        if aclr = '1' then
         -- Default values
-        alu_op     <= x"0";     -- Default ALU operation code
-        branch     <= "010";    -- Default branch code
-        mem_read   <= '0';      -- Default memory read
-        mem_write  <= '0';      -- Default memory write
-        pc_write   <= '0';      -- Default register write
-        alu_src    <= '0';      -- Default ALU source
-        imm_out    <= (others => '0');  -- Default immediate output
-        
+            alu_op_reg     <= x"0";     -- Default ALU operation code
+            branch_reg     <= "010";    -- Default branch code
+            mem_read_flip   <= '0';      -- Default memory read
+            mem_write_flip  <= '0';      -- Default memory write
+            pc_write_flip   <= '0';      -- Default register write
+            alu_src_flip    <= '0';      -- Default ALU source
+            imm_out_reg    <= (others => '0');  -- Default immediate output
+        elsif rising_edge(clk) then
+        -- Default values
+            alu_op_reg     <= x"0";     -- Default ALU operation code
+            branch_reg     <= "010";    -- Default branch code
+            mem_read_flip   <= '0';      -- Default memory read
+            mem_write_flip  <= '0';      -- Default memory write
+            pc_write_flip   <= '0';      -- Default register write
+            alu_src_flip    <= '0';      -- Default ALU source
+            imm_out_reg    <= (others => '0');  -- Default immediate output
+
         -- Extract fields
-        op_code   := instruction(6 downto 0);
-        funct3    := instruction(14 downto 12);
-        funct7    := instruction(31 downto 25);
-        
-        case op_code is
-            when "0110011" =>  -- R-Type
-                case funct3 is
-                    when "000" =>
-                        case funct7 is
-                            when "0000000" =>  -- ADD
-                                alu_op <= x"0";
-                            when "0100000" =>  -- SUB
-                                alu_op <= x"1";
-                            when others =>
-                                null;
-                        end case;
-                    when "111" =>
-                        case funct7 is
-                            when "0000000" =>  -- AND
-                                alu_op <= x"2";
-                            when others =>
-                                null;
-                        end case;
-                    when "110" =>
-                        case funct7 is
-                            when "0000000" =>  -- OR
-                                alu_op <= x"3";
-                            when others =>
-                                null;
-                        end case;
-                    when "100" =>
-                        case funct7 is
-                            when "0000000" =>  -- XOR
-                                alu_op <= x"4";
-                            when others =>
-                                null;
-                        end case;
-                    when "001" =>
-                        case funct7 is
-                            when "0000000" =>  -- SLL
-                                alu_op <= x"5";
-                            when others =>
-                                null;
-                        end case;
-                    when "101" =>
-                        case funct7 is
-                            when "0000000" =>  -- SRL
-                                alu_op <= x"6";
-                            when "0100000" =>  -- SRA
-                                alu_op <= x"7";
-                            when others =>
-                                null;
-                        end case;
-                    when "010" =>
-                        case funct7 is
-                            when "0000000" =>  -- SLT
-                                alu_op <= x"8";
-                            when others =>
-                                null;
-                        end case;
-                    when "011" =>
-                        case funct7 is
-                            when "0000000" =>  -- SLTU
-                                alu_op <= x"9";
-                            when others =>
-                                null;
-                        end case;
-                    when others =>
-                        null;
-                end case;
-            when "0010011" =>  -- I-Type
-                case funct3 is
-                    when "000" =>  -- ADDI
-                        alu_op <= x"0";
-                        alu_src <= '1';
-                        imm_out(11 downto 0) <= instruction(31 downto 20);
-                    when "111" =>  -- ANDI
-                        alu_op <= x"2";
-                        alu_src <= '1';
-                        imm_out(11 downto 0) <= instruction(31 downto 20);
-                    when "110" =>  -- ORI
-                        alu_op <= x"3";
-                        alu_src <= '1';
-                        imm_out(11 downto 0) <= instruction(31 downto 20);
-                    when "100" =>  -- XORI
-                        alu_op <= x"4";
-                        alu_src <= '1';
-                        imm_out(11 downto 0) <= instruction(31 downto 20);
-                    when "001" =>  -- SLLI
-                        alu_op <= x"5";
-                        alu_src <= '1';
-                        imm_out(4 downto 0) <= instruction(24 downto 20);  -- 5-bit immediate
-                    when "010" =>  -- SLTI
-                        alu_op <= x"8";
-                        alu_src <= '1';
-                        imm_out(11 downto 0) <= instruction(31 downto 20);
-                    when "011" =>  -- SLTIU
-                        alu_op <= x"9";
-                        alu_src <= '1';
-                        imm_out(11 downto 0) <= instruction(31 downto 20);
-                    when "101" =>  -- SRLI/SRAI
-                        case funct7 is
-                            when "0000000" =>  -- SRLI
-                                alu_op <= x"6";
-                                alu_src <= '1';
-                                imm_out(4 downto 0) <= instruction(24 downto 20);  -- 5-bit immediate
-                            when "0100000" =>  -- SRAI
-                                alu_op <= x"7";
-                                alu_src <= '1';
-                                imm_out(4 downto 0) <= instruction(24 downto 20);  -- 5-bit immediate
-                            when others =>
-                                null;
-                        end case;
-                    when others =>
-                        null;
-                end case;
-            when "0000011" =>  -- Load (I-Type)
-                case funct3 is
-                    when "000" | "001" | "010" | "100" | "101" =>  -- LB, LH, LW, LBU, LHU
-                        mem_read <= '1';
-                        alu_src <= '1';
-                        imm_out(11 downto 0) <= instruction(31 downto 20);
-                    when others =>
-                        null;
-                end case;
-            when "0100011" =>  -- Store (S-Type)
-                case funct3 is
-                    when "000" | "001" | "010" =>  -- SB, SH, SW
-                        mem_write <= '1';
-                        alu_src <= '1';
-                        imm_out(11 downto 5) <= instruction(31 downto 25);
-                        imm_out(4 downto 0) <= instruction(11 downto 7);
-                    when others =>
-                        null;
-                end case;
-            when "1100011" =>  -- Branch (B-Type)
-                case funct3 is
-                    when "000" | "001" | "100" | "101" | "110" | "111" =>  -- BEQ, BNE, BLT, BGE, BLTU, BGEU
-                        branch <= funct3;
-                        imm_out(11 downto 5) <= instruction(31 downto 25);
-                        imm_out(4 downto 0) <= instruction(11 downto 7);
-                        pc_write <= '1';
-                    when others =>
-                        null;
-                end case;
-            when "1101111" =>  -- JAL (J-Type)
-                alu_op <= x"A";
-                imm_out(19 downto 0) <= instruction(31 downto 12);  -- 20-bit immediate
-                pc_write <= '1';
-            when "1100111" =>  -- JALR (I-Type)
-                alu_op <= x"B";
-                imm_out(11 downto 0) <= instruction(31 downto 20);  -- 12-bit immediate
-                pc_write <= '1';
-                alu_src <= '1';
-            when "0110111" =>  -- LUI (U-Type)
-                alu_op <= x"C";
-                imm_out(31 downto 12) <= instruction(31 downto 12);  -- 20-bit immediate
-            when "0010111" =>  -- AUIPC (U-Type)
-                alu_op <= x"D";
-                imm_out(31 downto 12) <= instruction(31 downto 12);  -- 20-bit immediate
-            when "1110011" =>  -- System (ECALL/EBREAK)
-                case funct3 is
-                    when "000" =>  -- ECALL
-                        alu_op <= x"E";
-                    when "001" =>  -- EBREAK
-                        alu_op <= x"F";
-                    when others =>
-                        null;
-                end case;
-            when others =>
-                null;
-        end case;
+            op_code   := instruction(6 downto 0);
+            funct3    := instruction(14 downto 12);
+            funct7    := instruction(31 downto 25);
+
+            case op_code is
+                when "0110011" =>  -- R-Type
+                    case funct3 is
+                        when "000" =>
+                            case funct7 is
+                                when "0000000" =>  -- ADD
+                                    alu_op_reg <= x"0";
+                                when "0100000" =>  -- SUB
+                                    alu_op_reg <= x"1";
+                                when others =>
+                                    null;
+                            end case;
+                        when "111" =>
+                            case funct7 is
+                                when "0000000" =>  -- AND
+                                    alu_op_reg <= x"2";
+                                when others =>
+                                    null;
+                            end case;
+                        when "110" =>
+                            case funct7 is
+                                when "0000000" =>  -- OR
+                                    alu_op_reg <= x"3";
+                                when others =>
+                                    null;
+                            end case;
+                        when "100" =>
+                            case funct7 is
+                                when "0000000" =>  -- XOR
+                                    alu_op_reg <= x"4";
+                                when others =>
+                                    null;
+                            end case;
+                        when "001" =>
+                            case funct7 is
+                                when "0000000" =>  -- SLL
+                                    alu_op_reg <= x"5";
+                                when others =>
+                                    null;
+                            end case;
+                        when "101" =>
+                            case funct7 is
+                                when "0000000" =>  -- SRL
+                                    alu_op_reg <= x"6";
+                                when "0100000" =>  -- SRA
+                                    alu_op_reg <= x"7";
+                                when others =>
+                                    null;
+                            end case;
+                        when "010" =>
+                            case funct7 is
+                                when "0000000" =>  -- SLT
+                                    alu_op_reg <= x"8";
+                                when others =>
+                                    null;
+                            end case;
+                        when "011" =>
+                            case funct7 is
+                                when "0000000" =>  -- SLTU
+                                    alu_op_reg <= x"9";
+                                when others =>
+                                    null;
+                            end case;
+                        when others =>
+                            null;
+                    end case;
+                when "0010011" =>  -- I-Type
+                    case funct3 is
+                        when "000" =>  -- ADDI
+                            alu_op_reg <= x"0";
+                            alu_src_flip <= '1';
+                            imm_out_reg(11 downto 0) <= instruction(31 downto 20);
+                        when "111" =>  -- ANDI
+                            alu_op_reg <= x"2";
+                            alu_src_flip <= '1';
+                            imm_out_reg(11 downto 0) <= instruction(31 downto 20);
+                        when "110" =>  -- ORI
+                            alu_op_reg <= x"3";
+                            alu_src_flip <= '1';
+                            imm_out_reg(11 downto 0) <= instruction(31 downto 20);
+                        when "100" =>  -- XORI
+                            alu_op_reg <= x"4";
+                            alu_src_flip <= '1';
+                            imm_out_reg(11 downto 0) <= instruction(31 downto 20);
+                        when "001" =>  -- SLLI
+                            alu_op_reg <= x"5";
+                            alu_src_flip <= '1';
+                            imm_out_reg(4 downto 0) <= instruction(24 downto 20);  -- 5-bit immediate
+                        when "010" =>  -- SLTI
+                            alu_op_reg <= x"8";
+                            alu_src_flip <= '1';
+                            imm_out_reg(11 downto 0) <= instruction(31 downto 20);
+                        when "011" =>  -- SLTIU
+                            alu_op_reg <= x"9";
+                            alu_src_flip <= '1';
+                            imm_out_reg(11 downto 0) <= instruction(31 downto 20);
+                        when "101" =>  -- SRLI/SRAI
+                            case funct7 is
+                                when "0000000" =>  -- SRLI
+                                    alu_op_reg <= x"6";
+                                    alu_src_flip <= '1';
+                                    imm_out_reg(4 downto 0) <= instruction(24 downto 20);  -- 5-bit immediate
+                                when "0100000" =>  -- SRAI
+                                    alu_op_reg <= x"7";
+                                    alu_src_flip <= '1';
+                                    imm_out_reg(4 downto 0) <= instruction(24 downto 20);  -- 5-bit immediate
+                                when others =>
+                                    null;
+                            end case;
+                        when others =>
+                            null;
+                    end case;
+                when "0000011" =>  -- Load (I-Type)
+                    case funct3 is
+                        when "000" | "001" | "010" | "100" | "101" =>  -- LB, LH, LW, LBU, LHU
+                            mem_read_flip <= '1';
+                            alu_src_flip <= '1';
+                            imm_out_reg(11 downto 0) <= instruction(31 downto 20);
+                        when others =>
+                            null;
+                    end case;
+                when "0100011" =>  -- Store (S-Type)
+                    case funct3 is
+                        when "000" | "001" | "010" =>  -- SB, SH, SW
+                            mem_write_flip <= '1';
+                            alu_src_flip <= '1';
+                            imm_out_reg(11 downto 5) <= instruction(31 downto 25);
+                            imm_out_reg(4 downto 0) <= instruction(11 downto 7);
+                        when others =>
+                            null;
+                    end case;
+                when "1100011" =>  -- branch_reg (B-Type)
+                    case funct3 is
+                        when "000" | "001" | "100" | "101" | "110" | "111" =>  -- BEQ, BNE, BLT, BGE, BLTU, BGEU
+                            branch_reg <= funct3;
+                            imm_out_reg(11 downto 5) <= instruction(31 downto 25);
+                            imm_out_reg(4 downto 0) <= instruction(11 downto 7);
+                            pc_write_flip <= '1';
+                        when others =>
+                            null;
+                    end case;
+                when "1101111" =>  -- JAL (J-Type)
+                    alu_op_reg <= x"A";
+                    imm_out_reg(19 downto 0) <= instruction(31 downto 12);  -- 20-bit immediate
+                    pc_write_flip <= '1';
+                when "1100111" =>  -- JALR (I-Type)
+                    alu_op_reg <= x"B";
+                    imm_out_reg(11 downto 0) <= instruction(31 downto 20);  -- 12-bit immediate
+                    pc_write_flip <= '1';
+                    alu_src_flip <= '1';
+                when "0110111" =>  -- LUI (U-Type)
+                    alu_op_reg <= x"C";
+                    imm_out_reg(31 downto 12) <= instruction(31 downto 12);  -- 20-bit immediate
+                when "0010111" =>  -- AUIPC (U-Type)
+                    alu_op_reg <= x"D";
+                    imm_out_reg(31 downto 12) <= instruction(31 downto 12);  -- 20-bit immediate
+                when "1110011" =>  -- System (ECALL/EBREAK)
+                    case funct3 is
+                        when "000" =>  -- ECALL
+                            alu_op_reg <= x"E";
+                        when "001" =>  -- EBREAK
+                            alu_op_reg <= x"F";
+                        when others =>
+                            null;
+                    end case;
+                when others =>
+                    null;
+            end case;
+        end if;
     end process;
+
+    -- Port assignments
+    alu_op      <= alu_op_reg;
+    branch      <= branch_reg;
+    mem_read    <= mem_read_flip;
+    mem_write   <= mem_write_flip;
+    pc_write    <= pc_write_flip;
+    alu_src     <= alu_src_flip;
+    imm_out     <= imm_out_reg;
 end architecture;
-
-
