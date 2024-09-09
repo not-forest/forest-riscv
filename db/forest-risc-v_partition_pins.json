@@ -4,23 +4,23 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "LED[3]",
+					"name" : "pLED[3]",
 					"strict" : false
 				},
 				{
-					"name" : "LED[2]",
+					"name" : "pLED[2]",
 					"strict" : false
 				},
 				{
-					"name" : "LED[1]",
+					"name" : "pLED[1]",
 					"strict" : false
 				},
 				{
-					"name" : "LED[0]",
+					"name" : "pLED[0]",
 					"strict" : false
 				},
 				{
-					"name" : "RESET",
+					"name" : "pRESET",
 					"strict" : false
 				},
 				{
