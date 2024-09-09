@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Fri Sep  6 17:06:29 2024
+Analysis & Synthesis Status : Successful - Mon Sep  9 20:48:43 2024
 Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 Revision Name : forest-risc-v
 Top-level Entity Name : forest-risc-v
 Family : Cyclone IV E
-Total logic elements : 5,653
-    Total combinational functions : 4,394
-    Dedicated logic registers : 1,796
-Total registers : 1796
+Total logic elements : 5,554
+    Total combinational functions : 4,221
+    Dedicated logic registers : 1,978
+Total registers : 1978
 Total pins : 6
 Total virtual pins : 0
 Total memory bits : 16,896
