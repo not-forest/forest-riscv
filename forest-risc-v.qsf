@@ -48,9 +48,9 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
 set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
-set_global_assignment -name EDA_SIMULATION_TOOL "Questa Intel FPGA (Verilog)"
+set_global_assignment -name EDA_SIMULATION_TOOL "Questa Intel FPGA (VHDL)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
-set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
@@ -61,13 +61,22 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name SYNTH_MESSAGE_LEVEL HIGH
-set_location_assignment PIN_25 -to RESET
-set_location_assignment PIN_23 -to FPGA_CLK
-set_location_assignment PIN_86 -to LED[1]
-set_location_assignment PIN_85 -to LED[2]
-set_location_assignment PIN_84 -to LED[3]
-set_location_assignment PIN_87 -to LED[0]
 set_global_assignment -name PROJECT_IP_REGENERATION_POLICY ALWAYS_REGENERATE_IP
+set_location_assignment PIN_23 -to pFPGA_CLK
+set_location_assignment PIN_91 -to pSW[3]
+set_location_assignment PIN_90 -to pSW[2]
+set_location_assignment PIN_89 -to pSW[1]
+set_location_assignment PIN_88 -to pSW[0]
+set_location_assignment PIN_114 -to pUART_TX
+set_location_assignment PIN_115 -to pUART_RX
+set_location_assignment PIN_110 -to pBUZZER
+set_location_assignment PIN_25 -to pRESET
+set_location_assignment PIN_86 -to pLED[1]
+set_location_assignment PIN_85 -to pLED[2]
+set_location_assignment PIN_84 -to pLED[3]
+set_location_assignment PIN_87 -to pLED[0]
+set_global_assignment -name VHDL_FILE onchip.vhd
+set_global_assignment -name VHDL_FILE pc.vhd
 set_global_assignment -name QIP_FILE jtag_debug_sys/synthesis/jtag_debug_sys.qip
 set_global_assignment -name QIP_FILE p_counter.qip
 set_global_assignment -name BDF_FILE "forest-risc-v.bdf"
@@ -103,4 +112,6 @@ set_global_assignment -name QIP_FILE pc_mux.qip
 set_global_assignment -name QIP_FILE four32bit.qip
 set_global_assignment -name QIP_FILE clk_pll.qip
 set_global_assignment -name SDC_FILE "output_files/forest-risc-v.sdc"
+set_global_assignment -name QIP_FILE program_ram.qip
+set_global_assignment -name QIP_FILE boot_mux.qip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -1,5 +1,5 @@
 IP Upgrade report for forest-risc-v
-Tue Sep  3 01:01:40 2024
+Sun Sep  8 01:47:11 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -35,7 +35,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; IP Upgrade Summary                                                            ;
 +------------------------------+------------------------------------------------+
-; IP Components Upgrade Status ; Failed - Tue Sep  3 01:01:40 2024              ;
+; IP Components Upgrade Status ; Failed - Sun Sep  8 01:47:11 2024              ;
 ; Quartus Prime Version        ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                ; forest-risc-v                                  ;
 ; Top-level Entity Name        ; forest-risc-v                                  ;
@@ -48,9 +48,9 @@ https://fpgasoftware.intel.com/eula.
 +---------------------+
 Info (23030): Evaluation of Tcl script /home/notforest/intelFPGA_lite/23.1std/quartus/common/tcl/internal/ip_regen/ip_regen.tcl was successful
 Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 599 megabytes
-    Info: Processing ended: Tue Sep  3 01:01:40 2024
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:15
+    Info: Peak virtual memory: 590 megabytes
+    Info: Processing ended: Sun Sep  8 01:47:11 2024
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:18
 
 
