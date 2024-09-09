@@ -88,11 +88,11 @@ proc disassemble {} {
             }
 
             switch $funct3 {
-                0 { set text "lb   x$rd, $imm(x$rs1)" }
-                1 { set text "lh   x$rd, $imm(x$rs1)" }
-                2 { set text "lw   x$rd, $imm(x$rs1)" }
-                4 { set text "lbu  x$rd, $imm(x$rs1)" }
-                5 { set text "lhu  x$rd, $imm(x$rs1)" }
+                0 { set text "lb   x$rd, $imm\(x$rs1\)" } 
+                1 { set text "lh   x$rd, $imm\(x$rs1\)" }
+                2 { set text "lw   x$rd, $imm\(x$rs1\)" }
+                4 { set text "lbu  x$rd, $imm\(x$rs1\)" }
+                5 { set text "lhu  x$rd, $imm\(x$rs1\)" }
             }
         }
 
@@ -118,9 +118,9 @@ proc disassemble {} {
             }
 
             switch $funct3 {
-                0 { set text "sb   x$rs2, $imm(x$rs1)" }
-                1 { set text "sh   x$rs2, $imm(x$rs1)" }
-                2 { set text "sw   x$rs2, $imm(x$rs1)" }
+                0 { set text "sb   x$rs2, $imm\(x$rs1\)" }
+                1 { set text "sh   x$rs2, $imm\(x$rs1\)" }
+                2 { set text "sw   x$rs2, $imm\(x$rs1\)" }
             }
         }
 
@@ -164,6 +164,18 @@ proc disassemble {} {
                 set imm [expr {$imm | 0xFFE00000}]
             }
             set text "jal  x$rd, $imm"
+        }
+
+        # JALR instruction (I-type, opcode = 103)
+        103 {
+            set rd [expr {($instr >> 7) & 0x1F}]
+            set rs1 [expr {($instr >> 15) & 0x1F}]
+            set imm [expr {($instr >> 20) & 0xFFF}]
+            if {($imm & 0x800) != 0} {
+                set imm [expr {$imm | 0xFFFFF000}] ;# Sign extension for negative immediate
+            }
+
+            set text "jalr x$rd, $imm\(x$rs\)"
         }
 
         # ECALL and EBREAK (opcode = 115)
