@@ -1,6 +1,6 @@
 # RISC-V CPU on FPGA
 
-RISC-V CPU implementation on an FPGA using Quartus. The design, tested on a Cyclone IV FPGA development board, features a 32-bit CPU based on the RV32I integer instruction set. The current implementation includes primitive CPU operations and is designed with future extensibility in mind. Planned enhancements include the integration of additional RISC-V extensions and advanced features to expand the CPU's capabilities.
+RISC-V CPU implementation on an FPGA using Quartus. The design, tested on a Cyclone IV FPGA development board, features a 32-bit CPU based on the RV32I integer instruction set. Currently the prototyped schematic version is done. Rewriting the CPU in more compact, optimized and customizable VHDL format.
 ### CPU Schematic
 
 [CPU schematic](./output_files/forest-risc-v.pdf)
@@ -18,8 +18,8 @@ RISC-V CPU implementation on an FPGA using Quartus. The design, tested on a Cycl
 
 - [ ] **Advanced CPU features**
   - [x] Onboard JTAG CPU debugger.
+  - [x] CPU pipeline stages.
   - [ ] Memory mapped I/Os.
-  - [ ] CPU pipeline stages.
   - [ ] Separated memory from CPU core. Program bootloader.
   - [ ] Onboard peripherals, DMA
 
@@ -64,10 +64,6 @@ RISC-V CPU implementation on an FPGA using Quartus. The design, tested on a Cycl
   - [ ] **J (Dynamically Translated Languages) Extension**
   - [ ] **T (Transactional Memory) Extension**
   - [ ] **N (User Level Interrupts) Extension**
-
-- [ ] **I/O and Peripherals**
-  - Develop and integrate I/O modules.
-  - Implement external memory interfaces (e.g., SDRAM).
 
 - [ ] **Testing and Validation**
   - [x] JTAG debug from System Console.
