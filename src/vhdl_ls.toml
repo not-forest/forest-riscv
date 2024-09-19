@@ -1,0 +1,28 @@
+# Defines a library space for vhdl-ls LSP server.
+
+# Using VHDL 2008.
+standard = "2008"
+
+# Forest RISCV-V CPU design tree.
+[libraries]
+friscv.files = [
+    "./*.vhd",      # Top level.
+    "./*/*.vhd",    # Main blocks.
+    "./*/*/*.vhd",  # Primitives. 
+    "./*/*/*/*.vhd" # Interfaces.
+]
+
+# JTAG communication debugger generated from Platform Designer (QSYS).
+jtag_debug_sys.files = [
+    "../jtag_debug_sys/synthesis/*.vhd",
+]
+
+# Vendor specific.
+altera_mf.files = [
+    '~/intelFPGA_lite/23.1std/quartus/eda/sim_lib/altera_mf.vhd',
+    '~/intelFPGA_lite/23.1std/quartus/eda/sim_lib/altera_mf_components.vhd'
+]
+
+[lint]
+unnecessary_work_library = false    # Do not use 'work' library.
+circular_dependency = false         # Ignoring since altera libraries use 'work' within their libraries, which cause circular dependency.
