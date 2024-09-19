@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 23.1 991 linux 2024.09.05.15:23:39
+# ACDS 23.1 991 linux 2024.09.18.15:52:50
 
 # ----------------------------------------
 # vcsmx - auto-generated simulation script
@@ -107,7 +107,7 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 23.1 991 linux 2024.09.05.15:23:39
+# ACDS 23.1 991 linux 2024.09.18.15:52:50
 # ----------------------------------------
 # initialize variables
 TOP_LEVEL_NAME="jtag_debug_sys"
@@ -156,9 +156,9 @@ mkdir -p ./libraries/cmd_demux/
 mkdir -p ./libraries/master_0_master_limiter/
 mkdir -p ./libraries/router_001/
 mkdir -p ./libraries/router/
-mkdir -p ./libraries/pio_clock_s1_agent/
+mkdir -p ./libraries/pio_cmd_s1_agent/
 mkdir -p ./libraries/master_0_master_agent/
-mkdir -p ./libraries/pio_clock_s1_translator/
+mkdir -p ./libraries/pio_cmd_s1_translator/
 mkdir -p ./libraries/master_0_master_translator/
 mkdir -p ./libraries/p2b_adapter/
 mkdir -p ./libraries/b2p_adapter/
@@ -170,10 +170,9 @@ mkdir -p ./libraries/timing_adt/
 mkdir -p ./libraries/jtag_phy_embedded_in_jtag_master/
 mkdir -p ./libraries/rst_controller/
 mkdir -p ./libraries/mm_interconnect_0/
-mkdir -p ./libraries/pio_reg_select/
-mkdir -p ./libraries/pio_instruction/
-mkdir -p ./libraries/pio_code/
-mkdir -p ./libraries/pio_clock/
+mkdir -p ./libraries/pio_data/
+mkdir -p ./libraries/pio_cmd/
+mkdir -p ./libraries/pio_arg/
 mkdir -p ./libraries/master_0/
 mkdir -p ./libraries/altera_ver/
 mkdir -p ./libraries/lpm_ver/
@@ -235,10 +234,10 @@ if [ $SKIP_COM -eq 0 ]; then
   vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_avalon_st_pipeline_base.v"                                      -work master_0_master_limiter         
   vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/jtag_debug_sys_mm_interconnect_0_router_001.sv"                        -work router_001                      
   vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/jtag_debug_sys_mm_interconnect_0_router.sv"                            -work router                          
-  vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_slave_agent.sv"                                          -work pio_clock_s1_agent              
-  vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_burst_uncompressor.sv"                                   -work pio_clock_s1_agent              
+  vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_slave_agent.sv"                                          -work pio_cmd_s1_agent                
+  vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_burst_uncompressor.sv"                                   -work pio_cmd_s1_agent                
   vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_master_agent.sv"                                         -work master_0_master_agent           
-  vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_slave_translator.sv"                                     -work pio_clock_s1_translator         
+  vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_slave_translator.sv"                                     -work pio_cmd_s1_translator           
   vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_master_translator.sv"                                    -work master_0_master_translator      
   vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/jtag_debug_sys_master_0_p2b_adapter.sv"                                -work p2b_adapter                     
   vlogan +v2k -sverilog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/jtag_debug_sys_master_0_b2p_adapter.sv"                                -work b2p_adapter                     
@@ -260,10 +259,9 @@ if [ $SKIP_COM -eq 0 ]; then
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/submodules/altera_reset_controller.v"                                             -work rst_controller                  
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/submodules/altera_reset_synchronizer.v"                                           -work rst_controller                  
   vlogan +v2k $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS           "$QSYS_SIMDIR/submodules/jtag_debug_sys_mm_interconnect_0.v"                                    -work mm_interconnect_0               
-  vhdlan -xlrm $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS             "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_reg_select.vhd"                                     -work pio_reg_select                  
-  vhdlan -xlrm $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS             "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_instruction.vhd"                                    -work pio_instruction                 
-  vhdlan -xlrm $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS             "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_code.vhd"                                           -work pio_code                        
-  vhdlan -xlrm $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS             "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_clock.vhd"                                          -work pio_clock                       
+  vhdlan -xlrm $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS             "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_data.vhd"                                           -work pio_data                        
+  vhdlan -xlrm $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS             "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_cmd.vhd"                                            -work pio_cmd                         
+  vhdlan -xlrm $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS             "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_arg.vhd"                                            -work pio_arg                         
   vhdlan -xlrm $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS             "$QSYS_SIMDIR/submodules/jtag_debug_sys_master_0.vhd"                                           -work master_0                        
   vhdlan -xlrm $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS             "$QSYS_SIMDIR/jtag_debug_sys.vhd"                                                                                                     
 fi

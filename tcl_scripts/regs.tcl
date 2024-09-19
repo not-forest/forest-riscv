@@ -22,13 +22,21 @@ proc read_regs {} {
 
 # Reads any register in range of [x0 ... x31] based on provided ID value. 
 proc read_reg {reg_id} {
-    global CLAIM_PATH PIO_REG_SELECT PIO_REG_BUS
-    master_write_8 $CLAIM_PATH $PIO_REG_SELECT $reg_id
-    return [master_read_32 $CLAIM_PATH $PIO_REG_BUS 1]
+    global CLAIM_PATH PIO_CMD PIO_ARG PIO_DATA CMD
+    master_write_8 $CLAIM_PATH $PIO_ARG $reg_id
+    master_write_8 $CLAIM_PATH $PIO_CMD $CMD(READREG)
+
+    set r [master_read_32 $CLAIM_PATH $PIO_DATA 1]
+    master_write_8 $CLAIM_PATH $PIO_CMD $CMD(NOP)
+    return $r
 }
 
 # Reads the value from PC register.
 proc read_pc {} {
-    global CLAIM_PATH PIO_PC
-    return [master_read_32 $CLAIM_PATH $PIO_PC 1]
+    global CLAIM_PATH PIO_CMD PIO_DATA CMD
+    master_write_8 $CLAIM_PATH $PIO_CMD $CMD(READPC)
+
+    set r [master_read_32 $CLAIM_PATH $PIO_DATA 1]
+    master_write_8 $CLAIM_PATH $PIO_CMD $CMD(NOP)
+    return $r
 }

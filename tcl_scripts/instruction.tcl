@@ -16,9 +16,9 @@ proc disassemble {} {
     puts "Raw: [format "0x%08x" $instr]\nOpcode: [format "0b%07b" $opcode]"
 
     # Matching is done in decimal, since Tcl treats everything as string.
-    switch $opcode {
-        # R-type instructions (opcode = 51)
+    switch -exact -- $opcode {
         51 {
+            # R-type instructions (opcode = 51)
             set funct3 [expr {($instr >> 12) & 0x7}]
             set funct7 [expr {($instr >> 25) & 0x7F}]
             set rd [expr {($instr >> 7) & 0x1F}]
@@ -47,14 +47,14 @@ proc disassemble {} {
             }
         }
 
-        # I-type instructions (opcode = 19, 3, 103)
         19 {
+            # I-type instructions (opcode = 19, 3, 103)
             set rd [expr {($instr >> 7) & 0x1F}]
             set funct3 [expr {($instr >> 12) & 0x7}]
             set rs1 [expr {($instr >> 15) & 0x1F}]
             set imm [expr {($instr >> 20) & 0xFFF}]
             if {($imm & 0x800) != 0} {
-                set imm [expr {$imm | 0xFFFFF000}] ;# Sign extension for negative immediate
+                set imm [expr {$imm | 0xFFFFF000}] ;
             }
 
             switch $funct3 {
@@ -77,8 +77,8 @@ proc disassemble {} {
             }
         }
 
-        # Load instructions (I-type, opcode = 3)
         3 {
+            # Load instructions (I-type, opcode = 3)
             set rd [expr {($instr >> 7) & 0x1F}]
             set funct3 [expr {($instr >> 12) & 0x7}]
             set rs1 [expr {($instr >> 15) & 0x1F}]
@@ -96,8 +96,8 @@ proc disassemble {} {
             }
         }
 
-        # JALR instruction (I-type, opcode = 103)
         103 {
+            # JALR instruction (I-type, opcode = 103)
             set rd [expr {($instr >> 7) & 0x1F}]
             set rs1 [expr {($instr >> 15) & 0x1F}]
             set imm [expr {($instr >> 20) & 0xFFF}]
@@ -107,8 +107,8 @@ proc disassemble {} {
             set text "jalr x$rd, $imm(x$rs1)"
         }
 
-        # S-type instructions (opcode = 35)
         35 {
+            # S-type instructions (opcode = 35)
             set funct3 [expr {($instr >> 12) & 0x7}]
             set rs1 [expr {($instr >> 15) & 0x1F}]
             set rs2 [expr {($instr >> 20) & 0x1F}]
@@ -124,8 +124,8 @@ proc disassemble {} {
             }
         }
 
-        # B-type instructions (opcode = 99)
         99 {
+            # B-type instructions (opcode = 99)
             set funct3 [expr {($instr >> 12) & 0x7}]
             set rs1 [expr {($instr >> 15) & 0x1F}]
             set rs2 [expr {($instr >> 20) & 0x1F}]
@@ -144,20 +144,21 @@ proc disassemble {} {
             }
         }
 
-        # U-type instructions (LUI and AUIPC, opcode = 55, 23)
         55 {
+            # U-type instructions (LUI, opcode = 55)
             set rd [expr {($instr >> 7) & 0x1F}]
             set imm [expr {$instr & 0xFFFFF000}]
             set text "lui  x$rd, $imm"
         }
         23 {
+            # U-type instructions (AUIPC, opcode = 23)
             set rd [expr {($instr >> 7) & 0x1F}]
             set imm [expr {$instr & 0xFFFFF000}]
             set text "auipc x$rd, $imm"
         }
 
-        # JAL instruction (J-type, opcode = 111)
         111 {
+            # JAL instruction (J-type, opcode = 111)
             set rd [expr {($instr >> 7) & 0x1F}]
             set imm [expr {(($instr >> 31) << 20) | (($instr >> 12) & 0xFF) << 12 | (($instr >> 20) & 0x1) << 11 | (($instr >> 21) & 0x3FF) << 1}]
             if {($imm & 0x100000) != 0} {
@@ -166,20 +167,20 @@ proc disassemble {} {
             set text "jal  x$rd, $imm"
         }
 
-        # JALR instruction (I-type, opcode = 103)
         103 {
+            # JALR instruction (I-type, opcode = 103)
             set rd [expr {($instr >> 7) & 0x1F}]
             set rs1 [expr {($instr >> 15) & 0x1F}]
             set imm [expr {($instr >> 20) & 0xFFF}]
             if {($imm & 0x800) != 0} {
-                set imm [expr {$imm | 0xFFFFF000}] ;# Sign extension for negative immediate
+                set imm [expr {$imm | 0xFFFFF000}] ;
             }
 
             set text "jalr x$rd, $imm\(x$rs\)"
         }
 
-        # ECALL and EBREAK (opcode = 115)
         115 {
+            # ECALL and EBREAK (opcode = 115)
             set funct3 [expr {($instr >> 12) & 0x7}]
             if {$funct3 == 0} {
                 if {($instr & 0xFFF00000) == 0} {
@@ -191,33 +192,50 @@ proc disassemble {} {
         }
     }    
 
-    set is_alu_src      [expr {($decoder & 1) == 1}] 
-    set is_pc_write     [expr {(($decoder >> 1) & 0x1) == 1}]
-    set is_mem_write    [expr {(($decoder >> 2) & 0x1) == 1}]
-    set is_mem_read     [expr {(($decoder >> 3) & 0x1) == 1}]
-    set branch          [expr {($decoder >> 4) & 0x7}]
-    set alu_op          [expr {($decoder >> 7) & 0xF}]
+    set funct3     [expr {$decoder & 0x7}]
+    set opsel      [expr {($decoder >> 3) & 0xf}]
+    set rs1        [expr {($decoder >> 7) & 0x1f}]
+    set rs2        [expr {($decoder >> 12) & 0x1f}]
+    set rd         [expr {($decoder >> 17) & 0x1f}]
+    set mem_read   [expr {($decoder >> 22) & 0x1}]
+    set pc_write   [expr {($decoder >> 23) & 0x1}]
+    set alu_src    [expr {($decoder >> 24) & 0x1}]
+    set env        [expr {($decoder >> 25) & 0x1}]
+    set bad        [expr {($decoder >> 26) & 0x1}]
 
+    # Print the values in the required format
     puts "-------Instruction-------"
     puts $text
     puts "-----Decoder-Output------"
-    puts "Is immediate used: $is_alu_src"
-    puts "Is PC written: $is_pc_write"
-    puts "Is MEM written: $is_mem_write"
-    puts "Is MEM read: $is_mem_read"
-    puts "Branch: $branch"
-    puts "ALU operation: $alu_op"
+    puts "Opsel: $opsel"
+    puts "Funct3: $funct3"
+    puts "RS1: $rs1"
+    puts "RS2: $rs2"
+    puts "Rd: $rd"
+    puts "Is MEM read: $mem_read"
+    puts "Is PC written: $pc_write"
+    puts "Is immediate used: $alu_src"
+    puts "Environment: $env"
+    puts "BAD: $bad"
     puts "-------------------------"
 }
 
 # Reads the raw unparsed instruction from the RV32I decoder block.
 proc read_decode_raw {} {
-    global CLAIM_PATH PIO_INSTR
-    return [master_read_32 $CLAIM_PATH $PIO_INSTR 1]
+    global CLAIM_PATH PIO_CMD PIO_DATA CMD
+    master_write_8 $CLAIM_PATH $PIO_CMD $CMD(READVALS)
+
+    set r [master_read_32 $CLAIM_PATH $PIO_DATA 1]
+    master_write_8 $CLAIM_PATH $PIO_CMD $CMD(NOP)
+    return $r
 }
 
 # Reads the raw unparsed code straight from the program memory.
 proc read_code_raw {} {
-    global CLAIM_PATH PIO_CODE
-    return [master_read_32 $CLAIM_PATH $PIO_CODE 1]
+    global CLAIM_PATH PIO_CMD PIO_DATA CMD
+    master_write_8 $CLAIM_PATH $PIO_CMD $CMD(READINSTR)
+
+    set r [master_read_32 $CLAIM_PATH $PIO_DATA 1]
+    master_write_8 $CLAIM_PATH $PIO_CMD $CMD(NOP)
+    return $r
 }

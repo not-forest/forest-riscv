@@ -9,7 +9,7 @@ puts "Initializing Forest-RiscV CPU debug environment..."
 set SERVICE_PATHS [get_service_paths master]
 if { [llength $SERVICE_PATHS] == 0 } {
     puts "Error: No service paths found. Ensure the design is loaded correctly and the JTAG connection is established."
-    exit 2
+    qexit -error
 }
 puts "Obtaining service paths. \[DONE\]"
 
@@ -17,29 +17,37 @@ puts "Obtaining service paths. \[DONE\]"
 set MASTER_SERVICE_PATH [lindex $SERVICE_PATHS 0]
 if { $MASTER_SERVICE_PATH == "" } {
     puts "Error: Could not retrieve the master service path."
-    exit 2
+    qexit -error
 }
 puts "Obtaining the MM master service path. \[DONE\]"
 
 # Claim the master.
 if { [catch {set CLAIM_PATH [claim_service master $MASTER_SERVICE_PATH mylib]} result] } {
     puts "Error: Failed to claim the master service: $result"
-    exit 2
+    qexit -error
 }
 
 if { $CLAIM_PATH == "" } {
     puts "Error: Claiming the master service failed. The returned claim path is empty."
-    exit 2
+    qexit -error
 }
 puts "Claiming the MM master service. \[DONE\]"
 
 # Memory mapped PIO addresses.
-set PIO_CLK             0x00
-set PIO_REG_SELECT      0x10
-set PIO_REG_BUS         0x20
-set PIO_PC              0x30
-set PIO_INSTR           0x40
-set PIO_CODE            0x50
+set PIO_DATA    0x00; # 32-bit data input PIO.
+set PIO_CMD     0x10; # 8-bit command output PIO.
+set PIO_ARG     0x20; # 32-bit argument output PIO.
+
+# Debugger controller commands.
+array set CMD { 
+    NOP         0x0
+    READREG     0x1  
+    READPC      0x2 
+    READINSTR   0x3
+    READVALS    0x4
+    WRITECLK    0x5
+    RESET       0x6 
+}
 
 source ./tcl_scripts/clock.tcl
 source ./tcl_scripts/regs.tcl
@@ -85,4 +93,16 @@ proc step {{n 1}} {
     disassemble
 }
 
+# Resets the CPU via debugger.
+proc reset {} {
+    global CLAIM_PATH PIO_CMD PIO_ARG CMD
+    master_write_8 $CLAIM_PATH $PIO_CMD $CMD(RESET)
+    master_write_8 $CLAIM_PATH $PIO_ARG 0
+    master_write_8 $CLAIM_PATH $PIO_ARG 1
+    master_write_8 $CLAIM_PATH $PIO_ARG 0
+    master_write_8 $CLAIM_PATH $PIO_ARG 1
+    master_write_8 $CLAIM_PATH $PIO_CMD $CMD(NOP)
+}
+
+reset
 help

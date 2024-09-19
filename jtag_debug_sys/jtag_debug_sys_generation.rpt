@@ -6,50 +6,34 @@ Progress: Adding clk_0 [clock_source 23.1]
 Progress: Parameterizing module clk_0
 Progress: Adding master_0 [altera_jtag_avalon_master 23.1]
 Progress: Parameterizing module master_0
-Progress: Adding pio_clock [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_clock
-Progress: Adding pio_code [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_code
-Progress: Adding pio_instruction [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_instruction
-Progress: Adding pio_pc [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_pc
-Progress: Adding pio_reg_bus [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_reg_bus
-Progress: Adding pio_reg_select [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_reg_select
+Progress: Adding pio_arg [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_arg
+Progress: Adding pio_cmd [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_cmd
+Progress: Adding pio_data [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_data
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
-Info: jtag_debug_sys.pio_code: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
-Info: jtag_debug_sys.pio_instruction: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
-Info: jtag_debug_sys.pio_pc: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
-Info: jtag_debug_sys.pio_reg_bus: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_data: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: jtag_debug_sys: Generating jtag_debug_sys "jtag_debug_sys" for SIM_VHDL
 Info: master_0: "jtag_debug_sys" instantiated altera_jtag_avalon_master "master_0"
-Info: pio_clock: Starting RTL generation for module 'jtag_debug_sys_pio_clock'
-Info: pio_clock:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_clock --dir=/tmp/alt9971_7151726486424988527.dir/0002_pio_clock_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --vhdl --config=/tmp/alt9971_7151726486424988527.dir/0002_pio_clock_gen//jtag_debug_sys_pio_clock_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt9971_7151726486424988527.dir/0002_pio_clock_gen/  ]
-Info: pio_clock: Done RTL generation for module 'jtag_debug_sys_pio_clock'
-Info: pio_clock: "jtag_debug_sys" instantiated altera_avalon_pio "pio_clock"
-Info: pio_code: Starting RTL generation for module 'jtag_debug_sys_pio_code'
-Info: pio_code:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_code --dir=/tmp/alt9971_7151726486424988527.dir/0003_pio_code_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --vhdl --config=/tmp/alt9971_7151726486424988527.dir/0003_pio_code_gen//jtag_debug_sys_pio_code_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt9971_7151726486424988527.dir/0003_pio_code_gen/  ]
-Info: pio_code: Done RTL generation for module 'jtag_debug_sys_pio_code'
-Info: pio_code: "jtag_debug_sys" instantiated altera_avalon_pio "pio_code"
-Info: pio_instruction: Starting RTL generation for module 'jtag_debug_sys_pio_instruction'
-Info: pio_instruction:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_instruction --dir=/tmp/alt9971_7151726486424988527.dir/0004_pio_instruction_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --vhdl --config=/tmp/alt9971_7151726486424988527.dir/0004_pio_instruction_gen//jtag_debug_sys_pio_instruction_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt9971_7151726486424988527.dir/0004_pio_instruction_gen/  ]
-Info: pio_instruction: Done RTL generation for module 'jtag_debug_sys_pio_instruction'
-Info: pio_instruction: "jtag_debug_sys" instantiated altera_avalon_pio "pio_instruction"
-Info: pio_reg_select: Starting RTL generation for module 'jtag_debug_sys_pio_reg_select'
-Info: pio_reg_select:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_reg_select --dir=/tmp/alt9971_7151726486424988527.dir/0005_pio_reg_select_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --vhdl --config=/tmp/alt9971_7151726486424988527.dir/0005_pio_reg_select_gen//jtag_debug_sys_pio_reg_select_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt9971_7151726486424988527.dir/0005_pio_reg_select_gen/  ]
-Info: pio_reg_select: Done RTL generation for module 'jtag_debug_sys_pio_reg_select'
-Info: pio_reg_select: "jtag_debug_sys" instantiated altera_avalon_pio "pio_reg_select"
+Info: pio_arg: Starting RTL generation for module 'jtag_debug_sys_pio_arg'
+Info: pio_arg:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_arg --dir=/tmp/alt9984_5061381326520681757.dir/0002_pio_arg_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --vhdl --config=/tmp/alt9984_5061381326520681757.dir/0002_pio_arg_gen//jtag_debug_sys_pio_arg_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt9984_5061381326520681757.dir/0002_pio_arg_gen/  ]
+Info: pio_arg: Done RTL generation for module 'jtag_debug_sys_pio_arg'
+Info: pio_arg: "jtag_debug_sys" instantiated altera_avalon_pio "pio_arg"
+Info: pio_cmd: Starting RTL generation for module 'jtag_debug_sys_pio_cmd'
+Info: pio_cmd:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_cmd --dir=/tmp/alt9984_5061381326520681757.dir/0003_pio_cmd_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --vhdl --config=/tmp/alt9984_5061381326520681757.dir/0003_pio_cmd_gen//jtag_debug_sys_pio_cmd_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt9984_5061381326520681757.dir/0003_pio_cmd_gen/  ]
+Info: pio_cmd: Done RTL generation for module 'jtag_debug_sys_pio_cmd'
+Info: pio_cmd: "jtag_debug_sys" instantiated altera_avalon_pio "pio_cmd"
+Info: pio_data: Starting RTL generation for module 'jtag_debug_sys_pio_data'
+Info: pio_data:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_data --dir=/tmp/alt9984_5061381326520681757.dir/0004_pio_data_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --vhdl --config=/tmp/alt9984_5061381326520681757.dir/0004_pio_data_gen//jtag_debug_sys_pio_data_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt9984_5061381326520681757.dir/0004_pio_data_gen/  ]
+Info: pio_data: Done RTL generation for module 'jtag_debug_sys_pio_data'
+Info: pio_data: "jtag_debug_sys" instantiated altera_avalon_pio "pio_data"
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
-Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
-Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
-Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_0: "jtag_debug_sys" instantiated altera_mm_interconnect "mm_interconnect_0"
 Info: rst_controller: "jtag_debug_sys" instantiated altera_reset_controller "rst_controller"
 Info: jtag_phy_embedded_in_jtag_master: "master_0" instantiated altera_jtag_dc_streaming "jtag_phy_embedded_in_jtag_master"
@@ -61,9 +45,9 @@ Info: transacto: "master_0" instantiated altera_avalon_packets_to_master "transa
 Info: b2p_adapter: "master_0" instantiated channel_adapter "b2p_adapter"
 Info: p2b_adapter: "master_0" instantiated channel_adapter "p2b_adapter"
 Info: master_0_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "master_0_master_translator"
-Info: pio_clock_s1_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "pio_clock_s1_translator"
+Info: pio_cmd_s1_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "pio_cmd_s1_translator"
 Info: master_0_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "master_0_master_agent"
-Info: pio_clock_s1_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "pio_clock_s1_agent"
+Info: pio_cmd_s1_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "pio_cmd_s1_agent"
 Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
 Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
 Info: master_0_master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "master_0_master_limiter"
@@ -76,58 +60,28 @@ Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_m
 Info: Reusing file /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/submodules/altera_merlin_arbitrator.sv
 Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
-Info: jtag_debug_sys: Done "jtag_debug_sys" with 29 modules, 44 files
+Info: jtag_debug_sys: Done "jtag_debug_sys" with 28 modules, 43 files
 Info: qsys-generate succeeded.
 Info: Finished: Create simulation model
 Info: Starting: Create Modelsim Project.
 Info: sim-script-gen --spd=/home/notforest/Documents/forest-riscv/jtag_debug_sys/jtag_debug_sys.spd --output-directory=/home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/ --use-relative-paths=true
 Info: Doing: ip-make-simscript --spd=/home/notforest/Documents/forest-riscv/jtag_debug_sys/jtag_debug_sys.spd --output-directory=/home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/ --use-relative-paths=true
-Info: Skipping VCS script generation since VHDL file $QUARTUS_INSTALL_DIR/eda/sim_lib/altera_syn_attributes.vhd is required for simulation
 Info: Generating the following file(s) for MODELSIM simulator in /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/ directory:
 Info: 	mentor/msim_setup.tcl
-Info: Generating the following file(s) for VCSMX simulator in /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/ directory:
-Info: 	synopsys/vcsmx/synopsys_sim.setup
-Info: 	synopsys/vcsmx/vcsmx_setup.sh
-Info: Generating the following file(s) for RIVIERA simulator in /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/ directory:
-Info: 	aldec/rivierapro_setup.tcl
+Info: Skipping VCS script generation since VHDL file $QUARTUS_INSTALL_DIR/eda/sim_lib/altera_syn_attributes.vhd is required for simulation
 Info: Generating the following file(s) for XCELIUM simulator in /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/ directory:
 Info: 	xcelium/cds.lib
 Info: 	xcelium/hdl.var
 Info: 	xcelium/xcelium_setup.sh
-Info: 	28 .cds.lib files in xcelium/cds_libs/ directory
+Info: 	27 .cds.lib files in xcelium/cds_libs/ directory
+Info: Generating the following file(s) for RIVIERA simulator in /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: Generating the following file(s) for VCSMX simulator in /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under /home/notforest/Documents/forest-riscv/jtag_debug_sys/simulation/.
 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
 Info: Finished: Create Modelsim Project.
-Info: Starting: Create block symbol file (.bsf)
-Info: qsys-generate /home/notforest/Documents/forest-riscv/jtag_debug_sys.qsys --block-symbol-file --output-directory=/home/notforest/Documents/forest-riscv/jtag_debug_sys --family="Cyclone IV E" --part=EP4CE6E22C8
-Progress: Loading forest-riscv/jtag_debug_sys.qsys
-Progress: Reading input file
-Progress: Adding clk_0 [clock_source 23.1]
-Progress: Parameterizing module clk_0
-Progress: Adding master_0 [altera_jtag_avalon_master 23.1]
-Progress: Parameterizing module master_0
-Progress: Adding pio_clock [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_clock
-Progress: Adding pio_code [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_code
-Progress: Adding pio_instruction [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_instruction
-Progress: Adding pio_pc [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_pc
-Progress: Adding pio_reg_bus [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_reg_bus
-Progress: Adding pio_reg_select [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_reg_select
-Progress: Building connections
-Progress: Parameterizing connections
-Progress: Validating
-Progress: Done reading input file
-Info: jtag_debug_sys.pio_code: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
-Info: jtag_debug_sys.pio_instruction: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
-Info: jtag_debug_sys.pio_pc: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
-Info: jtag_debug_sys.pio_reg_bus: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
-Info: qsys-generate succeeded.
-Info: Finished: Create block symbol file (.bsf)
 Info: 
 Info: Starting: Create HDL design files for synthesis
 Info: qsys-generate /home/notforest/Documents/forest-riscv/jtag_debug_sys.qsys --synthesis=VHDL --output-directory=/home/notforest/Documents/forest-riscv/jtag_debug_sys/synthesis --family="Cyclone IV E" --part=EP4CE6E22C8
@@ -137,50 +91,34 @@ Progress: Adding clk_0 [clock_source 23.1]
 Progress: Parameterizing module clk_0
 Progress: Adding master_0 [altera_jtag_avalon_master 23.1]
 Progress: Parameterizing module master_0
-Progress: Adding pio_clock [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_clock
-Progress: Adding pio_code [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_code
-Progress: Adding pio_instruction [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_instruction
-Progress: Adding pio_pc [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_pc
-Progress: Adding pio_reg_bus [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_reg_bus
-Progress: Adding pio_reg_select [altera_avalon_pio 23.1]
-Progress: Parameterizing module pio_reg_select
+Progress: Adding pio_arg [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_arg
+Progress: Adding pio_cmd [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_cmd
+Progress: Adding pio_data [altera_avalon_pio 23.1]
+Progress: Parameterizing module pio_data
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
-Info: jtag_debug_sys.pio_code: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
-Info: jtag_debug_sys.pio_instruction: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
-Info: jtag_debug_sys.pio_pc: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
-Info: jtag_debug_sys.pio_reg_bus: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: jtag_debug_sys.pio_data: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: jtag_debug_sys: Generating jtag_debug_sys "jtag_debug_sys" for QUARTUS_SYNTH
 Info: master_0: "jtag_debug_sys" instantiated altera_jtag_avalon_master "master_0"
-Info: pio_clock: Starting RTL generation for module 'jtag_debug_sys_pio_clock'
-Info: pio_clock:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_clock --dir=/tmp/alt9971_7151726486424988527.dir/0028_pio_clock_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --verilog --config=/tmp/alt9971_7151726486424988527.dir/0028_pio_clock_gen//jtag_debug_sys_pio_clock_component_configuration.pl  --do_build_sim=0  ]
-Info: pio_clock: Done RTL generation for module 'jtag_debug_sys_pio_clock'
-Info: pio_clock: "jtag_debug_sys" instantiated altera_avalon_pio "pio_clock"
-Info: pio_code: Starting RTL generation for module 'jtag_debug_sys_pio_code'
-Info: pio_code:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_code --dir=/tmp/alt9971_7151726486424988527.dir/0029_pio_code_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --verilog --config=/tmp/alt9971_7151726486424988527.dir/0029_pio_code_gen//jtag_debug_sys_pio_code_component_configuration.pl  --do_build_sim=0  ]
-Info: pio_code: Done RTL generation for module 'jtag_debug_sys_pio_code'
-Info: pio_code: "jtag_debug_sys" instantiated altera_avalon_pio "pio_code"
-Info: pio_instruction: Starting RTL generation for module 'jtag_debug_sys_pio_instruction'
-Info: pio_instruction:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_instruction --dir=/tmp/alt9971_7151726486424988527.dir/0030_pio_instruction_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --verilog --config=/tmp/alt9971_7151726486424988527.dir/0030_pio_instruction_gen//jtag_debug_sys_pio_instruction_component_configuration.pl  --do_build_sim=0  ]
-Info: pio_instruction: Done RTL generation for module 'jtag_debug_sys_pio_instruction'
-Info: pio_instruction: "jtag_debug_sys" instantiated altera_avalon_pio "pio_instruction"
-Info: pio_reg_select: Starting RTL generation for module 'jtag_debug_sys_pio_reg_select'
-Info: pio_reg_select:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_reg_select --dir=/tmp/alt9971_7151726486424988527.dir/0031_pio_reg_select_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --verilog --config=/tmp/alt9971_7151726486424988527.dir/0031_pio_reg_select_gen//jtag_debug_sys_pio_reg_select_component_configuration.pl  --do_build_sim=0  ]
-Info: pio_reg_select: Done RTL generation for module 'jtag_debug_sys_pio_reg_select'
-Info: pio_reg_select: "jtag_debug_sys" instantiated altera_avalon_pio "pio_reg_select"
+Info: pio_arg: Starting RTL generation for module 'jtag_debug_sys_pio_arg'
+Info: pio_arg:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_arg --dir=/tmp/alt9984_5061381326520681757.dir/0027_pio_arg_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --verilog --config=/tmp/alt9984_5061381326520681757.dir/0027_pio_arg_gen//jtag_debug_sys_pio_arg_component_configuration.pl  --do_build_sim=0  ]
+Info: pio_arg: Done RTL generation for module 'jtag_debug_sys_pio_arg'
+Info: pio_arg: "jtag_debug_sys" instantiated altera_avalon_pio "pio_arg"
+Info: pio_cmd: Starting RTL generation for module 'jtag_debug_sys_pio_cmd'
+Info: pio_cmd:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_cmd --dir=/tmp/alt9984_5061381326520681757.dir/0028_pio_cmd_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --verilog --config=/tmp/alt9984_5061381326520681757.dir/0028_pio_cmd_gen//jtag_debug_sys_pio_cmd_component_configuration.pl  --do_build_sim=0  ]
+Info: pio_cmd: Done RTL generation for module 'jtag_debug_sys_pio_cmd'
+Info: pio_cmd: "jtag_debug_sys" instantiated altera_avalon_pio "pio_cmd"
+Info: pio_data: Starting RTL generation for module 'jtag_debug_sys_pio_data'
+Info: pio_data:   Generation command is [exec /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/bin/perl -I /home/notforest/intelFPGA_lite/23.1std/quartus/linux64/perl/lib -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin/europa -I /home/notforest/intelFPGA_lite/23.1std/quartus/sopc_builder/bin -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/common -I /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/notforest/intelFPGA_lite/23.1std/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=jtag_debug_sys_pio_data --dir=/tmp/alt9984_5061381326520681757.dir/0029_pio_data_gen/ --quartus_dir=/home/notforest/intelFPGA_lite/23.1std/quartus --verilog --config=/tmp/alt9984_5061381326520681757.dir/0029_pio_data_gen//jtag_debug_sys_pio_data_component_configuration.pl  --do_build_sim=0  ]
+Info: pio_data: Done RTL generation for module 'jtag_debug_sys_pio_data'
+Info: pio_data: "jtag_debug_sys" instantiated altera_avalon_pio "pio_data"
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
-Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
-Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
-Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_0: "jtag_debug_sys" instantiated altera_mm_interconnect "mm_interconnect_0"
 Info: rst_controller: "jtag_debug_sys" instantiated altera_reset_controller "rst_controller"
 Info: jtag_phy_embedded_in_jtag_master: "master_0" instantiated altera_jtag_dc_streaming "jtag_phy_embedded_in_jtag_master"
@@ -192,9 +130,9 @@ Info: transacto: "master_0" instantiated altera_avalon_packets_to_master "transa
 Info: b2p_adapter: "master_0" instantiated channel_adapter "b2p_adapter"
 Info: p2b_adapter: "master_0" instantiated channel_adapter "p2b_adapter"
 Info: master_0_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "master_0_master_translator"
-Info: pio_clock_s1_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "pio_clock_s1_translator"
+Info: pio_cmd_s1_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "pio_cmd_s1_translator"
 Info: master_0_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "master_0_master_agent"
-Info: pio_clock_s1_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "pio_clock_s1_agent"
+Info: pio_cmd_s1_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "pio_cmd_s1_agent"
 Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
 Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
 Info: master_0_master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "master_0_master_limiter"
@@ -207,6 +145,6 @@ Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_m
 Info: Reusing file /home/notforest/Documents/forest-riscv/jtag_debug_sys/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
-Info: jtag_debug_sys: Done "jtag_debug_sys" with 29 modules, 44 files
+Info: jtag_debug_sys: Done "jtag_debug_sys" with 28 modules, 43 files
 Info: qsys-generate succeeded.
 Info: Finished: Create HDL design files for synthesis

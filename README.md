@@ -1,10 +1,7 @@
 # RISC-V CPU on FPGA
 
-RISC-V CPU implementation on an FPGA using Quartus. The design, tested on a Cyclone IV FPGA development board, features a 32-bit CPU based on the RV32I integer instruction set. Currently the prototyped schematic version is done. Rewriting the CPU in more compact, optimized and customizable VHDL format.
-### CPU Schematic
+RISC-V CPU implementation written in VHDL. Design is tested on a Cyclone IV FPGA development board. Features a 32-bit CPU based on the RV32I integer instruction set. All vendor-specific modules are signed with '_vendor' suffix.
 
-[CPU schematic](./output_files/forest-risc-v.pdf)
-![CPU schematic](./output_files/forest-risc-v.png)
 ### CPU diagram
 
 [CPU diagram](./output_files/forest-risc-v-diagram.pdf)
@@ -37,9 +34,9 @@ RISC-V CPU implementation on an FPGA using Quartus. The design, tested on a Cycl
   
 - [ ] **Memory Miscellaneous and CSR Operations**
   - [ ] **System Operations**
-    - Controll transfer: `ECALL`, `EBREAK`
-    - CSR register operations: `CSR`, `CSRW`, `CSRRW`, `CSRRWI`, `CSRR`, `CSRRW`, `CSRRSI`, `CSRRCI`
-    - Memory Fence: `FENCE`
+    - [x] Controll transfer: `ECALL`, `EBREAK`
+    - [ ] CSR register operations: `CSR`, `CSRW`, `CSRRW`, `CSRRWI`, `CSRR`, `CSRRW`, `CSRRSI`, `CSRRCI`
+    - [ ] Memory Fence: `FENCE`
 
 - [ ] **Program Memory**
   - [x] Temporary ROM to store program code.
@@ -68,7 +65,8 @@ RISC-V CPU implementation on an FPGA using Quartus. The design, tested on a Cycl
 - [ ] **Testing and Validation**
   - [x] JTAG debug from System Console.
   - [x] Test cases for each instruction.
-  - [ ] RISC-V architecture compliance suite, benchmarks
+  - [ ] Testing benchmarks for RTLs.
+  - [ ] RISC-V architecture compliance suite, benchmarks.
 
 - [ ] **Documentation and Examples**
   - [ ] Documentation for CPU design.

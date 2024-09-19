@@ -94,7 +94,7 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 23.1 991 linux 2024.09.05.15:23:39
+# ACDS 23.1 991 linux 2024.09.18.15:52:50
 
 # ----------------------------------------
 # Initialize variables
@@ -194,12 +194,12 @@ ensure_lib                                  ./libraries/router_001/
 vmap       router_001                       ./libraries/router_001/                      
 ensure_lib                                  ./libraries/router/                          
 vmap       router                           ./libraries/router/                          
-ensure_lib                                  ./libraries/pio_clock_s1_agent/              
-vmap       pio_clock_s1_agent               ./libraries/pio_clock_s1_agent/              
+ensure_lib                                  ./libraries/pio_cmd_s1_agent/                
+vmap       pio_cmd_s1_agent                 ./libraries/pio_cmd_s1_agent/                
 ensure_lib                                  ./libraries/master_0_master_agent/           
 vmap       master_0_master_agent            ./libraries/master_0_master_agent/           
-ensure_lib                                  ./libraries/pio_clock_s1_translator/         
-vmap       pio_clock_s1_translator          ./libraries/pio_clock_s1_translator/         
+ensure_lib                                  ./libraries/pio_cmd_s1_translator/           
+vmap       pio_cmd_s1_translator            ./libraries/pio_cmd_s1_translator/           
 ensure_lib                                  ./libraries/master_0_master_translator/      
 vmap       master_0_master_translator       ./libraries/master_0_master_translator/      
 ensure_lib                                  ./libraries/p2b_adapter/                     
@@ -222,14 +222,12 @@ ensure_lib                                  ./libraries/rst_controller/
 vmap       rst_controller                   ./libraries/rst_controller/                  
 ensure_lib                                  ./libraries/mm_interconnect_0/               
 vmap       mm_interconnect_0                ./libraries/mm_interconnect_0/               
-ensure_lib                                  ./libraries/pio_reg_select/                  
-vmap       pio_reg_select                   ./libraries/pio_reg_select/                  
-ensure_lib                                  ./libraries/pio_instruction/                 
-vmap       pio_instruction                  ./libraries/pio_instruction/                 
-ensure_lib                                  ./libraries/pio_code/                        
-vmap       pio_code                         ./libraries/pio_code/                        
-ensure_lib                                  ./libraries/pio_clock/                       
-vmap       pio_clock                        ./libraries/pio_clock/                       
+ensure_lib                                  ./libraries/pio_data/                        
+vmap       pio_data                         ./libraries/pio_data/                        
+ensure_lib                                  ./libraries/pio_cmd/                         
+vmap       pio_cmd                          ./libraries/pio_cmd/                         
+ensure_lib                                  ./libraries/pio_arg/                         
+vmap       pio_arg                          ./libraries/pio_arg/                         
 ensure_lib                                  ./libraries/master_0/                        
 vmap       master_0                         ./libraries/master_0/                        
 
@@ -281,10 +279,10 @@ alias com {
   eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_avalon_st_pipeline_base.v"                                      -work master_0_master_limiter         
   eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/jtag_debug_sys_mm_interconnect_0_router_001.sv"                        -work router_001                      
   eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/jtag_debug_sys_mm_interconnect_0_router.sv"                            -work router                          
-  eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_slave_agent.sv"                                          -work pio_clock_s1_agent              
-  eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_burst_uncompressor.sv"                                   -work pio_clock_s1_agent              
+  eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_slave_agent.sv"                                          -work pio_cmd_s1_agent                
+  eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_burst_uncompressor.sv"                                   -work pio_cmd_s1_agent                
   eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_master_agent.sv"                                         -work master_0_master_agent           
-  eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_slave_translator.sv"                                     -work pio_clock_s1_translator         
+  eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_slave_translator.sv"                                     -work pio_cmd_s1_translator           
   eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/altera_merlin_master_translator.sv"                                    -work master_0_master_translator      
   eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/jtag_debug_sys_master_0_p2b_adapter.sv"                                -work p2b_adapter                     
   eval  vlog -sv $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/jtag_debug_sys_master_0_b2p_adapter.sv"                                -work b2p_adapter                     
@@ -306,10 +304,9 @@ alias com {
   eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/altera_reset_controller.v"                                             -work rst_controller                  
   eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/altera_reset_synchronizer.v"                                           -work rst_controller                  
   eval  vlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/jtag_debug_sys_mm_interconnect_0.v"                                    -work mm_interconnect_0               
-  eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_reg_select.vhd"                                     -work pio_reg_select                  
-  eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_instruction.vhd"                                    -work pio_instruction                 
-  eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_code.vhd"                                           -work pio_code                        
-  eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_clock.vhd"                                          -work pio_clock                       
+  eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_data.vhd"                                           -work pio_data                        
+  eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_cmd.vhd"                                            -work pio_cmd                         
+  eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QSYS_SIMDIR/submodules/jtag_debug_sys_pio_arg.vhd"                                            -work pio_arg                         
   eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QSYS_SIMDIR/submodules/jtag_debug_sys_master_0.vhd"                                           -work master_0                        
   eval  vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS        "$QSYS_SIMDIR/jtag_debug_sys.vhd"                                                                                                     
 }
@@ -318,14 +315,14 @@ alias com {
 # Elaborate top level design
 alias elab {
   echo "\[exec\] elab"
-  eval vsim -t ps $ELAB_OPTIONS $USER_DEFINED_ELAB_OPTIONS -L work -L work_lib -L error_adapter_0 -L avalon_st_adapter -L rsp_mux -L rsp_demux -L cmd_mux -L cmd_demux -L master_0_master_limiter -L router_001 -L router -L pio_clock_s1_agent -L master_0_master_agent -L pio_clock_s1_translator -L master_0_master_translator -L p2b_adapter -L b2p_adapter -L transacto -L p2b -L b2p -L fifo -L timing_adt -L jtag_phy_embedded_in_jtag_master -L rst_controller -L mm_interconnect_0 -L pio_reg_select -L pio_instruction -L pio_code -L pio_clock -L master_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cycloneive $TOP_LEVEL_NAME
+  eval vsim -t ps $ELAB_OPTIONS $USER_DEFINED_ELAB_OPTIONS -L work -L work_lib -L error_adapter_0 -L avalon_st_adapter -L rsp_mux -L rsp_demux -L cmd_mux -L cmd_demux -L master_0_master_limiter -L router_001 -L router -L pio_cmd_s1_agent -L master_0_master_agent -L pio_cmd_s1_translator -L master_0_master_translator -L p2b_adapter -L b2p_adapter -L transacto -L p2b -L b2p -L fifo -L timing_adt -L jtag_phy_embedded_in_jtag_master -L rst_controller -L mm_interconnect_0 -L pio_data -L pio_cmd -L pio_arg -L master_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cycloneive $TOP_LEVEL_NAME
 }
 
 # ----------------------------------------
 # Elaborate the top level design with -voptargs=+acc option
 alias elab_debug {
   echo "\[exec\] elab_debug"
-  eval vsim -voptargs=+acc -t ps $ELAB_OPTIONS $USER_DEFINED_ELAB_OPTIONS -L work -L work_lib -L error_adapter_0 -L avalon_st_adapter -L rsp_mux -L rsp_demux -L cmd_mux -L cmd_demux -L master_0_master_limiter -L router_001 -L router -L pio_clock_s1_agent -L master_0_master_agent -L pio_clock_s1_translator -L master_0_master_translator -L p2b_adapter -L b2p_adapter -L transacto -L p2b -L b2p -L fifo -L timing_adt -L jtag_phy_embedded_in_jtag_master -L rst_controller -L mm_interconnect_0 -L pio_reg_select -L pio_instruction -L pio_code -L pio_clock -L master_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cycloneive $TOP_LEVEL_NAME
+  eval vsim -voptargs=+acc -t ps $ELAB_OPTIONS $USER_DEFINED_ELAB_OPTIONS -L work -L work_lib -L error_adapter_0 -L avalon_st_adapter -L rsp_mux -L rsp_demux -L cmd_mux -L cmd_demux -L master_0_master_limiter -L router_001 -L router -L pio_cmd_s1_agent -L master_0_master_agent -L pio_cmd_s1_translator -L master_0_master_translator -L p2b_adapter -L b2p_adapter -L transacto -L p2b -L b2p -L fifo -L timing_adt -L jtag_phy_embedded_in_jtag_master -L rst_controller -L mm_interconnect_0 -L pio_data -L pio_cmd -L pio_arg -L master_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cycloneive $TOP_LEVEL_NAME
 }
 
 # ----------------------------------------

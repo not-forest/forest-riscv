@@ -8,14 +8,11 @@ use IEEE.numeric_std.all;
 
 entity jtag_debug_sys is
 	port (
-		dbg_clk_clk           : in  std_logic                     := '0';             --        dbg_clk.clk
-		dbg_clock_export      : out std_logic;                                        --      dbg_clock.export
-		dbg_code_export       : in  std_logic_vector(31 downto 0) := (others => '0'); --       dbg_code.export
-		dbg_instr_export      : in  std_logic_vector(10 downto 0) := (others => '0'); --      dbg_instr.export
-		dbg_pc_export         : in  std_logic_vector(31 downto 0) := (others => '0'); --         dbg_pc.export
-		dbg_reg_bus_export    : in  std_logic_vector(31 downto 0) := (others => '0'); --    dbg_reg_bus.export
-		dbg_reg_select_export : out std_logic_vector(4 downto 0);                     -- dbg_reg_select.export
-		dbg_reset_reset_n     : in  std_logic                     := '0'              --      dbg_reset.reset_n
+		dbg_arg_bus_export  : out std_logic_vector(31 downto 0);                    --  dbg_arg_bus.export
+		dbg_clk_clk         : in  std_logic                     := '0';             --      dbg_clk.clk
+		dbg_cmd_bus_export  : out std_logic_vector(7 downto 0);                     --  dbg_cmd_bus.export
+		dbg_data_bus_export : in  std_logic_vector(31 downto 0) := (others => '0'); -- dbg_data_bus.export
+		dbg_reset_reset_n   : in  std_logic                     := '0'              --    dbg_reset.reset_n
 	);
 end entity jtag_debug_sys;
 
@@ -41,7 +38,7 @@ architecture rtl of jtag_debug_sys is
 		);
 	end component jtag_debug_sys_master_0;
 
-	component jtag_debug_sys_pio_clock is
+	component jtag_debug_sys_pio_arg is
 		port (
 			clk        : in  std_logic                     := 'X';             -- clk
 			reset_n    : in  std_logic                     := 'X';             -- reset_n
@@ -50,11 +47,24 @@ architecture rtl of jtag_debug_sys is
 			writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
 			chipselect : in  std_logic                     := 'X';             -- chipselect
 			readdata   : out std_logic_vector(31 downto 0);                    -- readdata
-			out_port   : out std_logic                                         -- export
+			out_port   : out std_logic_vector(31 downto 0)                     -- export
 		);
-	end component jtag_debug_sys_pio_clock;
+	end component jtag_debug_sys_pio_arg;
 
-	component jtag_debug_sys_pio_code is
+	component jtag_debug_sys_pio_cmd is
+		port (
+			clk        : in  std_logic                     := 'X';             -- clk
+			reset_n    : in  std_logic                     := 'X';             -- reset_n
+			address    : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
+			write_n    : in  std_logic                     := 'X';             -- write_n
+			writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			chipselect : in  std_logic                     := 'X';             -- chipselect
+			readdata   : out std_logic_vector(31 downto 0);                    -- readdata
+			out_port   : out std_logic_vector(7 downto 0)                      -- export
+		);
+	end component jtag_debug_sys_pio_cmd;
+
+	component jtag_debug_sys_pio_data is
 		port (
 			clk      : in  std_logic                     := 'X';             -- clk
 			reset_n  : in  std_logic                     := 'X';             -- reset_n
@@ -62,36 +72,13 @@ architecture rtl of jtag_debug_sys is
 			readdata : out std_logic_vector(31 downto 0);                    -- readdata
 			in_port  : in  std_logic_vector(31 downto 0) := (others => 'X')  -- export
 		);
-	end component jtag_debug_sys_pio_code;
-
-	component jtag_debug_sys_pio_instruction is
-		port (
-			clk      : in  std_logic                     := 'X';             -- clk
-			reset_n  : in  std_logic                     := 'X';             -- reset_n
-			address  : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
-			readdata : out std_logic_vector(31 downto 0);                    -- readdata
-			in_port  : in  std_logic_vector(10 downto 0) := (others => 'X')  -- export
-		);
-	end component jtag_debug_sys_pio_instruction;
-
-	component jtag_debug_sys_pio_reg_select is
-		port (
-			clk        : in  std_logic                     := 'X';             -- clk
-			reset_n    : in  std_logic                     := 'X';             -- reset_n
-			address    : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
-			write_n    : in  std_logic                     := 'X';             -- write_n
-			writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
-			chipselect : in  std_logic                     := 'X';             -- chipselect
-			readdata   : out std_logic_vector(31 downto 0);                    -- readdata
-			out_port   : out std_logic_vector(4 downto 0)                      -- export
-		);
-	end component jtag_debug_sys_pio_reg_select;
+	end component jtag_debug_sys_pio_data;
 
 	component jtag_debug_sys_mm_interconnect_0 is
 		port (
 			clk_0_clk_clk                                  : in  std_logic                     := 'X';             -- clk
 			master_0_clk_reset_reset_bridge_in_reset_reset : in  std_logic                     := 'X';             -- reset
-			pio_clock_reset_reset_bridge_in_reset_reset    : in  std_logic                     := 'X';             -- reset
+			pio_cmd_reset_reset_bridge_in_reset_reset      : in  std_logic                     := 'X';             -- reset
 			master_0_master_address                        : in  std_logic_vector(31 downto 0) := (others => 'X'); -- address
 			master_0_master_waitrequest                    : out std_logic;                                        -- waitrequest
 			master_0_master_byteenable                     : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
@@ -100,24 +87,18 @@ architecture rtl of jtag_debug_sys is
 			master_0_master_readdatavalid                  : out std_logic;                                        -- readdatavalid
 			master_0_master_write                          : in  std_logic                     := 'X';             -- write
 			master_0_master_writedata                      : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
-			pio_clock_s1_address                           : out std_logic_vector(1 downto 0);                     -- address
-			pio_clock_s1_write                             : out std_logic;                                        -- write
-			pio_clock_s1_readdata                          : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			pio_clock_s1_writedata                         : out std_logic_vector(31 downto 0);                    -- writedata
-			pio_clock_s1_chipselect                        : out std_logic;                                        -- chipselect
-			pio_code_s1_address                            : out std_logic_vector(1 downto 0);                     -- address
-			pio_code_s1_readdata                           : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			pio_instruction_s1_address                     : out std_logic_vector(1 downto 0);                     -- address
-			pio_instruction_s1_readdata                    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			pio_pc_s1_address                              : out std_logic_vector(1 downto 0);                     -- address
-			pio_pc_s1_readdata                             : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			pio_reg_bus_s1_address                         : out std_logic_vector(1 downto 0);                     -- address
-			pio_reg_bus_s1_readdata                        : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			pio_reg_select_s1_address                      : out std_logic_vector(1 downto 0);                     -- address
-			pio_reg_select_s1_write                        : out std_logic;                                        -- write
-			pio_reg_select_s1_readdata                     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			pio_reg_select_s1_writedata                    : out std_logic_vector(31 downto 0);                    -- writedata
-			pio_reg_select_s1_chipselect                   : out std_logic                                         -- chipselect
+			pio_arg_s1_address                             : out std_logic_vector(1 downto 0);                     -- address
+			pio_arg_s1_write                               : out std_logic;                                        -- write
+			pio_arg_s1_readdata                            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			pio_arg_s1_writedata                           : out std_logic_vector(31 downto 0);                    -- writedata
+			pio_arg_s1_chipselect                          : out std_logic;                                        -- chipselect
+			pio_cmd_s1_address                             : out std_logic_vector(1 downto 0);                     -- address
+			pio_cmd_s1_write                               : out std_logic;                                        -- write
+			pio_cmd_s1_readdata                            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			pio_cmd_s1_writedata                           : out std_logic_vector(31 downto 0);                    -- writedata
+			pio_cmd_s1_chipselect                          : out std_logic;                                        -- chipselect
+			pio_data_s1_address                            : out std_logic_vector(1 downto 0);                     -- address
+			pio_data_s1_readdata                           : in  std_logic_vector(31 downto 0) := (others => 'X')  -- readdata
 		);
 	end component jtag_debug_sys_mm_interconnect_0;
 
@@ -187,39 +168,33 @@ architecture rtl of jtag_debug_sys is
 		);
 	end component altera_reset_controller;
 
-	signal master_0_master_readdata                            : std_logic_vector(31 downto 0); -- mm_interconnect_0:master_0_master_readdata -> master_0:master_readdata
-	signal master_0_master_waitrequest                         : std_logic;                     -- mm_interconnect_0:master_0_master_waitrequest -> master_0:master_waitrequest
-	signal master_0_master_address                             : std_logic_vector(31 downto 0); -- master_0:master_address -> mm_interconnect_0:master_0_master_address
-	signal master_0_master_read                                : std_logic;                     -- master_0:master_read -> mm_interconnect_0:master_0_master_read
-	signal master_0_master_byteenable                          : std_logic_vector(3 downto 0);  -- master_0:master_byteenable -> mm_interconnect_0:master_0_master_byteenable
-	signal master_0_master_readdatavalid                       : std_logic;                     -- mm_interconnect_0:master_0_master_readdatavalid -> master_0:master_readdatavalid
-	signal master_0_master_write                               : std_logic;                     -- master_0:master_write -> mm_interconnect_0:master_0_master_write
-	signal master_0_master_writedata                           : std_logic_vector(31 downto 0); -- master_0:master_writedata -> mm_interconnect_0:master_0_master_writedata
-	signal mm_interconnect_0_pio_clock_s1_chipselect           : std_logic;                     -- mm_interconnect_0:pio_clock_s1_chipselect -> pio_clock:chipselect
-	signal mm_interconnect_0_pio_clock_s1_readdata             : std_logic_vector(31 downto 0); -- pio_clock:readdata -> mm_interconnect_0:pio_clock_s1_readdata
-	signal mm_interconnect_0_pio_clock_s1_address              : std_logic_vector(1 downto 0);  -- mm_interconnect_0:pio_clock_s1_address -> pio_clock:address
-	signal mm_interconnect_0_pio_clock_s1_write                : std_logic;                     -- mm_interconnect_0:pio_clock_s1_write -> mm_interconnect_0_pio_clock_s1_write:in
-	signal mm_interconnect_0_pio_clock_s1_writedata            : std_logic_vector(31 downto 0); -- mm_interconnect_0:pio_clock_s1_writedata -> pio_clock:writedata
-	signal mm_interconnect_0_pio_reg_select_s1_chipselect      : std_logic;                     -- mm_interconnect_0:pio_reg_select_s1_chipselect -> pio_reg_select:chipselect
-	signal mm_interconnect_0_pio_reg_select_s1_readdata        : std_logic_vector(31 downto 0); -- pio_reg_select:readdata -> mm_interconnect_0:pio_reg_select_s1_readdata
-	signal mm_interconnect_0_pio_reg_select_s1_address         : std_logic_vector(1 downto 0);  -- mm_interconnect_0:pio_reg_select_s1_address -> pio_reg_select:address
-	signal mm_interconnect_0_pio_reg_select_s1_write           : std_logic;                     -- mm_interconnect_0:pio_reg_select_s1_write -> mm_interconnect_0_pio_reg_select_s1_write:in
-	signal mm_interconnect_0_pio_reg_select_s1_writedata       : std_logic_vector(31 downto 0); -- mm_interconnect_0:pio_reg_select_s1_writedata -> pio_reg_select:writedata
-	signal mm_interconnect_0_pio_reg_bus_s1_readdata           : std_logic_vector(31 downto 0); -- pio_reg_bus:readdata -> mm_interconnect_0:pio_reg_bus_s1_readdata
-	signal mm_interconnect_0_pio_reg_bus_s1_address            : std_logic_vector(1 downto 0);  -- mm_interconnect_0:pio_reg_bus_s1_address -> pio_reg_bus:address
-	signal mm_interconnect_0_pio_pc_s1_readdata                : std_logic_vector(31 downto 0); -- pio_pc:readdata -> mm_interconnect_0:pio_pc_s1_readdata
-	signal mm_interconnect_0_pio_pc_s1_address                 : std_logic_vector(1 downto 0);  -- mm_interconnect_0:pio_pc_s1_address -> pio_pc:address
-	signal mm_interconnect_0_pio_instruction_s1_readdata       : std_logic_vector(31 downto 0); -- pio_instruction:readdata -> mm_interconnect_0:pio_instruction_s1_readdata
-	signal mm_interconnect_0_pio_instruction_s1_address        : std_logic_vector(1 downto 0);  -- mm_interconnect_0:pio_instruction_s1_address -> pio_instruction:address
-	signal mm_interconnect_0_pio_code_s1_readdata              : std_logic_vector(31 downto 0); -- pio_code:readdata -> mm_interconnect_0:pio_code_s1_readdata
-	signal mm_interconnect_0_pio_code_s1_address               : std_logic_vector(1 downto 0);  -- mm_interconnect_0:pio_code_s1_address -> pio_code:address
-	signal rst_controller_reset_out_reset                      : std_logic;                     -- rst_controller:reset_out -> master_0:clk_reset_reset
-	signal master_0_master_reset_reset                         : std_logic;                     -- master_0:master_reset_reset -> [rst_controller:reset_in1, rst_controller_001:reset_in1]
-	signal rst_controller_001_reset_out_reset                  : std_logic;                     -- rst_controller_001:reset_out -> [mm_interconnect_0:master_0_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_0:pio_clock_reset_reset_bridge_in_reset_reset, rst_controller_001_reset_out_reset:in]
-	signal dbg_reset_reset_n_ports_inv                         : std_logic;                     -- dbg_reset_reset_n:inv -> [rst_controller:reset_in0, rst_controller_001:reset_in0]
-	signal mm_interconnect_0_pio_clock_s1_write_ports_inv      : std_logic;                     -- mm_interconnect_0_pio_clock_s1_write:inv -> pio_clock:write_n
-	signal mm_interconnect_0_pio_reg_select_s1_write_ports_inv : std_logic;                     -- mm_interconnect_0_pio_reg_select_s1_write:inv -> pio_reg_select:write_n
-	signal rst_controller_001_reset_out_reset_ports_inv        : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [pio_clock:reset_n, pio_code:reset_n, pio_instruction:reset_n, pio_pc:reset_n, pio_reg_bus:reset_n, pio_reg_select:reset_n]
+	signal master_0_master_readdata                     : std_logic_vector(31 downto 0); -- mm_interconnect_0:master_0_master_readdata -> master_0:master_readdata
+	signal master_0_master_waitrequest                  : std_logic;                     -- mm_interconnect_0:master_0_master_waitrequest -> master_0:master_waitrequest
+	signal master_0_master_address                      : std_logic_vector(31 downto 0); -- master_0:master_address -> mm_interconnect_0:master_0_master_address
+	signal master_0_master_read                         : std_logic;                     -- master_0:master_read -> mm_interconnect_0:master_0_master_read
+	signal master_0_master_byteenable                   : std_logic_vector(3 downto 0);  -- master_0:master_byteenable -> mm_interconnect_0:master_0_master_byteenable
+	signal master_0_master_readdatavalid                : std_logic;                     -- mm_interconnect_0:master_0_master_readdatavalid -> master_0:master_readdatavalid
+	signal master_0_master_write                        : std_logic;                     -- master_0:master_write -> mm_interconnect_0:master_0_master_write
+	signal master_0_master_writedata                    : std_logic_vector(31 downto 0); -- master_0:master_writedata -> mm_interconnect_0:master_0_master_writedata
+	signal mm_interconnect_0_pio_cmd_s1_chipselect      : std_logic;                     -- mm_interconnect_0:pio_cmd_s1_chipselect -> pio_cmd:chipselect
+	signal mm_interconnect_0_pio_cmd_s1_readdata        : std_logic_vector(31 downto 0); -- pio_cmd:readdata -> mm_interconnect_0:pio_cmd_s1_readdata
+	signal mm_interconnect_0_pio_cmd_s1_address         : std_logic_vector(1 downto 0);  -- mm_interconnect_0:pio_cmd_s1_address -> pio_cmd:address
+	signal mm_interconnect_0_pio_cmd_s1_write           : std_logic;                     -- mm_interconnect_0:pio_cmd_s1_write -> mm_interconnect_0_pio_cmd_s1_write:in
+	signal mm_interconnect_0_pio_cmd_s1_writedata       : std_logic_vector(31 downto 0); -- mm_interconnect_0:pio_cmd_s1_writedata -> pio_cmd:writedata
+	signal mm_interconnect_0_pio_arg_s1_chipselect      : std_logic;                     -- mm_interconnect_0:pio_arg_s1_chipselect -> pio_arg:chipselect
+	signal mm_interconnect_0_pio_arg_s1_readdata        : std_logic_vector(31 downto 0); -- pio_arg:readdata -> mm_interconnect_0:pio_arg_s1_readdata
+	signal mm_interconnect_0_pio_arg_s1_address         : std_logic_vector(1 downto 0);  -- mm_interconnect_0:pio_arg_s1_address -> pio_arg:address
+	signal mm_interconnect_0_pio_arg_s1_write           : std_logic;                     -- mm_interconnect_0:pio_arg_s1_write -> mm_interconnect_0_pio_arg_s1_write:in
+	signal mm_interconnect_0_pio_arg_s1_writedata       : std_logic_vector(31 downto 0); -- mm_interconnect_0:pio_arg_s1_writedata -> pio_arg:writedata
+	signal mm_interconnect_0_pio_data_s1_readdata       : std_logic_vector(31 downto 0); -- pio_data:readdata -> mm_interconnect_0:pio_data_s1_readdata
+	signal mm_interconnect_0_pio_data_s1_address        : std_logic_vector(1 downto 0);  -- mm_interconnect_0:pio_data_s1_address -> pio_data:address
+	signal rst_controller_reset_out_reset               : std_logic;                     -- rst_controller:reset_out -> master_0:clk_reset_reset
+	signal master_0_master_reset_reset                  : std_logic;                     -- master_0:master_reset_reset -> [rst_controller:reset_in1, rst_controller_001:reset_in1]
+	signal rst_controller_001_reset_out_reset           : std_logic;                     -- rst_controller_001:reset_out -> [mm_interconnect_0:master_0_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_0:pio_cmd_reset_reset_bridge_in_reset_reset, rst_controller_001_reset_out_reset:in]
+	signal dbg_reset_reset_n_ports_inv                  : std_logic;                     -- dbg_reset_reset_n:inv -> [rst_controller:reset_in0, rst_controller_001:reset_in0]
+	signal mm_interconnect_0_pio_cmd_s1_write_ports_inv : std_logic;                     -- mm_interconnect_0_pio_cmd_s1_write:inv -> pio_cmd:write_n
+	signal mm_interconnect_0_pio_arg_s1_write_ports_inv : std_logic;                     -- mm_interconnect_0_pio_arg_s1_write:inv -> pio_arg:write_n
+	signal rst_controller_001_reset_out_reset_ports_inv : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [pio_arg:reset_n, pio_cmd:reset_n, pio_data:reset_n]
 
 begin
 
@@ -243,97 +218,64 @@ begin
 			master_reset_reset   => master_0_master_reset_reset     -- master_reset.reset
 		);
 
-	pio_clock : component jtag_debug_sys_pio_clock
+	pio_arg : component jtag_debug_sys_pio_arg
 		port map (
-			clk        => dbg_clk_clk,                                    --                 clk.clk
-			reset_n    => rst_controller_001_reset_out_reset_ports_inv,   --               reset.reset_n
-			address    => mm_interconnect_0_pio_clock_s1_address,         --                  s1.address
-			write_n    => mm_interconnect_0_pio_clock_s1_write_ports_inv, --                    .write_n
-			writedata  => mm_interconnect_0_pio_clock_s1_writedata,       --                    .writedata
-			chipselect => mm_interconnect_0_pio_clock_s1_chipselect,      --                    .chipselect
-			readdata   => mm_interconnect_0_pio_clock_s1_readdata,        --                    .readdata
-			out_port   => dbg_clock_export                                -- external_connection.export
+			clk        => dbg_clk_clk,                                  --                 clk.clk
+			reset_n    => rst_controller_001_reset_out_reset_ports_inv, --               reset.reset_n
+			address    => mm_interconnect_0_pio_arg_s1_address,         --                  s1.address
+			write_n    => mm_interconnect_0_pio_arg_s1_write_ports_inv, --                    .write_n
+			writedata  => mm_interconnect_0_pio_arg_s1_writedata,       --                    .writedata
+			chipselect => mm_interconnect_0_pio_arg_s1_chipselect,      --                    .chipselect
+			readdata   => mm_interconnect_0_pio_arg_s1_readdata,        --                    .readdata
+			out_port   => dbg_arg_bus_export                            -- external_connection.export
 		);
 
-	pio_code : component jtag_debug_sys_pio_code
+	pio_cmd : component jtag_debug_sys_pio_cmd
+		port map (
+			clk        => dbg_clk_clk,                                  --                 clk.clk
+			reset_n    => rst_controller_001_reset_out_reset_ports_inv, --               reset.reset_n
+			address    => mm_interconnect_0_pio_cmd_s1_address,         --                  s1.address
+			write_n    => mm_interconnect_0_pio_cmd_s1_write_ports_inv, --                    .write_n
+			writedata  => mm_interconnect_0_pio_cmd_s1_writedata,       --                    .writedata
+			chipselect => mm_interconnect_0_pio_cmd_s1_chipselect,      --                    .chipselect
+			readdata   => mm_interconnect_0_pio_cmd_s1_readdata,        --                    .readdata
+			out_port   => dbg_cmd_bus_export                            -- external_connection.export
+		);
+
+	pio_data : component jtag_debug_sys_pio_data
 		port map (
 			clk      => dbg_clk_clk,                                  --                 clk.clk
 			reset_n  => rst_controller_001_reset_out_reset_ports_inv, --               reset.reset_n
-			address  => mm_interconnect_0_pio_code_s1_address,        --                  s1.address
-			readdata => mm_interconnect_0_pio_code_s1_readdata,       --                    .readdata
-			in_port  => dbg_code_export                               -- external_connection.export
-		);
-
-	pio_instruction : component jtag_debug_sys_pio_instruction
-		port map (
-			clk      => dbg_clk_clk,                                   --                 clk.clk
-			reset_n  => rst_controller_001_reset_out_reset_ports_inv,  --               reset.reset_n
-			address  => mm_interconnect_0_pio_instruction_s1_address,  --                  s1.address
-			readdata => mm_interconnect_0_pio_instruction_s1_readdata, --                    .readdata
-			in_port  => dbg_instr_export                               -- external_connection.export
-		);
-
-	pio_pc : component jtag_debug_sys_pio_code
-		port map (
-			clk      => dbg_clk_clk,                                  --                 clk.clk
-			reset_n  => rst_controller_001_reset_out_reset_ports_inv, --               reset.reset_n
-			address  => mm_interconnect_0_pio_pc_s1_address,          --                  s1.address
-			readdata => mm_interconnect_0_pio_pc_s1_readdata,         --                    .readdata
-			in_port  => dbg_pc_export                                 -- external_connection.export
-		);
-
-	pio_reg_bus : component jtag_debug_sys_pio_code
-		port map (
-			clk      => dbg_clk_clk,                                  --                 clk.clk
-			reset_n  => rst_controller_001_reset_out_reset_ports_inv, --               reset.reset_n
-			address  => mm_interconnect_0_pio_reg_bus_s1_address,     --                  s1.address
-			readdata => mm_interconnect_0_pio_reg_bus_s1_readdata,    --                    .readdata
-			in_port  => dbg_reg_bus_export                            -- external_connection.export
-		);
-
-	pio_reg_select : component jtag_debug_sys_pio_reg_select
-		port map (
-			clk        => dbg_clk_clk,                                         --                 clk.clk
-			reset_n    => rst_controller_001_reset_out_reset_ports_inv,        --               reset.reset_n
-			address    => mm_interconnect_0_pio_reg_select_s1_address,         --                  s1.address
-			write_n    => mm_interconnect_0_pio_reg_select_s1_write_ports_inv, --                    .write_n
-			writedata  => mm_interconnect_0_pio_reg_select_s1_writedata,       --                    .writedata
-			chipselect => mm_interconnect_0_pio_reg_select_s1_chipselect,      --                    .chipselect
-			readdata   => mm_interconnect_0_pio_reg_select_s1_readdata,        --                    .readdata
-			out_port   => dbg_reg_select_export                                -- external_connection.export
+			address  => mm_interconnect_0_pio_data_s1_address,        --                  s1.address
+			readdata => mm_interconnect_0_pio_data_s1_readdata,       --                    .readdata
+			in_port  => dbg_data_bus_export                           -- external_connection.export
 		);
 
 	mm_interconnect_0 : component jtag_debug_sys_mm_interconnect_0
 		port map (
-			clk_0_clk_clk                                  => dbg_clk_clk,                                    --                                clk_0_clk.clk
-			master_0_clk_reset_reset_bridge_in_reset_reset => rst_controller_001_reset_out_reset,             -- master_0_clk_reset_reset_bridge_in_reset.reset
-			pio_clock_reset_reset_bridge_in_reset_reset    => rst_controller_001_reset_out_reset,             --    pio_clock_reset_reset_bridge_in_reset.reset
-			master_0_master_address                        => master_0_master_address,                        --                          master_0_master.address
-			master_0_master_waitrequest                    => master_0_master_waitrequest,                    --                                         .waitrequest
-			master_0_master_byteenable                     => master_0_master_byteenable,                     --                                         .byteenable
-			master_0_master_read                           => master_0_master_read,                           --                                         .read
-			master_0_master_readdata                       => master_0_master_readdata,                       --                                         .readdata
-			master_0_master_readdatavalid                  => master_0_master_readdatavalid,                  --                                         .readdatavalid
-			master_0_master_write                          => master_0_master_write,                          --                                         .write
-			master_0_master_writedata                      => master_0_master_writedata,                      --                                         .writedata
-			pio_clock_s1_address                           => mm_interconnect_0_pio_clock_s1_address,         --                             pio_clock_s1.address
-			pio_clock_s1_write                             => mm_interconnect_0_pio_clock_s1_write,           --                                         .write
-			pio_clock_s1_readdata                          => mm_interconnect_0_pio_clock_s1_readdata,        --                                         .readdata
-			pio_clock_s1_writedata                         => mm_interconnect_0_pio_clock_s1_writedata,       --                                         .writedata
-			pio_clock_s1_chipselect                        => mm_interconnect_0_pio_clock_s1_chipselect,      --                                         .chipselect
-			pio_code_s1_address                            => mm_interconnect_0_pio_code_s1_address,          --                              pio_code_s1.address
-			pio_code_s1_readdata                           => mm_interconnect_0_pio_code_s1_readdata,         --                                         .readdata
-			pio_instruction_s1_address                     => mm_interconnect_0_pio_instruction_s1_address,   --                       pio_instruction_s1.address
-			pio_instruction_s1_readdata                    => mm_interconnect_0_pio_instruction_s1_readdata,  --                                         .readdata
-			pio_pc_s1_address                              => mm_interconnect_0_pio_pc_s1_address,            --                                pio_pc_s1.address
-			pio_pc_s1_readdata                             => mm_interconnect_0_pio_pc_s1_readdata,           --                                         .readdata
-			pio_reg_bus_s1_address                         => mm_interconnect_0_pio_reg_bus_s1_address,       --                           pio_reg_bus_s1.address
-			pio_reg_bus_s1_readdata                        => mm_interconnect_0_pio_reg_bus_s1_readdata,      --                                         .readdata
-			pio_reg_select_s1_address                      => mm_interconnect_0_pio_reg_select_s1_address,    --                        pio_reg_select_s1.address
-			pio_reg_select_s1_write                        => mm_interconnect_0_pio_reg_select_s1_write,      --                                         .write
-			pio_reg_select_s1_readdata                     => mm_interconnect_0_pio_reg_select_s1_readdata,   --                                         .readdata
-			pio_reg_select_s1_writedata                    => mm_interconnect_0_pio_reg_select_s1_writedata,  --                                         .writedata
-			pio_reg_select_s1_chipselect                   => mm_interconnect_0_pio_reg_select_s1_chipselect  --                                         .chipselect
+			clk_0_clk_clk                                  => dbg_clk_clk,                             --                                clk_0_clk.clk
+			master_0_clk_reset_reset_bridge_in_reset_reset => rst_controller_001_reset_out_reset,      -- master_0_clk_reset_reset_bridge_in_reset.reset
+			pio_cmd_reset_reset_bridge_in_reset_reset      => rst_controller_001_reset_out_reset,      --      pio_cmd_reset_reset_bridge_in_reset.reset
+			master_0_master_address                        => master_0_master_address,                 --                          master_0_master.address
+			master_0_master_waitrequest                    => master_0_master_waitrequest,             --                                         .waitrequest
+			master_0_master_byteenable                     => master_0_master_byteenable,              --                                         .byteenable
+			master_0_master_read                           => master_0_master_read,                    --                                         .read
+			master_0_master_readdata                       => master_0_master_readdata,                --                                         .readdata
+			master_0_master_readdatavalid                  => master_0_master_readdatavalid,           --                                         .readdatavalid
+			master_0_master_write                          => master_0_master_write,                   --                                         .write
+			master_0_master_writedata                      => master_0_master_writedata,               --                                         .writedata
+			pio_arg_s1_address                             => mm_interconnect_0_pio_arg_s1_address,    --                               pio_arg_s1.address
+			pio_arg_s1_write                               => mm_interconnect_0_pio_arg_s1_write,      --                                         .write
+			pio_arg_s1_readdata                            => mm_interconnect_0_pio_arg_s1_readdata,   --                                         .readdata
+			pio_arg_s1_writedata                           => mm_interconnect_0_pio_arg_s1_writedata,  --                                         .writedata
+			pio_arg_s1_chipselect                          => mm_interconnect_0_pio_arg_s1_chipselect, --                                         .chipselect
+			pio_cmd_s1_address                             => mm_interconnect_0_pio_cmd_s1_address,    --                               pio_cmd_s1.address
+			pio_cmd_s1_write                               => mm_interconnect_0_pio_cmd_s1_write,      --                                         .write
+			pio_cmd_s1_readdata                            => mm_interconnect_0_pio_cmd_s1_readdata,   --                                         .readdata
+			pio_cmd_s1_writedata                           => mm_interconnect_0_pio_cmd_s1_writedata,  --                                         .writedata
+			pio_cmd_s1_chipselect                          => mm_interconnect_0_pio_cmd_s1_chipselect, --                                         .chipselect
+			pio_data_s1_address                            => mm_interconnect_0_pio_data_s1_address,   --                              pio_data_s1.address
+			pio_data_s1_readdata                           => mm_interconnect_0_pio_data_s1_readdata   --                                         .readdata
 		);
 
 	rst_controller : component altera_reset_controller
@@ -468,9 +410,9 @@ begin
 
 	dbg_reset_reset_n_ports_inv <= not dbg_reset_reset_n;
 
-	mm_interconnect_0_pio_clock_s1_write_ports_inv <= not mm_interconnect_0_pio_clock_s1_write;
+	mm_interconnect_0_pio_cmd_s1_write_ports_inv <= not mm_interconnect_0_pio_cmd_s1_write;
 
-	mm_interconnect_0_pio_reg_select_s1_write_ports_inv <= not mm_interconnect_0_pio_reg_select_s1_write;
+	mm_interconnect_0_pio_arg_s1_write_ports_inv <= not mm_interconnect_0_pio_arg_s1_write;
 
 	rst_controller_001_reset_out_reset_ports_inv <= not rst_controller_001_reset_out_reset;
 

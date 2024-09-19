@@ -1,5 +1,5 @@
 Flow report for forest-risc-v
-Mon Sep  9 20:49:07 2024
+Thu Sep 19 19:34:28 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -41,20 +41,20 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Flow Summary                                                                        ;
 +------------------------------------+------------------------------------------------+
-; Flow Status                        ; Successful - Mon Sep  9 20:49:07 2024          ;
+; Flow Status                        ; Successful - Thu Sep 19 19:34:28 2024          ;
 ; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                      ; forest-risc-v                                  ;
-; Top-level Entity Name              ; forest-risc-v                                  ;
+; Top-level Entity Name              ; binding_vendor                                 ;
 ; Family                             ; Cyclone IV E                                   ;
 ; Device                             ; EP4CE6E22C8                                    ;
 ; Timing Models                      ; Final                                          ;
-; Total logic elements               ; 4,759 / 6,272 ( 76 % )                         ;
-;     Total combinational functions  ; 4,227 / 6,272 ( 67 % )                         ;
-;     Dedicated logic registers      ; 1,970 / 6,272 ( 31 % )                         ;
-; Total registers                    ; 1970                                           ;
-; Total pins                         ; 6 / 92 ( 7 % )                                 ;
+; Total logic elements               ; 4,669 / 6,272 ( 74 % )                         ;
+;     Total combinational functions  ; 4,021 / 6,272 ( 64 % )                         ;
+;     Dedicated logic registers      ; 1,988 / 6,272 ( 32 % )                         ;
+; Total registers                    ; 1988                                           ;
+; Total pins                         ; 12 / 92 ( 13 % )                               ;
 ; Total virtual pins                 ; 0                                              ;
-; Total memory bits                  ; 16,896 / 276,480 ( 6 % )                       ;
+; Total memory bits                  ; 8,704 / 276,480 ( 3 % )                        ;
 ; Embedded Multiplier 9-bit elements ; 0 / 30 ( 0 % )                                 ;
 ; Total PLLs                         ; 1 / 2 ( 50 % )                                 ;
 +------------------------------------+------------------------------------------------+
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 09/09/2024 20:48:03 ;
+; Start date & time ; 09/19/2024 19:33:30 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; forest-risc-v       ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+------------------------------------------------------------------+--------------------------------------+----------------+-----------------------------------+
 ; Assignment Name                     ; Value                                                            ; Default Value                        ; Entity Name    ; Section Id                        ;
 +-------------------------------------+------------------------------------------------------------------+--------------------------------------+----------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 233999794851184.172590768346513                                  ; --                                   ; --             ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 233999794851184.172676721020920                                  ; --                                   ; --             ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                              ; --                                   ; --             ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                              ; --                                   ; --             ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                                              ; --                                   ; --             ; eda_board_design_signal_integrity ;
@@ -88,129 +88,23 @@ https://fpgasoftware.intel.com/eula.
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                                ; --                                   ; --             ; --                                ;
 ; MISC_FILE                           ; jtag_debug_sys/synthesis/../jtag_debug_sys.cmp                   ; --                                   ; --             ; --                                ;
 ; MISC_FILE                           ; jtag_debug_sys/synthesis/../../jtag_debug_sys.qsys               ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; p_counter.bsf                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; p_counter_inst.vhd                                               ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; p_counter.inc                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; p_counter.cmp                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; p_rom.bsf                                                        ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; p_rom_inst.vhd                                                   ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; p_rom.inc                                                        ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; p_rom.cmp                                                        ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; c_decoder.bsf                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; c_decoder_inst.vhd                                               ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; c_decoder.inc                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; c_decoder.cmp                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; op_decoder.bsf                                                   ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; op_decoder_inst.vhd                                              ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; op_decoder.inc                                                   ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; op_decoder.cmp                                                   ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; reg_decoder.bsf                                                  ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; reg_decoder_inst.vhd                                             ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; reg_decoder.inc                                                  ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; reg_decoder.cmp                                                  ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; pp_counter.bsf                                                   ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; pp_counter_inst.vhd                                              ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; pp_counter.inc                                                   ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; pp_counter.cmp                                                   ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; cnt_decoder.bsf                                                  ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; cnt_decoder_inst.vhd                                             ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; cnt_decoder.inc                                                  ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; cnt_decoder.cmp                                                  ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; zero32bit.bsf                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; zero32bit_inst.vhd                                               ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; zero32bit.inc                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; zero32bit.cmp                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; bus_mux.bsf                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; bus_mux_inst.vhd                                                 ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; bus_mux.inc                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; bus_mux.cmp                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; im_mux.bsf                                                       ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; im_mux_inst.vhd                                                  ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; im_mux.inc                                                       ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; im_mux.cmp                                                       ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; b_decoder.bsf                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; b_decoder_inst.vhd                                               ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; b_decoder.inc                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; b_decoder.cmp                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_add.bsf                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_add_inst.vhd                                                 ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_add.inc                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_add.cmp                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_sub.bsf                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_sub_inst.vhd                                                 ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_sub.inc                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_sub.cmp                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_sll.bsf                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_sll_inst.vhd                                                 ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_sll.inc                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_sll.cmp                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_srl.bsf                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_srl_inst.vhd                                                 ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_srl.inc                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_srl.cmp                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_sra.bsf                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_sra_inst.vhd                                                 ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_sra.inc                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_sra.cmp                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_mux.bsf                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_mux_inst.vhd                                                 ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_mux.inc                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_mux.cmp                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; src_mux.bsf                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; src_mux_inst.vhd                                                 ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; src_mux.inc                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; src_mux.cmp                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_cmp.bsf                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_cmp_inst.vhd                                                 ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_cmp.inc                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_cmp.cmp                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_cmp_unsigned.bsf                                             ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_cmp_unsigned_inst.vhd                                        ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_cmp_unsigned.inc                                             ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; alu_cmp_unsigned.cmp                                             ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; one32bit.bsf                                                     ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; one32bit_inst.vhd                                                ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; one32bit.inc                                                     ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; one32bit.cmp                                                     ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; const_mux.bsf                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; const_mux_inst.vhd                                               ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; const_mux.inc                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; const_mux.cmp                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; pc_mux.bsf                                                       ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; pc_mux_inst.vhd                                                  ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; pc_mux.inc                                                       ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; pc_mux.cmp                                                       ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; four32bit.bsf                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; four32bit_inst.vhd                                               ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; four32bit.inc                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; four32bit.cmp                                                    ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; clk_pll.bsf                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; clk_pll_inst.vhd                                                 ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; clk_pll.inc                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; clk_pll.cmp                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; clk_pll.ppf                                                      ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; program_ram.bsf                                                  ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; program_ram_inst.vhd                                             ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; program_ram.inc                                                  ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; program_ram.cmp                                                  ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; boot_mux.bsf                                                     ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; boot_mux_inst.vhd                                                ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; boot_mux.inc                                                     ; --                                   ; --             ; --                                ;
-; MISC_FILE                           ; boot_mux.cmp                                                     ; --                                   ; --             ; --                                ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                                             ; --                                   ; --             ; --                                ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family)                           ; --                                   ; --             ; Top                               ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                           ; --                                   ; --             ; Top                               ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                           ; --                                   ; --             ; Top                               ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family)                           ; --                                   ; binding_vendor ; Top                               ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                           ; --                                   ; binding_vendor ; Top                               ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                           ; --                                   ; binding_vendor ; Top                               ;
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                              ; --                                   ; --             ; --                                ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                            ; --                                   ; --             ; --                                ;
 ; PROJECT_IP_REGENERATION_POLICY      ; ALWAYS_REGENERATE_IP                                             ; SKIP_REGENERATING_IP_IF_HDL_MODIFIED ; --             ; --                                ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                     ; --                                   ; --             ; --                                ;
 ; SLD_FILE                            ; jtag_debug_sys/synthesis/jtag_debug_sys.regmap                   ; --                                   ; --             ; --                                ;
 ; SLD_FILE                            ; jtag_debug_sys/synthesis/jtag_debug_sys.debuginfo                ; --                                   ; --             ; --                                ;
-; SLD_INFO                            ; QSYS_NAME jtag_debug_sys HAS_SOPCINFO 1 GENERATION_ID 1725542620 ; --                                   ; jtag_debug_sys ; --                                ;
+; SLD_INFO                            ; QSYS_NAME jtag_debug_sys HAS_SOPCINFO 1 GENERATION_ID 1726667570 ; --                                   ; jtag_debug_sys ; --                                ;
 ; SOPCINFO_FILE                       ; jtag_debug_sys/synthesis/../../jtag_debug_sys.sopcinfo           ; --                                   ; --             ; --                                ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                               ; --                                   ; --             ; --                                ;
 ; SYNTH_MESSAGE_LEVEL                 ; High                                                             ; Medium                               ; --             ; --                                ;
+; TOP_LEVEL_ENTITY                    ; binding_vendor                                                   ; forest-risc-v                        ; --             ; --                                ;
+; VHDL_INPUT_VERSION                  ; VHDL_2008                                                        ; VHDL_1993                            ; --             ; --                                ;
+; VHDL_SHOW_LMF_MAPPING_MESSAGES      ; Off                                                              ; --                                   ; --             ; --                                ;
 +-------------------------------------+------------------------------------------------------------------+--------------------------------------+----------------+-----------------------------------+
 
 
@@ -219,12 +113,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:38     ; 1.0                     ; 559 MB              ; 00:00:57                           ;
-; Fitter               ; 00:00:12     ; 1.1                     ; 998 MB              ; 00:00:16                           ;
-; Assembler            ; 00:00:02     ; 1.0                     ; 375 MB              ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:02     ; 1.3                     ; 515 MB              ; 00:00:03                           ;
-; EDA Netlist Writer   ; 00:00:02     ; 1.0                     ; 609 MB              ; 00:00:03                           ;
-; Total                ; 00:00:56     ; --                      ; --                  ; 00:01:21                           ;
+; Analysis & Synthesis ; 00:00:34     ; 1.0                     ; 508 MB              ; 00:00:53                           ;
+; Fitter               ; 00:00:11     ; 1.1                     ; 995 MB              ; 00:00:16                           ;
+; Assembler            ; 00:00:02     ; 1.0                     ; 366 MB              ; 00:00:02                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.3                     ; 495 MB              ; 00:00:03                           ;
+; EDA Netlist Writer   ; 00:00:02     ; 1.0                     ; 615 MB              ; 00:00:03                           ;
+; Total                ; 00:00:52     ; --                      ; --                  ; 00:01:17                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

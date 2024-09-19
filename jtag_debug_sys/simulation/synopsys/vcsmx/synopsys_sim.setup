@@ -11,9 +11,9 @@ cmd_demux:                        ./libraries/cmd_demux/
 master_0_master_limiter:          ./libraries/master_0_master_limiter/         
 router_001:                       ./libraries/router_001/                      
 router:                           ./libraries/router/                          
-pio_clock_s1_agent:               ./libraries/pio_clock_s1_agent/              
+pio_cmd_s1_agent:                 ./libraries/pio_cmd_s1_agent/                
 master_0_master_agent:            ./libraries/master_0_master_agent/           
-pio_clock_s1_translator:          ./libraries/pio_clock_s1_translator/         
+pio_cmd_s1_translator:            ./libraries/pio_cmd_s1_translator/           
 master_0_master_translator:       ./libraries/master_0_master_translator/      
 p2b_adapter:                      ./libraries/p2b_adapter/                     
 b2p_adapter:                      ./libraries/b2p_adapter/                     
@@ -25,10 +25,9 @@ timing_adt:                       ./libraries/timing_adt/
 jtag_phy_embedded_in_jtag_master: ./libraries/jtag_phy_embedded_in_jtag_master/
 rst_controller:                   ./libraries/rst_controller/                  
 mm_interconnect_0:                ./libraries/mm_interconnect_0/               
-pio_reg_select:                   ./libraries/pio_reg_select/                  
-pio_instruction:                  ./libraries/pio_instruction/                 
-pio_code:                         ./libraries/pio_code/                        
-pio_clock:                        ./libraries/pio_clock/                       
+pio_data:                         ./libraries/pio_data/                        
+pio_cmd:                          ./libraries/pio_cmd/                         
+pio_arg:                          ./libraries/pio_arg/                         
 master_0:                         ./libraries/master_0/                        
 altera_ver:                       ./libraries/altera_ver/                      
 lpm_ver:                          ./libraries/lpm_ver/                         

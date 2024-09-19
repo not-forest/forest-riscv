@@ -59,11 +59,11 @@
  <file
    path="simulation/submodules/altera_merlin_slave_agent.sv"
    type="SYSTEM_VERILOG"
-   library="pio_clock_s1_agent" />
+   library="pio_cmd_s1_agent" />
  <file
    path="simulation/submodules/altera_merlin_burst_uncompressor.sv"
    type="SYSTEM_VERILOG"
-   library="pio_clock_s1_agent" />
+   library="pio_cmd_s1_agent" />
  <file
    path="simulation/submodules/altera_merlin_master_agent.sv"
    type="SYSTEM_VERILOG"
@@ -71,7 +71,7 @@
  <file
    path="simulation/submodules/altera_merlin_slave_translator.sv"
    type="SYSTEM_VERILOG"
-   library="pio_clock_s1_translator" />
+   library="pio_cmd_s1_translator" />
  <file
    path="simulation/submodules/altera_merlin_master_translator.sv"
    type="SYSTEM_VERILOG"
@@ -165,21 +165,17 @@
    type="VERILOG"
    library="mm_interconnect_0" />
  <file
-   path="simulation/submodules/jtag_debug_sys_pio_reg_select.vhd"
+   path="simulation/submodules/jtag_debug_sys_pio_data.vhd"
    type="VHDL"
-   library="pio_reg_select" />
+   library="pio_data" />
  <file
-   path="simulation/submodules/jtag_debug_sys_pio_instruction.vhd"
+   path="simulation/submodules/jtag_debug_sys_pio_cmd.vhd"
    type="VHDL"
-   library="pio_instruction" />
+   library="pio_cmd" />
  <file
-   path="simulation/submodules/jtag_debug_sys_pio_code.vhd"
+   path="simulation/submodules/jtag_debug_sys_pio_arg.vhd"
    type="VHDL"
-   library="pio_code" />
- <file
-   path="simulation/submodules/jtag_debug_sys_pio_clock.vhd"
-   type="VHDL"
-   library="pio_clock" />
+   library="pio_arg" />
  <file
    path="simulation/submodules/jtag_debug_sys_master_0.vhd"
    type="VHDL"
