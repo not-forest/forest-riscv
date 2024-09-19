@@ -41,6 +41,7 @@ RISC-V CPU implementation written in VHDL. Design is tested on a Cyclone IV FPGA
 - [ ] **Program Memory**
   - [x] Temporary ROM to store program code.
   - [x] Program RAM memory for data.
+  - [ ] Migrate from huge onchip memory block to caches.
   - [ ] Migrate from static ROM to dynamic program loader.
 
 ### Extensions and Enhancements
@@ -68,7 +69,12 @@ RISC-V CPU implementation written in VHDL. Design is tested on a Cyclone IV FPGA
   - [ ] Testing benchmarks for RTLs.
   - [ ] RISC-V architecture compliance suite, benchmarks.
 
-- [ ] **Documentation and Examples**
+- [ ] **Documentation, API and Examples**
+  - [x] RISC-V assembly examples.
+  - [x] Tcl debug scripts.
+  - [ ] Memory layout linker scripts.
+  - [ ] C language projects examples.
+  - [ ] Rust language projects examples.
   - [ ] Documentation for CPU design.
   - [ ] Examples and tutorials for using the CPU.
 
@@ -111,118 +117,4 @@ RISC-V CPU implementation written in VHDL. Design is tested on a Cyclone IV FPGA
 	   Usage: step [n]
 	   - [n] (optional): Number of cycles to tick the CPU. Default is 1 cycle.
 	-----------------------------------------
-```
-Example System Console commands for debugging:
-```tcl
-% tick 1
-
-% step
-Register    Value
--------------------------
-x0         0x00000000
-x1         0x000000FF
-x2         0x00000000
-x3         0x00000000
-x4         0x00000000
-x5         0x00000000
-x6         0x00000000
-x7         0x00000000
-x8         0x00000000
-x9         0x00000000
-x10        0x00000000
-x11        0x00000000
-x12        0x00000000
-x13        0x00000000
-x14        0x00000000
-x15        0x00000000
-x16        0x00000000
-x17        0x00000000
-x18        0x00000000
-x19        0x00000000
-x20        0x00000000
-x21        0x00000000
-x22        0x00000000
-x23        0x00000000
-x24        0x00000000
-x25        0x00000000
-x26        0x00000000
-x27        0x00000000
-x28        0x00000000
-x29        0x00000000
-x30        0x00000000
-x31        0x00000000
-PC         0x00000002
-
--------------------------
-Raw: 0x0ff00093
-Opcode: 0b0010011
--------Instruction-------
-addi x1, x0, 255
------Decoder-Output------
-Is immediate used: 1
-Is PC written: 0
-Is MEM written: 0
-Is MEM read: 0
-Branch: 2
-ALU operation: 0
--------------------------
-
-% read_reg 1
-0x000000ff
-% read_pc
-0x00000002
-
-% tick 4
-
-% disassemble
--------------------------
-Raw: 0x0020c433
-Opcode: 0b0110011
--------Instruction-------
-xor  x8, x1, x2
------Decoder-Output------
-Is immediate used: 0
-Is PC written: 0
-Is MEM written: 0
-Is MEM read: 0
-Branch: 2
-ALU operation: 4
--------------------------
-
-% read_regs
-Register    Value
--------------------------
-x0         0x00000000
-x1         0x000000FF
-x2         0x0000000F
-x3         0x00000019
-x4         0x0000010E
-x5         0x000000E6
-x6         0x0000000F
-x7         0x000000FF
-x8         0x000000F0
-x9         0x00000000
-x10        0x00000000
-x11        0x00000000
-x12        0x00000000
-x13        0x00000000
-x14        0x00000000
-x15        0x00000000
-x16        0x00000000
-x17        0x00000000
-x18        0x00000000
-x19        0x00000000
-x20        0x00000000
-x21        0x00000000
-x22        0x00000000
-x23        0x00000000
-x24        0x00000000
-x25        0x00000000
-x26        0x00000000
-x27        0x00000000
-x28        0x00000000
-x29        0x00000000
-x30        0x00000000
-x31        0x00000000
-PC         0x00000009
 ```

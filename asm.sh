@@ -2,7 +2,7 @@
 
 DIR=$(dirname "$(realpath "$0")")
 ASBDIR="$DIR/asm"
-PROGRAM="branch"
+PROGRAM="program"
 
 # Defines file names
 ASSEMBLY_FILE="$ASBDIR/$PROGRAM.s"
