@@ -2,10 +2,6 @@
 
 RISC-V CPU implementation written in VHDL. Design is tested on a Cyclone IV FPGA development board. Features a 32-bit CPU based on the RV32I integer instruction set. All vendor-specific modules are signed with '_vendor' suffix.
 
-### CPU diagram
-
-[CPU diagram](./output_files/forest-risc-v-diagram.pdf)
-![CPU diagram](./output_files/forest-risc-v-diagram.png)
 ### Base Implementation
 
 - [x] **Basic 32-bit CPU Core**
@@ -85,36 +81,51 @@ RISC-V CPU implementation written in VHDL. Design is tested on a Cyclone IV FPGA
 	git clone https://github.com/not-forest/forest-riscv.git
     cd riscv-fpga-cpu
 ```
-2. **Compile the design (Cyclone IV)**
+2. **Install required packages**
+    Make sure you have RISC-V [toolchain(https://github.com/riscv-collab/riscv-gnu-toolchain) installed for 32-bit processors.
+```bash
+	sudo apt install ghdl ghdl-synth gtkwave srec_cat 
+```
+3. **Simulate the VHDL test benches**
+    Use Makefile's `benchmark` entry to compile all VHDL benchmarks located in `src/test_bench` and visualize them in gtkwave.
+```bash
+    make benchmark BENCH=<tb_name>
+```
+4. **Compile the source code example project.**
+    Use the Makefile to compile your example project. Replace <your_example_name> with the name of the example you want to compile. For more info use `help` command.
+```bash
+    make EXAMPLE=<your_example_name> FLAGS="-i --intel --foo --bar"
+```
+5. **Compile the design (Cyclone IV)**
 	Project is compatible with Cyclone IV FPGA chip. Pins should be remapped based on your board's configuration. Program the FPGA with obtained `.sof` file.    
-3. Hardware Reset
+6. Hardware Reset
 	If your board includes a reset pin, activating it will perform a complete system reset, which includes resetting the onboard debugger. This is useful for troubleshooting and ensuring a fresh start. If your board features four onboard LEDs (LED[3..0]), these can be used to indicate the rising edges of the four segmented clock phases used for CPU pipelining.
-4. **System Console debugging**
+7. **System Console debugging**
 	Use the onboard JTAG debugger from Quartus' System Console to interact with your CPU by using provided set of Tcl scripts:
 ```tcl
-	% source tcl_scripts/startup.tcl
-	Initializing Forest-RiscV CPU debug environment...
-	Obtaining service paths. [DONE]
-	Obtaining the MM master service path. [DONE]
-	Claiming the MM master service. [DONE]
-	Initialization [DONE]
-	
-	Forest-RiscV CPU Debug Environment Usage:
-	-----------------------------------------
-	1. Tick the CPU for a specified number of cycles:
-	   Usage: tick [n]
-	   - [n] (optional): Number of cycles to tick the CPU. Default is 1 cycle.
-	2. Print all registers (x0...x31) and the PC register:
-	   Usage: read_regs
-	3. Obtain value of one of 32 general purpoose registers (x0...x31):
-	   Usage: read_reg [reg_id]
-	4. Obtain value of the PC register:
-	   Usage: read_pc
-	5. Dissasembles the oncoming instruction obtained from the program memory. Because
-	                    CPU is pipelined, the cpu does fetch 4 sequential instructions during it's whole instruction cycle:
-	   Usage: dissasemble
-	6. Do n CPU steps and then print all of the above:
-	   Usage: step [n]
-	   - [n] (optional): Number of cycles to tick the CPU. Default is 1 cycle.
-	-----------------------------------------
+    % source tcl_scripts/startup.tcl
+    Initializing Forest-RiscV CPU debug environment...
+    Obtaining service paths. [DONE]
+    Obtaining the MM master service path. [DONE]
+    Claiming the MM master service. [DONE]
+    Initialization [DONE]
+    
+    Forest-RiscV CPU Debug Environment Usage:
+    -----------------------------------------
+    1. Tick the CPU for a specified number of cycles:
+       Usage: tick [n]
+       - [n] (optional): Number of cycles to tick the CPU. Default is 1 cycle.
+    2. Print all registers (x0...x31) and the PC register:
+       Usage: read_regs
+    3. Obtain value of one of 32 general purpoose registers (x0...x31):
+       Usage: read_reg [reg_id]
+    4. Obtain value of the PC register:
+       Usage: read_pc
+    5. Dissasembles the oncoming instruction obtained from the program memory. Because
+                        CPU is pipelined, the cpu does fetch 4 sequential instructions during it's whole instruction cycle:
+       Usage: dissasemble
+    6. Do n CPU steps and then print all of the above:
+       Usage: step [n]
+       - [n] (optional): Number of cycles to tick the CPU. Default is 1 cycle.
+    -----------------------------------------
 ```
