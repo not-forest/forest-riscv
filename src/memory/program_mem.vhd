@@ -53,7 +53,7 @@ architecture structured of program_mem is
 begin
     LUT_INTERFACE_Inst: lut_interface
         generic map (
-            g_PATH => "../../asm/branch.hex", --> Using ROM program (temporary)
+            g_PATH => "../../build/branch.hex", --> Using ROM program (temporary)
             g_DEPTH => 8                    --> To not waste FPGA space (temporary).
         )
         port map (
@@ -74,7 +74,7 @@ begin
 		address_aclr_a          => "none",
 		clock_enable_input_a    => "bypass",
 		clock_enable_output_a   => "bypass",
-		init_file               => "../../asm/program.hex",
+		init_file               => "../../build/program.hex",
 		intended_device_family  => "cyclone iv e",
 		lpm_hint                => "enable_runtime_mod=no",
 		lpm_type                => "altsyncram",
