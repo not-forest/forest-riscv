@@ -23,6 +23,17 @@
 -- OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
 -- OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+library ieee;
+library friscv;
+use ieee.std_logic_1164.all;
+use friscv.primitives.all;
+
+-- Package definition for memory types
+package memory is
+    -- Defines a memory block of bytes. This block is always addressed byte-by-byte.
+    type t_memory is array (natural range <>) of t_byte;
+end package memory;
+
 library friscv;
 library ieee;
 use ieee.std_logic_1164.all;
@@ -79,14 +90,3 @@ begin
         end if;
     end process;
 end architecture;
-
-library ieee;
-library friscv;
-use ieee.std_logic_1164.all;
-use friscv.primitives.all;
-
--- Package definition for memory types
-package memory is
-    -- Defines a memory block of bytes. This block is always addressed byte-by-byte.
-    type t_memory is array (natural range <>) of t_byte;
-end package memory;
