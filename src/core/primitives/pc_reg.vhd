@@ -49,6 +49,7 @@ begin
             case i_load is
                 when '1' => w_in_data <= i_data;
                 when '0' => w_in_data <= pc_incr(o_data);
+                when others => unreachable;
             end case;
         end if;
     end process;
