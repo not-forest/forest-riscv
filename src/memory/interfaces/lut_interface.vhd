@@ -43,7 +43,8 @@ entity lut_interface is
 
     -- This procedure is valid for both architectures.
     procedure read_mem(
-        signal mem : inout t_memory(0 to 2 ** g_DEPTH - 1)
+        signal mem  : in t_memory(0 to 2 ** g_DEPTH - 1);
+        signal data : out std_logic_vector(g_WIDTH - 1 downto 0)
     ) is 
         variable w_addr : integer;
     begin
@@ -51,7 +52,7 @@ entity lut_interface is
         if falling_edge(i_clk) then
         -- Reading n-bytes from memory (always)
             for i in 0 to g_WIDTH / 8 - 1 loop
-                o_data(7 + i * 8 downto i * 8) <= mem(w_addr + i);
+                data(7 + i * 8 downto i * 8) <= mem(w_addr + i);
             end loop;
         end if;
     end procedure;
@@ -60,17 +61,17 @@ end lut_interface;
 -- Used to load LUT with data during synthesis time from file specified by a path. Would not work with most synthesizers.
 architecture synthload of lut_interface is
     -- Reads contents of a file pointed by generic path.
-    function init_mem(path: string) return t_memory is
+    impure function init_mem(path: string) return t_memory is
         file LutHex         : text open read_mode is path;
         variable out_mem    : t_memory(0 to 2 ** g_DEPTH - 1) := (others => (others => '0'));
         variable next_byte  : bit_vector(g_WIDTH - 1 downto 0);
-        variable line       : line;
+        variable rline      : line;
         variable i          : integer := 0;
         begin
             while not endfile(LutHex) loop
-                readline(LutHex, line);
-                for j in 0 to line'length - 1 loop
-                    read(line, next_byte);
+                readline(LutHex, rline);
+                for j in 0 to rline'length - 1 loop
+                    read(rline, next_byte);
                     out_mem(i) := to_stdlogicvector(next_byte);
                     i := i + 1;
                 end loop;
@@ -80,12 +81,12 @@ architecture synthload of lut_interface is
 
     signal r_mem        : t_memory(0 to 2 ** g_DEPTH - 1) := init_mem(g_PATH);    -- Holds data read from file.
 begin
-    read_mem(r_mem);
+    read_mem(r_mem, o_data);
 end architecture;
 
 -- Used to load LUT with values provided in 'g_DEFAULT' generic. Might be used for small LUTs or if your software does not support synthload.
 architecture manualload of lut_interface is
     signal r_mem : t_memory(0 to 2 ** g_DEPTH - 1) := c_DEFAULT;           -- Holds default memory content
 begin
-    read_mem(r_mem);
+    read_mem(r_mem, o_data);
 end architecture;
