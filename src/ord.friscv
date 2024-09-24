@@ -1,0 +1,17 @@
+src/core/primitives/primitives.vhd
+src/core/primitives/interfaces/reg_interface.vhd
+src/core/primitives/interfaces/mux_interface.vhd
+src/core/primitives/src_mux.vhd
+src/core/primitives/pc_reg.vhd
+src/core/primitives/general_reg.vhd
+src/core/rv_decoder.vhd
+src/core/data_selector.vhd
+src/core/comparator.vhd
+src/core/register_file.vhd
+src/core/alu.vhd
+src/debug/debug.vhd
+src/debug/dbg_controller.vhd
+src/memory/interfaces/mem_interface.vhd
+src/memory/interfaces/lut_interface.vhd
+src/memory/data_mem.vhd
+src/test_bench/tbcore.vhd
