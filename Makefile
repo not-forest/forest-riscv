@@ -10,11 +10,16 @@
 # Directories below hold source files of RISC-V assembly, C and Rust test code and projects. 
 EXM_DIR 	:= $(CURDIR)/examples
 BUILD_DIR 	:= $(CURDIR)/build
-TB_DIR 		:= $(CURDIR)/src/
+SRC_DIR 	:= $(CURDIR)/src
 LD_DIR 		:= $(CURDIR)/linker_scripts
+TB_DIR 		:= $(SRC_DIR)/test_bench
 
 # Output file (Will be stored inside the memory).
 HEX_FILE 	:= $(BUILD_DIR)/program.hex
+
+# Contains all source files path's in proper order for GHDL compilation
+FRISCV_LIB  := $(SRC_DIR)/ord.friscv
+GG   		:= ghdl-gcc 
 
 # Toolchain configuration.
 PREFIX 		?= riscv32-unknown-elf
@@ -25,11 +30,12 @@ EXAMPLE 	?= rv32i
 # Additional flags for post-compilation: (e.g, --intel, etc.). View help for more details.
 FLAGS 		?= ""
 # Benchmark file for test.
-BENCH 		?= "tb_general_reg"
+BENCH 		?= tb_general_reg
 
 EXAMPLE_DIR := $(EXM_DIR)/$(EXAMPLE)
 
 CFLAGS := -march=$(ISA) -RELEASE -mgeneral-regs-only -c -D__KERNEL__ -fno-unwind-tables -Wall -Werror
+GG_FLAGS := --ieee=synopsys --workdir=build --work=friscv --std=08
 
 # Checks and compiles the selected project.
 all: check $(BUILD_DIR) compile
@@ -65,7 +71,7 @@ compile: find_src
 	$(PREFIX)-objcopy -O binary $(BUILD_DIR)/program.elf $(BUILD_DIR)/program.bin
 
 	@if echo "$(FLAGS)" | grep -qE -- "--intel|-i"; then 							    \
-		echo "Converting to Intel HEX format.\n"											\
+		echo "Converting to Intel HEX format.\n"										\
 		srec_cat $(BUILD_DIR)/program.bin -binary -byte-swap 4 -o $(HEX_FILE) -Intel; 	\
 	else 																				\
 		cp $(BUILD_DIR)/program.bin $(HEX_FILE); 		     							\
@@ -76,15 +82,19 @@ compile: find_src
 find_src:
 	$(eval SRC_LIST := $(wildcard $(EXAMPLE_DIR)/**/*.s $(EXAMPLE_DIR)/**/*.c $(EXAMPLE_DIR)/*.s $(EXAMPLE_DIR)/*.c))
 
+ghdl_compile:
+	@echo "Compiling VHDL main library..."
+	@while IFS= read -r file; do				\
+		$(GG) -a $(GG_FLAGS) $$file;    \
+	done < $(FRISCV_LIB)
+
 # Benchmarks all test benches in the src/test_bench directory
-benchmark: check_bench
-	@echo "Running benchmarks for test benches in src/test_bench..."
-	@for tb in $(wildcard $(TB_DIR)/*.vhdl); do 					\
-		ghdl -a $$tb; 												\
-		ghdl -e `basename $$tb .vhdl`; 								\
-		ghdl -r `basename $$tb .vhdl` --wave=$(BUILD_DIR)/$$tb.ghw; \
-	done
-	@echo "Opening wave viewer..."
+benchmark: $(BUILD_DIR) check_bench ghdl_compile
+	@echo "Running benchmarks for test bench: $(BENCH)"
+	$(GG) -a $(GG_FLAGS) "$(TB_DIR)/$(BENCH).vhd";
+	$(GG) -e $(GG_FLAGS) $(BENCH);
+	$(GG) -r $(GG_FLAGS) $(BENCH) --wave="$(BUILD_DIR)/$(BENCH).ghw";
+	@echo "Opening in wave viewer..."
 	@gtkwave $(BUILD_DIR)/$(BENCH).ghw &
 
 check_bench:
