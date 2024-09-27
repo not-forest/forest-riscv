@@ -258,7 +258,7 @@ begin
                 case a_funct3 is
                     when "000" | "001" | "010" | "100" | "101" =>  -- LB, LH, LW, LBU, LHU
                         funct3 := a_funct3;
-                        mem_read := '0';
+                        mem_read := '1';
                         alu_src := '1';
                         imm(11 downto 0) := a_imm_itype;
                     when others =>
@@ -316,10 +316,10 @@ begin
 
             -- Environment commands are obtained by the debugger chip.
             when "1110011" =>  -- System (ECALL/EBREAK)
-                case funct3 is
-                    when "000" =>  -- ECALL
+                case a_imm_itype(20) is
+                    when '0' =>  -- ECALL
                         r_env <= '0';
-                    when "001" =>  -- EBREAK
+                    when '1' =>  -- EBREAK
                         r_env <= '1';
                     when others =>
                         bad := '1';
