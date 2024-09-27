@@ -30,7 +30,7 @@ EXAMPLE 	?= rv32i
 # Additional flags for post-compilation: (e.g, --intel, etc.). View help for more details.
 FLAGS 		?= ""
 # Benchmark file for test.
-BENCH 		?= tb_general_reg
+BENCH 		?= tb_rv32i_decoder
 
 EXAMPLE_DIR := $(EXM_DIR)/$(EXAMPLE)
 
