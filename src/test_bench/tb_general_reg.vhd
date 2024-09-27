@@ -88,7 +88,7 @@ begin
         -- Checks if the output is zeroed. --
         assert last_output /= c_WZERO 
             report "Output data should be zeroes after reset: " 
-            & integer'IMAGE(to_integer(unsigned(last_output))) 
+            & to_string(to_integer(unsigned(last_output))) 
             severity error;
 
         -- Write <- enable
@@ -111,9 +111,9 @@ begin
         -- Checks if the output left unchanged. --
         assert sigs.o_data = last_output 
             report "Output data do not match, expected: " 
-            & integer'IMAGE(to_integer(unsigned(last_output)))
+            & to_string(to_integer(unsigned(last_output)))
             & ". Got: "
-            & integer'IMAGE(to_integer(unsigned(sigs.o_data)))
+            & to_string(to_integer(unsigned(sigs.o_data)))
             severity error;
 
         report "Done: p_MAIN";
